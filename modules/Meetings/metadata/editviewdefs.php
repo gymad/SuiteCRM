@@ -184,12 +184,19 @@ function formSubmitCheck(){ldelim}if(check_form(\'EditView\')){ldelim}document.E
           ),
         ),
         array (
-          array (
-            'name' => 'reminder_time',
-            'customCode' => '{include file="modules/Meetings/tpls/reminders.tpl"}',
-            'label' => 'LBL_REMINDER',
-          ),
+//          array (
+//            'name' => 'reminder_time',
+//            'customCode' => '{include file="modules/Meetings/tpls/reminders.tpl"}',
+//            'label' => 'LBL_REMINDER',
+//          ),
         ),
+          array(
+              array (
+                  'name' => 'reminders',
+                  'customCode' => '{include file="modules/Reminders/tpls/reminders.tpl"}',
+                  'label' => 'LBL_REMINDERS',
+              ),
+          ),
         array (
           array (
             'name' => 'description',

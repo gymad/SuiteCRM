@@ -10,9 +10,9 @@ $mod_strings['LBL_SECURITYGROUPS_UPGRADE_INFO_TITLE'] = "Frissítés és Által�
 $mod_strings['LBL_SECURITYGROUPS_INFO_TITLE'] = "Információ a Biztonsági Csoportok-ról";
 $mod_strings['LBL_SECURITYGROUPS_INFO'] = "Általános Információ";
 $mod_strings['LBL_SECURITYGROUPS_DASHLETPUSH_TITLE'] = "Csoportos Üzenet Műszer telepítése";
-$mod_strings['LBL_SECURITYGROUPS_DASHLETPUSH'] = "Minden felhasználó kezdőlapjára telepíti a Csoportos Üzenet Műszert. Ez a művelet hoszabb ideig is eltarhat, a felhasználók számától függően.";
+$mod_strings['LBL_SECURITYGROUPS_DASHLETPUSH'] = "Minden felhasználó kezdőlapjára telepíti a Csoportos Üzenet Műszert. Ez a művelet hoszabb ideig is eltarthat, a felhasználók számától függően.";
 $mod_strings['LBL_SECURITYGROUPS_HOOKUP_TITLE'] = "Modul Csatlakoztatása";
 $mod_strings['LBL_SECURITYGROUPS_HOOKUP'] = "Biztonsági Csoport képesség hozzáadása egyedi modulhoz";
 $mod_strings['LBL_SECURITYGROUPS_SUGAROUTFITTERS_TITLE'] = "SugarOutfitters";
-$mod_strings['LBL_SECURITYGROUPS_SUGAROUTFITTERS'] = "Fogd meg a legfrissebb SecuritySuite és talál más SuiteCRM modul, témákat és integráció, értékelés, docs, támogatás, és a közösség ellenőrizni változatban.";
+$mod_strings['LBL_SECURITYGROUPS_SUGAROUTFITTERS'] = "Figyeld a legfrissebb híreket a SecuritySuite-on és találj más SuiteCRM modulokat, témákat és integrációkat, értékeléseket, leírásokat, támogatásokat, a közösség által ellenőrzött változatban.";
 ?>

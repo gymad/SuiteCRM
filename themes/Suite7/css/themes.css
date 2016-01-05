@@ -26,7 +26,7 @@
   text-decoration: none;
   height: 61px;
   width: 38px;
-  background: transparent url("../images/themes.gif") no-repeat left top;
+  background: transparent url("../images/themes_nav.gif") no-repeat left top;
 
   }
 
@@ -71,7 +71,7 @@
   top: 0;
   bottom: 0;
   left: 0;
-  background: #000 url("themes.gif") no-repeat left 50%;
+  background: #000 url("themes_nav.gif") no-repeat left 50%;
   width: 38px;
   }
 

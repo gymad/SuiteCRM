@@ -1,6 +1,9 @@
 /*********************************************************************************
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
+
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
+ * Copyright (C) 2011 - 2014 Salesagility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -28,9 +31,9 @@
  *
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
- * SugarCRM" logo. If the display of the logo is not reasonably feasible for
- * technical reasons, the Appropriate Legal Notices must display the words
- * "Powered by SugarCRM".
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
+ * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  ********************************************************************************/
 function hide(divname){var elem1=document.getElementById(divname);elem1.style.display='none';}
 function show(div){var elem1=document.getElementById(div);elem1.style.display='';}
@@ -54,3 +57,8 @@ if(direction=='next'){if(step==total){var msg=SUGAR.language.get('mod_strings','
 if(direction=='direct'){}
 if((direction!='direct')&&(window.validate_wiz_form)&&(!validate_wiz_form('step'+step))){return false;}
 return true;}
+var onEmailTemplateChange=function(elem,namePrefixCopyOf,templateIdDefault,callback){var autoCheckUpdateCheckbox=function(){if(!$('#template_id').val()){$('input[name="update_exists_template"]').prop('checked',false);$('input[name="update_exists_template"]').prop('disabled',true);}
+else{$('input[name="update_exists_template"]').prop('disabled',false);}}
+autoCheckUpdateCheckbox();if($('input[name="update_exists_template"]').prop('checked')){namePrefixCopyOf='';}
+var emailTemplateId=$(elem).val()?$(elem).val():(typeof templateIdDefault!='undefined'&&templateIdDefault?templateIdDefault:null);if(emailTemplateId){$('#email_template_view_html').html('');$('#email_template_view').html('');$.post('index.php?entryPoint=emailTemplateData',{'emailTemplateId':emailTemplateId},function(resp){var results=JSON.parse(resp);if(!results.error){$('#email_template_view_html').html(results.data.body_html);$('#email_template_view').html(results.data.body);var htmlCode=$('<textarea />').html(results.data.body_html).text();$('#email_template_editor').html(htmlCode);$('#email_template_editor').mozaik(window.mozaikSettings.email_template_editor);$('#template_id').val(results.data.id);$('input[name="update_exists_template"]').prop('checked',true);autoCheckUpdateCheckbox();$('#template_name').val(namePrefixCopyOf+results.data.name);$('#template_subject').val(results.data.subject);if(typeof callback!='undefined'){callback();}}
+else{console.log(results.error);}});}};var onScheduleClick=function(e){$('input[name="action"]').val('WizardMarketingSave');$('input[name="module"]').val('Campaigns');$('#show_wizard_summary').val('1');$('#sendMarketingEmailSchedule').val('1');$('#sendMarketingEmailTest').val('0');$('#wizform').submit();};var onSendAsTestClick=function(e,campaignId,marketingId){$('input[name="action"]').val('WizardMarketingSave');$('input[name="module"]').val('Campaigns');$('#show_wizard_summary').val('1');$('#sendMarketingEmailSchedule').val('0');$('#sendMarketingEmailTest').val('1');$('#wizform').submit();};var addTargetListData=function(id){var result_data={"form_name":'wizform',"name_to_value_array":{popup_target_list_id:id,popup_target_list_name:targetListDataJSON[id].name,popup_target_list_type:targetListDataJSON[id].type},"passthru_data":Object(),"popupConfirm":0};set_return_prospect_list(result_data);};

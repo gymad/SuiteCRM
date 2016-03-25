@@ -127,6 +127,8 @@ class AOR_Report extends Basic {
             return '';
         }
 
+        $html = '';
+
         $sql = "SELECT id FROM aor_fields WHERE aor_report_id = '".$this->id."' AND deleted = 0 ORDER BY field_order ASC";
         $result = $this->db->query($sql);
 

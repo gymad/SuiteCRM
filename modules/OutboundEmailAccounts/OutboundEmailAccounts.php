@@ -37,17 +37,45 @@
  * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
-/**
- * THIS CLASS IS FOR DEVELOPERS TO MAKE CUSTOMIZATIONS IN.
- */
-require_once 'modules/OutboundEmailAccounts/OutboundEmailAccounts_sugar.php';
-class OutboundEmailAccounts extends OutboundEmailAccounts_sugar
+class OutboundEmailAccounts extends Basic
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    public $new_schema = true;
+    public $module_dir = 'OutboundEmailAccounts';
+    public $object_name = 'OutboundEmailAccounts';
+    public $table_name = 'outbound_email';
+    public $importable = false;
+    public $disable_row_level_security = true; // to ensure that modules created and deployed under CE will continue to function under team security if the instance is upgraded to PRO
 
+    public $id;
+    public $name;
+    public $date_entered;
+    public $date_modified;
+    public $modified_user_id;
+    public $modified_by_name;
+    public $created_by;
+    public $created_by_name;
+//	var $description;
+    public $deleted;
+    public $created_by_link;
+    public $modified_user_link;
+    public $assigned_user_id;
+    public $assigned_user_name;
+    public $assigned_user_link;
+//	var $username;
+//	var $password;
+//	var $smtp_servername;
+//	var $smtp_auth;
+//	var $smtp_port;
+//	var $smtp_protocol;
+
+    public function bean_implements($interface)
+    {
+        switch ($interface) {
+            case 'ACL': return true;
+        }
+
+        return false;
+    }
     public function save($check_notify = false)
     {
         if (!$this->mail_smtppass && $this->id) {
@@ -152,12 +180,12 @@ HTML;
 					EmailMan.testOutboundDialog.render();
 					EmailMan.testOutboundDialog.show();
 				}
-				
+
 				function sendTestEmail()
 				{
 					var toAddress = document.getElementById("outboundtest_to_address").value;
-					
-					if (trim(toAddress) == "") 
+
+					if (trim(toAddress) == "")
 					{
 						overlay("{$APP['ERR_MISSING_REQUIRED_FIELDS']}", "{$APP['LBL_EMAIL_SETTINGS_FROM_TO_EMAIL_ADDR']}", 'alert');
 						//return;
@@ -166,7 +194,7 @@ HTML;
 						overlay("{$APP['ERR_INVALID_REQUIRED_FIELDS']}", "{$APP['LBL_EMAIL_SETTINGS_FROM_TO_EMAIL_ADDR']}", 'alert');
 						return;
 					}
-					
+
 					//Hide the email address window and show a message notifying the user that the test email is being sent.
 					EmailMan.testOutboundDialog.hide();
 					overlay("{$APP['LBL_EMAIL_PERFORMING_TASK']}", "{$APP['LBL_EMAIL_ONE_MOMENT']}", 'alert');
@@ -186,7 +214,7 @@ HTML;
 					var smtpPort = document.getElementById('mail_smtpport').value;
 					var smtpssl  = document.getElementById('mail_smtpssl').value;
 					var mailsmtpauthreq = document.getElementById('mail_smtpauth_req');
-					var mail_sendtype = 'SMTP'; 
+					var mail_sendtype = 'SMTP';
 					var postDataString =
 						'mail_type=system&' +
 						'mail_sendtype=' + mail_sendtype + '&' +

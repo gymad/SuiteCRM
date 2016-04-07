@@ -54,6 +54,11 @@ require_once 'modules/TemplateSectionLine/TemplateSectionLine.php';
 
 class TemplateSectionLineDashlet extends DashletGeneric
 {
+    /**
+     * TemplateSectionLineDashlet constructor.
+     * @param $id
+     * @param null $def
+     */
     public function __construct($id, $def = null)
     {
         global $current_user, $app_strings;

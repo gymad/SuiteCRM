@@ -68,6 +68,12 @@ class OutboundEmailAccounts extends Basic
 //	var $smtp_port;
 //	var $smtp_protocol;
 
+    /**
+     * sugar been implements
+     *
+     * @param $interface
+     * @return bool
+     */
     public function bean_implements($interface)
     {
         switch ($interface) {
@@ -76,6 +82,13 @@ class OutboundEmailAccounts extends Basic
 
         return false;
     }
+
+    /**
+     * sugar bean save - override for smtp passwords encodeing
+     *
+     * @param bool $check_notify
+     * @return String
+     */
     public function save($check_notify = false)
     {
         if (!$this->mail_smtppass && $this->id) {
@@ -89,6 +102,14 @@ class OutboundEmailAccounts extends Basic
         return $results;
     }
 
+    /**
+     * sugar bean retrieve - override for smtp passwords encodeing
+     *
+     * @param int $id
+     * @param bool $encode
+     * @param bool $deleted
+     * @return $this
+     */
     public function retrieve($id = -1, $encode = true, $deleted = true)
     {
         $results = parent::retrieve($id, $encode, $deleted);
@@ -97,6 +118,11 @@ class OutboundEmailAccounts extends Basic
         return $results;
     }
 
+    /**
+     * get a password toggler html
+     *
+     * @return string   html
+     */
     public static function getPasswordChange()
     {
         global $mod_strings;
@@ -117,6 +143,15 @@ HTML;
         return $html;
     }
 
+    /**
+     * get email provider chooser
+     *
+     * @param $focus
+     * @param $name
+     * @param $value
+     * @param $view
+     * @return mixed|string|void
+     */
     public static function getEmailProviderChooser($focus, $name, $value, $view)
     {
         global $app_strings, $mod_strings;
@@ -129,6 +164,11 @@ HTML;
         return $html;
     }
 
+    /**
+     * return a 'send test email' button
+     *
+     * @return string html
+     */
     public static function getSendTestEmailBtn()
     {
         global $app_strings, $current_user;

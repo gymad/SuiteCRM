@@ -101,6 +101,9 @@ class SuiteMozaik
 
     private static $devMode = false;
 
+    /**
+     * SuiteMozaik constructor.
+     */
     public function __construct()
     {
         $this->vendorPath = $this->mozaikPath.'/vendor';
@@ -123,11 +126,20 @@ class SuiteMozaik
         }
     }
 
+    /**
+     * return a lorem ipsum text
+     * @return string   a 'lorem ipsum text'
+     */
     private function getContentLipsum()
     {
         return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus odio ante, in feugiat ex pretium eu. In pharetra tincidunt urna et malesuada. Etiam aliquet auctor justo eu placerat. In nec sollicitudin enim. Nulla facilisi. In viverra velit turpis, et lobortis nunc eleifend id. Curabitur semper tincidunt vulputate. Nullam fermentum pellentesque ullamcorper.';
     }
 
+    /**
+     * return a sample image
+     * @param int $width    (optional)
+     * @return string       html img tag
+     */
     private function getContentImageSample($width = null)
     {
         if (is_numeric($width)) {
@@ -142,6 +154,11 @@ class SuiteMozaik
         return $image;
     }
 
+    /**
+     * return mozaik dependencies
+     *
+     * @return string   html
+     */
     public function getDependenciesHTML()
     {
         $html = <<<HTML
@@ -156,6 +173,9 @@ HTML;
         return $html;
     }
 
+    /**
+     * @return string   html
+     */
     public function getIncludeHTML()
     {
         $html = <<<HTML
@@ -166,6 +186,16 @@ HTML;
         return $html;
     }
 
+    /**
+     * get a mozaik section element
+     *
+     * @param string $contents      contents
+     * @param string $textareaId    used textarea id
+     * @param string $elementId     used element id
+     * @param string $width         width
+     * @param array $thumbs         thumbnails as array
+     * @return string               html
+     */
     public function getElementHTML($contents = '', $textareaId = null, $elementId = 'mozaik', $width = 'initial', $thumbs = array())
     {
         if (is_numeric($width)) {
@@ -227,6 +257,16 @@ HTML;
         return $html;
     }
 
+    /**
+     * get a mozaik output as html
+     *
+     * @param string $contents      contents
+     * @param string $textareaId    use textarea id
+     * @param string $elementId     element id
+     * @param string $width         width
+     * @param string $group         group of template line items
+     * @return string               html
+     */
     public function getAllHTML($contents = '', $textareaId = null, $elementId = 'mozaik', $width = 'initial', $group = '')
     {
         if (is_numeric($width)) {
@@ -240,6 +280,14 @@ HTML;
         return $mozaikHTML;
     }
 
+    /**
+     * refresh textarea script
+     *
+     * @param string $textareaId    use textarea id
+     * @param string $elementId     element id
+     * @param string $width         with
+     * @return string               html
+     */
     private function getRefreshTextareaScript($textareaId, $elementId, $width = 'initial')
     {
         if (is_numeric($width)) {
@@ -265,6 +313,12 @@ SCRIPT;
         return $js;
     }
 
+    /**
+     * get thumbnails
+     *
+     * @param string $group     group of thumbnails
+     * @return array            thumbnails
+     */
     private function getThumbs($group = '')
     {
         $cacheGroup = 'cached_'.$group;
@@ -291,6 +345,13 @@ SCRIPT;
         return $thumbs;
     }
 
+    /**
+     * get thumbnail image tags or a text if img source not found
+     *
+     * @param string $src       scr attribute of img tag
+     * @param string $label     alt attribute of img tag
+     * @return string           html
+     */
     private function getThumbImageHTML($src, $label)
     {
         if (file_exists($src)) {

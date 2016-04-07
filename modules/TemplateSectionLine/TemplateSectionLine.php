@@ -64,6 +64,12 @@ class TemplateSectionLine extends Basic
     public $assigned_user_link;
     public $grp;
 
+    /**
+     * sugar been implements
+     *
+     * @param $interface
+     * @return bool
+     */
     public function bean_implements($interface)
     {
         switch ($interface) {

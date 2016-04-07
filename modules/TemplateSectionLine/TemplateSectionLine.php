@@ -45,7 +45,7 @@ class TemplateSectionLine extends Basic
     public $object_name = 'TemplateSectionLine';
     public $table_name = 'templatesectionline';
     public $importable = false;
-    public $disable_row_level_security = true; // to ensure that modules created and deployed under CE will continue to function under team security if the instance is upgraded to PRO
+    public $disable_row_level_security = true;
 
     public $id;
     public $name;

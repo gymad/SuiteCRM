@@ -1,7 +1,9 @@
 <?php
-if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 /**
- *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
@@ -38,9 +40,8 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
  * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
-
-class SuiteMozaik {
-
+class SuiteMozaik
+{
     private $mozaikPath = 'include/javascript/mozaik';
     private $vendorPath;
 
@@ -100,19 +101,20 @@ class SuiteMozaik {
 
     private static $devMode = false;
 
-    public function __construct() {
-        $this->vendorPath = $this->mozaikPath . '/vendor';
-        if($this->autoInsertThumbnails) {
-            if(count($this->getThumbs())==0 || self::$devMode) {
+    public function __construct()
+    {
+        $this->vendorPath = $this->mozaikPath.'/vendor';
+        if ($this->autoInsertThumbnails) {
+            if (count($this->getThumbs()) == 0 || self::$devMode) {
                 $ord = 0;
-                foreach(self::$defaultThumbnails as $thumbName => $thumbData) {
+                foreach (self::$defaultThumbnails as $thumbName => $thumbData) {
                     $templateSectionLine = new TemplateSectionLine();
                     $templateSectionLine->name = $thumbData['label'];
                     $templateSectionLine->description = preg_replace('/^string:/', '', $thumbData['tpl']);
                     $templateSectionLine->description = str_replace('{lipsum}', $this->getContentLipsum(), $templateSectionLine->description);
                     $templateSectionLine->description = str_replace('{imageSmall}', $this->getContentImageSample(130), $templateSectionLine->description);
                     $templateSectionLine->description = str_replace('{image}', $this->getContentImageSample(), $templateSectionLine->description);
-                    $templateSectionLine->thumbnail = file_exists($this->mozaikPath . '/' . $thumbData['thumbnail']) ? $this->mozaikPath . '/' . $thumbData['thumbnail'] : null;
+                    $templateSectionLine->thumbnail = file_exists($this->mozaikPath.'/'.$thumbData['thumbnail']) ? $this->mozaikPath.'/'.$thumbData['thumbnail'] : null;
                     $templateSectionLine->ord = ++$ord;
                     $templateSectionLine->save();
                 }
@@ -121,24 +123,27 @@ class SuiteMozaik {
         }
     }
 
-    private function getContentLipsum() {
+    private function getContentLipsum()
+    {
         return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus odio ante, in feugiat ex pretium eu. In pharetra tincidunt urna et malesuada. Etiam aliquet auctor justo eu placerat. In nec sollicitudin enim. Nulla facilisi. In viverra velit turpis, et lobortis nunc eleifend id. Curabitur semper tincidunt vulputate. Nullam fermentum pellentesque ullamcorper.';
     }
 
-    private function getContentImageSample($width = null) {
-        if(is_numeric($width)) {
-            $width = ' width="' . $width . '"';
-        }
-        else {
+    private function getContentImageSample($width = null)
+    {
+        if (is_numeric($width)) {
+            $width = ' width="'.$width.'"';
+        } else {
             $width = '';
         }
         $splits = explode('index.php', $_SERVER['REQUEST_URI']);
-        $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . $splits[0];
-        $image = '<img src="' . $url . $this->mozaikPath . '/tpls/default/images/sample.jpg" ' . $width . ' />';
+        $url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$splits[0];
+        $image = '<img src="'.$url.$this->mozaikPath.'/tpls/default/images/sample.jpg" '.$width.' />';
+
         return $image;
     }
 
-    public function getDependenciesHTML() {
+    public function getDependenciesHTML()
+    {
         $html = <<<HTML
 <script src='{$this->vendorPath}/tinymce/tinymce/tinymce.min.js'></script>
 <script src="{$this->vendorPath}/gymadarasz/imagesloaded/imagesloaded.pkgd.min.js"></script>
@@ -147,27 +152,31 @@ class SuiteMozaik {
 <link rel="stylesheet" media="screen" type="text/css" href="{$this->vendorPath}/../colorpicker/css/colorpicker.css" />
 <script type="text/javascript" src="{$this->vendorPath}/../colorpicker/js/colorpicker.js"></script>
 HTML;
+
         return $html;
     }
 
-    public function getIncludeHTML() {
+    public function getIncludeHTML()
+    {
         $html = <<<HTML
 <link rel="stylesheet" href="{$this->mozaikPath}/jquery.mozaik.css">
 <script src='{$this->mozaikPath}/jquery.mozaik.js'></script>
 HTML;
+
         return $html;
     }
 
-    public function getElementHTML($contents = '', $textareaId = null, $elementId = 'mozaik', $width = 'initial', $thumbs = array()) {
-        if(is_numeric($width)) {
+    public function getElementHTML($contents = '', $textareaId = null, $elementId = 'mozaik', $width = 'initial', $thumbs = array())
+    {
+        if (is_numeric($width)) {
             $width .= 'px';
         }
-        if(!$thumbs) {
+        if (!$thumbs) {
             $thumbs = self::$defaultThumbnails;
         }
         $thumbsJSON = json_encode($thumbs);
         $refreshTextareaScript = '';
-        if($textareaId) {
+        if ($textareaId) {
             $refreshTextareaScript = $this->getRefreshTextareaScript($textareaId, $elementId, $width);
         }
         $html = <<<HTML
@@ -214,22 +223,26 @@ HTML;
 
 </script>
 HTML;
+
         return $html;
     }
 
-    public function getAllHTML($contents = '', $textareaId = null, $elementId = 'mozaik', $width = 'initial', $group = '') {
-        if(is_numeric($width)) {
+    public function getAllHTML($contents = '', $textareaId = null, $elementId = 'mozaik', $width = 'initial', $group = '')
+    {
+        if (is_numeric($width)) {
             $width .= 'px';
         }
         $mozaikHTML = $this->getDependenciesHTML();
         $mozaikHTML .= $this->getIncludeHTML();
         $thumbs = $this->getThumbs($group);
         $mozaikHTML .= $this->getElementHTML($contents, $textareaId, $elementId, $width, $thumbs);
+
         return $mozaikHTML;
     }
 
-    private function getRefreshTextareaScript($textareaId, $elementId, $width = 'initial') {
-        if(is_numeric($width)) {
+    private function getRefreshTextareaScript($textareaId, $elementId, $width = 'initial')
+    {
+        if (is_numeric($width)) {
             $width .= 'px';
         }
         $js = <<<SCRIPT
@@ -248,13 +261,15 @@ $(window).mouseup(function(){
      }
 });
 SCRIPT;
+
         return $js;
     }
 
-    private function getThumbs($group = '') {
-        $cacheGroup = 'cached_' . $group;
+    private function getThumbs($group = '')
+    {
+        $cacheGroup = 'cached_'.$group;
 
-        if(!isset($this->thumbsCache[$cacheGroup])) {
+        if (!isset($this->thumbsCache[$cacheGroup])) {
             $db = DBManagerFactory::getInstance();
             $_group = $db->quote($group);
             $templateSectionLineBean = BeanFactory::getBean('TemplateSectionLine');
@@ -264,7 +279,7 @@ SCRIPT;
                 foreach ($thumbBeans as $thumbBean) {
                     $thumbs[$thumbBean->name] = array(
                         'label' => $thumbBean->thumbnail ? $this->getThumbImageHTML($thumbBean->thumbnail, $thumbBean->name) : $thumbBean->name,
-                        'tpl' => 'string:' . html_entity_decode($thumbBean->description),
+                        'tpl' => 'string:'.html_entity_decode($thumbBean->description),
                     );
                 }
             }
@@ -276,14 +291,14 @@ SCRIPT;
         return $thumbs;
     }
 
-    private function getThumbImageHTML($src, $label) {
-        if(file_exists($src)) {
-            $html = '<img src="' . $src. '" alt="' . $label . '">';
-        }
-        else {
+    private function getThumbImageHTML($src, $label)
+    {
+        if (file_exists($src)) {
+            $html = '<img src="'.$src.'" alt="'.$label.'">';
+        } else {
             $html = $label;
         }
+
         return $html;
     }
-
 }

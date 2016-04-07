@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
@@ -37,16 +36,13 @@
  * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
  * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
-
- $dictionary["OutboundEmailAccounts"]=array (
+ $dictionary['OutboundEmailAccounts'] = array(
 	 'table' => 'outbound_email',
 	 'audited' => true,
 	 'inline_edit' => true,
 	 'duplicate_merge' => true,
-	 'fields' =>
-		 array (
-			 'id' =>
-				 array (
+	 'fields' => array(
+			 'id' => array(
 					 'name' => 'id',
 					 'vname' => 'LBL_ID',
 					 'type' => 'id',
@@ -55,8 +51,7 @@
 					 'comment' => 'Unique identifier',
 					 'inline_edit' => false,
 				 ),
-			 'name' =>
-				 array (
+			 'name' => array(
 					 'name' => 'name',
 					 'vname' => 'LBL_NAME',
 					 'type' => 'name',
@@ -64,8 +59,7 @@
 					 'dbType' => 'varchar',
 					 'len' => 255,
 					 'unified_search' => true,
-					 'full_text_search' =>
-						 array (
+					 'full_text_search' => array(
 							 'boost' => 3,
 						 ),
 					 'required' => true,
@@ -73,8 +67,7 @@
 					 'duplicate_merge' => 'enabled',
 					 'merge_filter' => 'selected',
 				 ),
-			 'date_entered' =>
-				 array (
+			 'date_entered' => array(
 					 'name' => 'date_entered',
 					 'vname' => 'LBL_DATE_ENTERED',
 					 'type' => 'datetime',
@@ -84,8 +77,7 @@
 					 'options' => 'date_range_search_dom',
 					 'inline_edit' => false,
 				 ),
-			 'date_modified' =>
-				 array (
+			 'date_modified' => array(
 					 'name' => 'date_modified',
 					 'vname' => 'LBL_DATE_MODIFIED',
 					 'type' => 'datetime',
@@ -95,8 +87,7 @@
 					 'options' => 'date_range_search_dom',
 					 'inline_edit' => false,
 				 ),
-			 'modified_user_id' =>
-				 array (
+			 'modified_user_id' => array(
 					 'name' => 'modified_user_id',
 					 'rname' => 'user_name',
 					 'id_name' => 'modified_user_id',
@@ -111,8 +102,7 @@
 					 'massupdate' => false,
 					 'inline_edit' => false,
 				 ),
-			 'modified_by_name' =>
-				 array (
+			 'modified_by_name' => array(
 					 'name' => 'modified_by_name',
 					 'vname' => 'LBL_MODIFIED_NAME',
 					 'type' => 'relate',
@@ -127,8 +117,7 @@
 					 'massupdate' => false,
 					 'inline_edit' => false,
 				 ),
-			 'created_by' =>
-				 array (
+			 'created_by' => array(
 					 'name' => 'created_by',
 					 'rname' => 'user_name',
 					 'id_name' => 'modified_user_id',
@@ -142,8 +131,7 @@
 					 'massupdate' => false,
 					 'inline_edit' => false,
 				 ),
-			 'created_by_name' =>
-				 array (
+			 'created_by_name' => array(
 					 'name' => 'created_by_name',
 					 'vname' => 'LBL_CREATED',
 					 'type' => 'relate',
@@ -168,8 +156,7 @@
 //					 'rows' => 6,
 //					 'cols' => 80,
 //				 ),
-			 'deleted' =>
-				 array (
+			 'deleted' => array(
 					 'name' => 'deleted',
 					 'vname' => 'LBL_DELETED',
 					 'type' => 'bool',
@@ -177,8 +164,7 @@
 					 'reportable' => false,
 					 'comment' => 'Record deletion indicator',
 				 ),
-			 'created_by_link' =>
-				 array (
+			 'created_by_link' => array(
 					 'name' => 'created_by_link',
 					 'type' => 'link',
 					 'relationship' => 'outbound_email_created_by',
@@ -188,8 +174,7 @@
 					 'bean_name' => 'User',
 					 'source' => 'non-db',
 				 ),
-			 'modified_user_link' =>
-				 array (
+			 'modified_user_link' => array(
 					 'name' => 'modified_user_link',
 					 'type' => 'link',
 					 'relationship' => 'outbound_email_modified_user',
@@ -199,8 +184,7 @@
 					 'bean_name' => 'User',
 					 'source' => 'non-db',
 				 ),
-			 'assigned_user_id' =>
-				 array (
+			 'assigned_user_id' => array(
 					 'name' => 'assigned_user_id',
 					 'rname' => 'user_name',
 					 'id_name' => 'assigned_user_id',
@@ -216,8 +200,7 @@
 					 'comment' => 'User ID assigned to record',
 					 'duplicate_merge' => 'disabled',
 				 ),
-			 'assigned_user_name' =>
-				 array (
+			 'assigned_user_name' => array(
 					 'name' => 'assigned_user_name',
 					 'link' => 'assigned_user_link',
 					 'vname' => 'LBL_ASSIGNED_TO_NAME',
@@ -230,8 +213,7 @@
 					 'module' => 'Users',
 					 'duplicate_merge' => 'disabled',
 				 ),
-			 'assigned_user_link' =>
-				 array (
+			 'assigned_user_link' => array(
 					 'name' => 'assigned_user_link',
 					 'type' => 'link',
 					 'relationship' => 'outbound_email_assigned_user',
@@ -287,8 +269,7 @@
 //					 'len' => '255',
 //					 'size' => '20',
 //				 ),
-			 'password_change' =>
-				 array (
+			 'password_change' => array(
 					 'required' => false,
 					 'name' => 'password_change',
 					 'vname' => 'LBL_PASSWORD',
@@ -311,10 +292,10 @@
 					 'function' => array(
 						 'name' => 'OutboundEmailAccounts::getPasswordChange',
 						 'returns' => 'html',
-						 'include' => 'modules/OutboundEmailAccounts/OutboundEmailAccounts.php'
+						 'include' => 'modules/OutboundEmailAccounts/OutboundEmailAccounts.php',
 					 ),
 				 ),
-			 'email_provider_chooser' => array (
+			 'email_provider_chooser' => array(
 				 'required' => false,
 				 'name' => 'email_provider_chooser',
 				 'vname' => 'LBL_CHOOSE_EMAIL_PROVIDER',
@@ -337,7 +318,7 @@
 				 'function' => array(
 					 'name' => 'OutboundEmailAccounts::getEmailProviderChooser',
 					 'returns' => 'html',
-					 'include' => 'modules/OutboundEmailAccounts/OutboundEmailAccounts.php'
+					 'include' => 'modules/OutboundEmailAccounts/OutboundEmailAccounts.php',
 				 ),
 			 ),
 			 'sent_test_email_btn' => array(
@@ -363,7 +344,7 @@
 				 'function' => array(
 					 'name' => 'OutboundEmailAccounts::getSendTestEmailBtn',
 					 'returns' => 'html',
-					 'include' => 'modules/OutboundEmailAccounts/OutboundEmailAccounts.php'
+					 'include' => 'modules/OutboundEmailAccounts/OutboundEmailAccounts.php',
 				 ),
 			 ),
 //			 'smtp_servername' =>
@@ -461,10 +442,8 @@
 //					 'dependency' => false,
 //				 ),
 		 ),
-	 'relationships' =>
-		 array (
-			 'outbound_email_modified_user' =>
-				 array (
+	 'relationships' => array(
+			 'outbound_email_modified_user' => array(
 					 'lhs_module' => 'Users',
 					 'lhs_table' => 'users',
 					 'lhs_key' => 'id',
@@ -473,8 +452,7 @@
 					 'rhs_key' => 'modified_user_id',
 					 'relationship_type' => 'one-to-many',
 				 ),
-			 'outbound_email_created_by' =>
-				 array (
+			 'outbound_email_created_by' => array(
 					 'lhs_module' => 'Users',
 					 'lhs_table' => 'users',
 					 'lhs_key' => 'id',
@@ -483,8 +461,7 @@
 					 'rhs_key' => 'created_by',
 					 'relationship_type' => 'one-to-many',
 				 ),
-			 'outbound_email_assigned_user' =>
-				 array (
+			 'outbound_email_assigned_user' => array(
 					 'lhs_module' => 'Users',
 					 'lhs_table' => 'users',
 					 'lhs_key' => 'id',
@@ -496,14 +473,11 @@
 		 ),
 	 'optimistic_locking' => true,
 	 'unified_search' => true,
-	 'indices' =>
-		 array (
-			 'id' =>
-				 array (
+	 'indices' => array(
+			 'id' => array(
 					 'name' => 'outbound_email_pk',
 					 'type' => 'primary',
-					 'fields' =>
-						 array (
+					 'fields' => array(
 							 0 => 'id',
 						 ),
 				 ),

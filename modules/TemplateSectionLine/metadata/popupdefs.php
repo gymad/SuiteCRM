@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
@@ -37,39 +36,35 @@
  * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
  * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
-
-$popupMeta = array (
+$popupMeta = array(
     'moduleMain' => 'TemplateSectionLine',
     'varName' => 'TemplateSectionLine',
     'orderBy' => 'templatesectionline.name',
-    'whereClauses' => array (
+    'whereClauses' => array(
   'name' => 'templatesectionline.name',
   'grp' => 'templatesectionline.grp',
   'description' => 'templatesectionline.description',
 ),
-    'searchInputs' => array (
+    'searchInputs' => array(
   1 => 'name',
   4 => 'grp',
   5 => 'description',
 ),
-    'searchdefs' => array (
-  'name' => 
-  array (
+    'searchdefs' => array(
+  'name' => array(
     'type' => 'name',
     'link' => true,
     'label' => 'LBL_NAME',
     'width' => '10%',
     'name' => 'name',
   ),
-  'grp' => 
-  array (
+  'grp' => array(
     'type' => 'varchar',
     'label' => 'LBL_GRP',
     'width' => '10%',
     'name' => 'grp',
   ),
-  'description' => 
-  array (
+  'description' => array(
     'type' => 'text',
     'label' => 'LBL_DESCRIPTION',
     'sortable' => false,
@@ -77,24 +72,21 @@ $popupMeta = array (
     'name' => 'description',
   ),
 ),
-    'listviewdefs' => array (
-  'NAME' => 
-  array (
+    'listviewdefs' => array(
+  'NAME' => array(
     'type' => 'name',
     'link' => true,
     'label' => 'LBL_NAME',
     'width' => '10%',
     'default' => true,
   ),
-  'GRP' => 
-  array (
+  'GRP' => array(
     'type' => 'varchar',
     'label' => 'LBL_GRP',
     'width' => '10%',
     'default' => true,
   ),
-  'DESCRIPTION' => 
-  array (
+  'DESCRIPTION' => array(
     'type' => 'text',
     'label' => 'LBL_DESCRIPTION',
     'sortable' => false,

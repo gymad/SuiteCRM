@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
@@ -37,45 +36,40 @@
  * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
  * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
-
-$popupMeta = array (
+$popupMeta = array(
     'moduleMain' => 'OutboundEmailAccount',
     'varName' => 'OutboundEmailAccount',
     'orderBy' => 'outboundemailaccount.name',
-    'whereClauses' => array (
+    'whereClauses' => array(
   'mail_smtpuser' => 'outbound_email.mail_smtpuser',
   'mail_smtpserver' => 'outbound_email.mail_smtpserver',
 ),
-    'searchInputs' => array (
+    'searchInputs' => array(
   4 => 'mail_smtpuser',
   5 => 'mail_smtpserver',
 ),
-    'searchdefs' => array (
-  'mail_smtpuser' =>
-  array (
+    'searchdefs' => array(
+  'mail_smtpuser' => array(
     'type' => 'varchar',
     'label' => 'LBL_USERNAME',
     'width' => '10%',
     'name' => 'mail_smtpuser',
   ),
-  'mail_smtpserver' =>
-  array (
+  'mail_smtpserver' => array(
     'type' => 'varchar',
     'label' => 'LBL_SMTP_SERVERNAME',
     'width' => '10%',
     'name' => 'mail_smtpserver',
   ),
 ),
-    'listviewdefs' => array (
-  'mail_smtpuser' =>
-  array (
+    'listviewdefs' => array(
+  'mail_smtpuser' => array(
     'type' => 'varchar',
     'label' => 'LBL_USERNAME',
     'width' => '10%',
     'default' => true,
   ),
-  'mail_smtpserver' =>
-  array (
+  'mail_smtpserver' => array(
     'type' => 'varchar',
     'label' => 'LBL_SMTP_SERVERNAME',
     'width' => '10%',

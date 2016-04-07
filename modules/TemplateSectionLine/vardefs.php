@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
@@ -37,15 +36,13 @@
  * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
  * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
-
 $dictionary['TemplateSectionLine'] = array(
-	'table'=>'templatesectionline',
-	'audited'=>true,
-    'inline_edit'=>true,
-		'duplicate_merge'=>true,
-		'fields'=>array (
-			'thumbnail' =>
-				array (
+	'table' => 'templatesectionline',
+	'audited' => true,
+    'inline_edit' => true,
+		'duplicate_merge' => true,
+		'fields' => array(
+			'thumbnail' => array(
 					'required' => false,
 					'name' => 'thumbnail',
 					'vname' => 'LBL_THUMBNAIL',
@@ -65,8 +62,7 @@ $dictionary['TemplateSectionLine'] = array(
 					'len' => '255',
 					'size' => '20',
 				),
-  'grp' => 
-  array (
+  'grp' => array(
     'required' => false,
     'name' => 'grp',
     'vname' => 'LBL_GRP',
@@ -86,8 +82,7 @@ $dictionary['TemplateSectionLine'] = array(
     'len' => '255',
     'size' => '20',
   ),
-			'ord' =>
-				array (
+			'ord' => array(
 					'required' => false,
 					'name' => 'ord',
 					'vname' => 'LBL_ORD',
@@ -108,12 +103,12 @@ $dictionary['TemplateSectionLine'] = array(
 					'size' => '20',
 				),
 ),
-	'relationships'=>array (
+	'relationships' => array(
 ),
-	'optimistic_locking'=>true,
-		'unified_search'=>true,
+	'optimistic_locking' => true,
+		'unified_search' => true,
 	);
-if (!class_exists('VardefManager')){
-        require_once('include/SugarObjects/VardefManager.php');
+if (!class_exists('VardefManager')) {
+    require_once 'include/SugarObjects/VardefManager.php';
 }
-VardefManager::createVardef('TemplateSectionLine','TemplateSectionLine', array('basic','assignable'));
+VardefManager::createVardef('TemplateSectionLine', 'TemplateSectionLine', array('basic', 'assignable'));

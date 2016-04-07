@@ -1,5 +1,8 @@
 <?php
-if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 /*********************************************************************************
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
@@ -45,11 +48,11 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * All Rights Reserved.
  * Contributor(s): ______________________________________..
  ********************************************************************************/
- 
+
 global $app_strings;
 
-$dashletMeta['OutboundEmailAccountsDashlet'] = array('module'		=> 'OutboundEmailAccounts',
-										  'title'       => translate('LBL_HOMEPAGE_TITLE', 'OutboundEmailAccounts'),
+$dashletMeta['OutboundEmailAccountsDashlet'] = array('module' => 'OutboundEmailAccounts',
+										  'title' => translate('LBL_HOMEPAGE_TITLE', 'OutboundEmailAccounts'),
                                           'description' => 'A customizable view into OutboundEmailAccounts',
-                                          'icon'        => 'icon_OutboundEmailAccounts_32.gif',
-                                          'category'    => 'Module Views');
+                                          'icon' => 'icon_OutboundEmailAccounts_32.gif',
+                                          'category' => 'Module Views', );

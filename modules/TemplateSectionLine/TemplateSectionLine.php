@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
@@ -39,14 +38,13 @@
  */
 
 /**
- * THIS CLASS IS FOR DEVELOPERS TO MAKE CUSTOMIZATIONS IN
+ * THIS CLASS IS FOR DEVELOPERS TO MAKE CUSTOMIZATIONS IN.
  */
-require_once('modules/TemplateSectionLine/TemplateSectionLine_sugar.php');
-class TemplateSectionLine extends TemplateSectionLine_sugar {
-	
-	function __construct(){
-		parent::__construct();
-	}
-	
+require_once 'modules/TemplateSectionLine/TemplateSectionLine_sugar.php';
+class TemplateSectionLine extends TemplateSectionLine_sugar
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }
-?>

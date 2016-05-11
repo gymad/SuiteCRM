@@ -191,17 +191,25 @@ class LogicHook{
 		$hook_array = null;
         if(isset($GLOBALS['log'])){
             $GLOBALS['log']->debug("Hook called: $module_dir::$event");
+			$GLOBALS['log']->debug("dbg point #1");
         }
 		if(!empty($module_dir)){
 			// This will load an array of the hooks to process
 			$hooks = $this->getHooks($module_dir);
+			$GLOBALS['log']->debug("dbg point #2");
 			if(!empty($hooks)) {
+				$GLOBALS['log']->debug("dbg point #3");
 			    $this->process_hooks($hooks, $event, $arguments);
+				$GLOBALS['log']->debug("dbg point #4");
 			}
 		}
+		$GLOBALS['log']->debug("dbg point #5");
 		$hooks = $this->getHooks('');
+		$GLOBALS['log']->debug("dbg point #6");
 		if(!empty($hooks)) {
+			$GLOBALS['log']->debug("dbg point #7");
 		    $this->process_hooks($hooks, $event, $arguments);
+			$GLOBALS['log']->debug("dbg point #8");
 		}
 	}
 

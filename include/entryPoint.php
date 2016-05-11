@@ -193,7 +193,7 @@ if (empty($GLOBALS['installing'])) {
 
     $GLOBALS['log']->debug('dbg poing #2.1');
     LogicHook::initialize()->call_custom_logic('', 'after_entry_point');
-    $GLOBALS['log']->debug('dbg poing #2.1');
+    $GLOBALS['log']->debug('dbg poing #2.2');
 }
 
 ////	END SETTING DEFAULT VAR VALUES

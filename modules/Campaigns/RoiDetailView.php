@@ -70,7 +70,7 @@ if (isset($_REQUEST['offset']) or isset($_REQUEST['record'])) {
 	}
 	$focus=$result;
 } else {
-	header("Location: index.php?module=Accounts&action=index");
+	header_dbg("Location: index.php?module=Accounts&action=index");
     die();
 }
 

@@ -85,7 +85,7 @@ if(preg_match('/^[0-9A-Za-z\-]*$/', $track))
 
 	$redirect_URL = $row['tracker_url'];
 	sugar_cleanup();
-	header("Location: $redirect_URL");
+	header_dbg("Location: $redirect_URL");
 	die();
 }
 else

@@ -235,7 +235,7 @@ if (isset($_POST['campaign_id']) && !empty($_POST['campaign_id'])) {
                 echo '</form><script language="javascript" type="text/javascript">document.redirect.submit();</script>';
                 echo '</body></html>';
             } else {
-                header("Location: {$redirect_url}");
+                header_dbg("Location: {$redirect_url}");
                 die();
             }
         } else {
@@ -245,7 +245,7 @@ if (isset($_POST['campaign_id']) && !empty($_POST['campaign_id'])) {
                 //If the custom module does not have a LBL_THANKS_FOR_SUBMITTING label, default to this general one
                 echo 'Success';
             }
-            header($_SERVER['SERVER_PROTOCOL'].'201', true, 201);
+            header_dbg($_SERVER['SERVER_PROTOCOL'].'201', true, 201);
             die();
         }
         sugar_cleanup();
@@ -263,7 +263,7 @@ if (!empty($_POST['redirect'])) {
         echo '</form><script language="javascript" type="text/javascript">document.redirect.submit();</script>';
         echo '</body></html>';
     } else {
-        header("Location: {$_POST['redirect']}");
+        header_dbg("Location: {$_POST['redirect']}");
         die();
     }
 }

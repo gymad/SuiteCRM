@@ -231,7 +231,7 @@ if (isset($_POST['campaign_id']) && !empty($_POST['campaign_id'])) {
     				echo '</body></html>';
     			}
 				else{
-    				header("Location: {$redirect_url}");
+    				header_dbg("Location: {$redirect_url}");
     				die();
 			    }
 			}
@@ -255,7 +255,7 @@ if (!empty($_POST['redirect'])) {
     	echo '</body></html>';
     }
     else{
-    	header("Location: {$_POST['redirect']}");
+    	header_dbg("Location: {$_POST['redirect']}");
     	die();
     }
 }

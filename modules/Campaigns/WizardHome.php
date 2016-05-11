@@ -185,7 +185,7 @@ global $currentModule;
         else {
             $header_URL = "Location: index.php?action=WizardMarketing&module=Campaigns&return_module=Campaigns&return_action=WizardHome&return_id=" . $campaign_id . "&campaign_id=" . $campaign_id . "&jump=3&show_wizard_marketing=1&marketing_id=" . $marketing_id . "&record=" . $marketing_id . '&campaign_type=' . $focus->campaign_type . (isset($_REQUEST['template_id']) && $_REQUEST['template_id'] ? '&template_id=' . $_REQUEST['template_id'] : '');
         }
-        header($header_URL);
+        header_dbg($header_URL);
         die();
     }
     

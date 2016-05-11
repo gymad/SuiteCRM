@@ -246,6 +246,7 @@ if (isset($_POST['campaign_id']) && !empty($_POST['campaign_id'])) {
                 echo 'Success';
             }
             header($_SERVER['SERVER_PROTOCOL'].'201', true, 201);
+            die();
         }
         sugar_cleanup();
         // die to keep code from running into redirect case below

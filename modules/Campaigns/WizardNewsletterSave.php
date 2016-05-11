@@ -237,7 +237,7 @@ global $mod_strings;
             $header_URL = "Location: index.php?return_module=Campaigns&module=Campaigns&action=".$action.$redirectToTargetList."&campaign_id=".$campaign_focus->id."&return_action=WizardNewsLetter&return_id=".$campaign_focus->id;
             $GLOBALS['log']->debug("about to post header URL of: $header_URL");
             header($header_URL);
-
+            die();
             break;
         case 3:
             //process subscription lists if this is a newsletter
@@ -402,7 +402,7 @@ global $mod_strings;
             $header_URL = "Location: index.php?return_module=Campaigns&module=Campaigns&action=".$action.$redirectToTargetList."&campaign_id=".$campaign_focus->id."&record=".$campaign_focus->id;
             $GLOBALS['log']->debug("about to post header URL of: $header_URL");
             header($header_URL);
-
+            die();
             break;
     }
 

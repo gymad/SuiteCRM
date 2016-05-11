@@ -191,7 +191,9 @@ if (empty($GLOBALS['installing'])) {
     $system_config = new Administration();
     $system_config->retrieveSettings();
 
+    $GLOBALS['log']->debug('dbg poing #2.1');
     LogicHook::initialize()->call_custom_logic('', 'after_entry_point');
+    $GLOBALS['log']->debug('dbg poing #2.1');
 }
 
 ////	END SETTING DEFAULT VAR VALUES

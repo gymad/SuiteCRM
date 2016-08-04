@@ -45,7 +45,6 @@ html {
 }
 
 body {
-    background: #e6e6e6;
     background: #f5f5f5;
     font-family: 'Lato', Lato, Arial, sans-serif;
     font-size: 13px;
@@ -2062,7 +2061,6 @@ thead.fc-head tr td {
 }
 
 .calendar tfoot .ttip {
-    background: #e8f0f4;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #ccc;
     background: #dfdfdf;
@@ -2243,10 +2241,6 @@ li.noBullet {
     padding: 2px 5px 2px 5px;
     margin: 0;
     cursor: pointer;
-}
-
-.sqsSelectedSmartInputItem {
-    background-color: #DEEFFF;
 }
 
 #sqsSmartInputResults {
@@ -3114,10 +3108,6 @@ ul.subpanelTablist li a.activeSubTab:hover {
     color: #444444;
 }
 
-.detail tr th {
-    border-color: #cbdae6;
-}
-
 .detail tr td {
     color: #444444;
     border-color: #cbdae6;
@@ -3271,10 +3261,6 @@ ul.tablist li a, ul.subpanelTablist li a {
 
 ul.tablist li a:link, ul.tablist li a:visited, ul.subpanelTablist li a:link, ul.subpanelTablist li a:visited {
     color: #444444;
-}
-
-ul.tablist li a:hover, ul.subpanelTablist li a:hover {
-    background: #fafafa;
 }
 
 ul.subpanelTablist li a.current, ul.subpanelTablist li a.current:hover {
@@ -4414,13 +4400,11 @@ fieldset[disabled] .btn-primary.active {
 .btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus {
     color: #ffffff;
     background-color: #94A6B5;
-    background-color: #94A6B5;
     border: 1px solid #94A6B5;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
     color: #ffffff;
-    background-color: #778591;
     background-color: #778591;
     border: 1px solid #778591;
 }
@@ -4434,12 +4418,10 @@ fieldset[disabled] .btn-primary.active {
 .btn-success, .btn-success:hover, .btn-success:active, .btn-success:focus {
     color: #ffffff;
     background-color: #66996B;
-    background-color: #66996B;
     border: 1px solid #66996B;
 }
 
 .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:focus {
-    background-color: #F08377;
     background-color: #F08377;
     border: 1px solid #F08377;
 }
@@ -5079,7 +5061,7 @@ select, select:focus, select::selection, .saved_search_select {
     appearance: none;
     overflow: hidden;
     background-color: #ffffff;
-    background: url("../../../../themes/SuiteP/images/forms/select.ico") no-repeat right #ffffff;
+    background-image: url("../../../../themes/SuiteP/images/forms/select.ico") no-repeat right;
     background-size: 52px 52px;
     border: 3px solid #a5e8d6;
     border-radius: 4px;
@@ -6335,8 +6317,6 @@ h3 span {
 }
 
 .icon {
-    fill: #F08377;
-    pointer-events: none;
     fill: #F08377;
     pointer-events: none;
 }

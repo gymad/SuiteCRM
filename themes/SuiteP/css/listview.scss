@@ -2791,8 +2791,9 @@ div.qtip.qtip-default {
 #actionLinkBottom .sugar_action_button .subnav li a,
 #actionLinkTop .sugar_action_button .subnav.ddopen li a,
 #actionLinkBottom .sugar_action_button .subnav.ddopen li a {
-  margin: 5px 15px;
+  margin: 5px 0;
   border-bottom: 2px solid $list-view-action-menu-separator;
+  padding: 0 10px;
 }
 
 #actionLinkTop .sugar_action_button .subnav.ddopen a:hover,

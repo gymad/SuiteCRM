@@ -1184,36 +1184,38 @@ function validate_form(formname, startsWith){
 								}
 							break;
 							case 'in_array':
-								operator = validate[formname][i][operatorIndex];
-								item1 = trim(form[validate[formname][i][nameIndex]].value);
-								if (operator.charAt(0) == 'u') {
-									item1 = item1.toUpperCase();
-									operator = operator.substring(1);
-								} else if (operator.charAt(0) == 'l') {
-									item1 = item1.toLowerCase();
-									operator = operator.substring(1);
-								}
-								// Get all fields related to the selected module (including custom fields)
-								var current_fields = '';
-								var current_module = document.getElementsByName("view_module")[0].value;
-								$.ajax({
-									type: "GET",
-									url: "index.php?to_pdf=1&module=ModuleBuilder&action=getModuleFields&current_module=" + current_module,
-									async: false,
-									success: function(result) {
-										current_fields = JSON.parse(result);
-									},
-									error: function(xhr, status, error) {
-										var err = eval("(" + xhr.responseText + ")");
+								if(document.getElementByName('is_update')[0].value != 'true') {
+									operator = validate[formname][i][operatorIndex];
+									item1 = trim(form[validate[formname][i][nameIndex]].value);
+									if (operator.charAt(0) == 'u') {
+										item1 = item1.toUpperCase();
+										operator = operator.substring(1);
+									} else if (operator.charAt(0) == 'l') {
+										item1 = item1.toLowerCase();
+										operator = operator.substring(1);
 									}
-								});
+									// Get all fields related to the selected module (including custom fields)
+									var current_fields = '';
+									var current_module = document.getElementsByName("view_module")[0].value;
+									$.ajax({
+										type: "GET",
+										url: "index.php?to_pdf=1&module=ModuleBuilder&action=getModuleFields&current_module=" + current_module,
+										async: false,
+										success: function (result) {
+											current_fields = JSON.parse(result);
+										},
+										error: function (xhr, status, error) {
+											var err = eval("(" + xhr.responseText + ")");
+										}
+									});
 
-								for (k = 0; k < current_fields.length; k++) {
-									if(isError != true) {
-										val = current_fields[k].toUpperCase();
-										if ((operator == "==" && val == item1) || (operator == "!=" && val != item1)) {
-											isError = true;
-											add_error_style(formname, validate[formname][i][nameIndex], 'Invalid Value: Field Name already exists');
+									for (k = 0; k < current_fields.length; k++) {
+										if (isError != true) {
+											val = current_fields[k].toUpperCase();
+											if ((operator == "==" && val == item1) || (operator == "!=" && val != item1)) {
+												isError = true;
+												add_error_style(formname, validate[formname][i][nameIndex], 'Invalid Value: Field Name already exists');
+											}
 										}
 									}
 								}

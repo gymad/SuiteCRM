@@ -244,6 +244,10 @@ tr#pagination {
   width: 5em;
 }
 
+#selectedRecordsTop {
+  padding-top: 5px;
+}
+
 #selectedRecordsTopLabel {
   color: $list-view-button-color;
 }

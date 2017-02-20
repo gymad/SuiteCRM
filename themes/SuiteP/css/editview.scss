@@ -3480,11 +3480,11 @@ select#sales_stage_advanced {
   }
 
   .col-sm-12 .col-sm-8.edit-view-field input.sqsEnabled {
-    width: 100%;
+    width: calc(100% - 86px);
   }
 
   .col-sm-6 .col-sm-8.edit-view-field input.sqsEnabled {
-    width: 100%;
+    width: calc(100% - 86px);
   }
 
   .col-sm-8 .edit-view-field input[type="text"] {
@@ -3670,11 +3670,11 @@ select#sales_stage_advanced {
   }
 
   .col-sm-12 .col-sm-8.edit-view-field input.sqsEnabled {
-    width: 45%;
+    width: calc(45% - 85px);
   }
 
   .col-sm-6 .col-sm-8.edit-view-field input.sqsEnabled {
-    width: 90%;
+    width: calc(100% - 108px);
   }
 
   .col-sm-12 [type=name].col-sm-8.edit-view-field input[type="text"] {

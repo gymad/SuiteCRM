@@ -120,7 +120,7 @@ class Link2
         // Fix to restore functionality from Link.php that needs to be rewritten but for now this will do.
         $this->relationship_fields = (!empty($this->def['rel_fields'])) ? $this->def['rel_fields'] : array();
 
-        if (!$this->loadedSuccesfully()) {
+        if (isset($this->def['source']) && $this->def['source'] === 'non-db' && $this->loadedSuccesfully()) {
             $logFunction = 'fatal';
             if (!isset($this->def['source']) || $this->def['source'] === 'non-db') {
                 $logFunction = 'warn';

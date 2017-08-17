@@ -271,7 +271,7 @@ class MBPackage
     {
         $path = $this->getPackageDir();
         if (file_exists($path . '/manifest.php')) {
-            require($path . '/manifest.php');
+            require DependencyHandler::check($path . '/manifest.php');
             if (!empty($manifest)) {
                 $this->date_modified = $manifest['published_date'];
                 $this->is_uninstallable = $manifest['is_uninstallable'];

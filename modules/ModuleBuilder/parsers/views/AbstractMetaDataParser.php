@@ -59,6 +59,8 @@ abstract class AbstractMetaDataParser
      */
     protected $_moduleName;
     /**
+     *
+     * @todo make a common interface for the following classes:
      * @var DeployedMetaDataImplementation|UndeployedMetaDataImplementation $implementation
      * object to handle the reading and writing of files and field data
      */
@@ -169,6 +171,7 @@ abstract class AbstractMetaDataParser
     }
 
     /**
+     * @todo make an abstract function or interface for this method
      * @param array $def
      */
     public static function _trimFieldDefs($def)

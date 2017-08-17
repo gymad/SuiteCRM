@@ -109,7 +109,7 @@ if (!isset($_SESSION['committed'])) {
                     if ($file != '.' && $file != '..') {
                         //echo $base_tmp_upgrade_dir."/".$file.'</br>';
                         if (is_file($base_tmp_upgrade_dir.'/'.$file.'/manifest.php')) {
-                            require_once $base_tmp_upgrade_dir.'/'.$file.'/manifest.php';
+                            require_once DependencyHandler::check($base_tmp_upgrade_dir.'/'.$file.'/manifest.php');
                             $package_name = $manifest['copy_files']['from_dir'];
                             //echo file_exists($base_tmp_upgrade_dir."/".$file."/".$package_name).'</br>';
                             if (file_exists($base_tmp_upgrade_dir.'/'.$file.'/'.$package_name) && file_exists($base_tmp_upgrade_dir.'/'.$file.'/scripts') && file_exists($base_tmp_upgrade_dir.'/'.$file.'/manifest.php')) {
@@ -166,7 +166,7 @@ eoq;
         }
 
         // assumption -- already validated manifest.php at time of upload
-        require_once "$unzip_dir/manifest.php";
+        require_once DependencyHandler::check("$unzip_dir/manifest.php");
 
         if (isset($manifest['copy_files']['from_dir']) && $manifest['copy_files']['from_dir'] != '') {
             $zip_from_dir = $manifest['copy_files']['from_dir'];

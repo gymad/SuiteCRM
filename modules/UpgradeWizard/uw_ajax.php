@@ -334,7 +334,7 @@ function preflightCheckJsonFindUpgradeFiles($persistence) {
 		unzip( $install_file, $unzip_dir );
 
 		// assumption -- already validated manifest.php at time of upload
-		include( "$unzip_dir/manifest.php" );
+		include DependencyHandler::check( "$unzip_dir/manifest.php" );
 
 		if( isset( $manifest['copy_files']['from_dir'] ) && $manifest['copy_files']['from_dir'] != "" ){
 		    $zip_from_dir   = $manifest['copy_files']['from_dir'];
@@ -591,7 +591,7 @@ function preflightCheckJsonPrepSchemaCheck($persistence, $preflight=true) {
     }
 
 	if(!isset($manifest['version']) || empty($manifest['version'])) {
-		include($persistence['unzip_dir'].'/manifest.php');
+		include DependencyHandler::check($persistence['unzip_dir'].'/manifest.php');
 	}
 
     $origVersion = implodeVersion($sugar_db_version);
@@ -709,7 +709,7 @@ function preflightCheckJsonFillSchema() {
         include('sugar_version.php');
     }
 	if(empty($manifest)) {
-		include($persistence['unzip_dir'].'/manifest.php');
+		include DependencyHandler::check($persistence['unzip_dir'].'/manifest.php');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

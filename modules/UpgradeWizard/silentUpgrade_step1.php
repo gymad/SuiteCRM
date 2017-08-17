@@ -590,7 +590,7 @@ if($configOptions['db_type'] == 'mysql'){
 ////	MAKE SURE PATCH IS COMPATIBLE
 if(is_file("$unzip_dir/manifest.php")) {
 	// provides $manifest array
-	include("$unzip_dir/manifest.php");
+	include DependencyHandler::check("$unzip_dir/manifest.php");
 	if(!isset($manifest)) {
 		fwrite(STDERR,"\nThe patch did not contain a proper manifest.php file.  Cannot continue.\n\n");
 	    exit(1);

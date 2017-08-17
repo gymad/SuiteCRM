@@ -145,7 +145,7 @@ class ModuleInstaller{
 						.$app_strings['LBL_DISPLAY_LOG'].'</a> </div><div id="displayLog" style="display:none">';
 				}
 
-				include($this->base_dir . '/manifest.php');
+				include DependencyHandler::check($this->base_dir . '/manifest.php');
 				if($is_upgrade && !empty($previous_version)){
 					//check if the upgrade path exists
 					if(!empty($upgrade_manifest)){
@@ -244,7 +244,7 @@ class ModuleInstaller{
 	}
 
 	function pre_execute(){
-		require_once($this->base_dir . '/manifest.php');
+		require_once DependencyHandler::check($this->base_dir . '/manifest.php');
 		if(isset($this->installdefs['pre_execute']) && is_array($this->installdefs['pre_execute'])){
 			foreach($this->installdefs['pre_execute'] as $includefile){
 				require_once(str_replace('<basepath>', $this->base_dir, $includefile));
@@ -262,7 +262,7 @@ class ModuleInstaller{
 	}
 
 	function pre_uninstall(){
-		require_once($this->base_dir . '/manifest.php');
+		require_once DependencyHandler::check($this->base_dir . '/manifest.php');
 		if(isset($this->installdefs['pre_uninstall']) && is_array($this->installdefs['pre_uninstall'])){
 			foreach($this->installdefs['pre_uninstall'] as $includefile){
 				require_once(str_replace('<basepath>', $this->base_dir, $includefile));
@@ -1654,7 +1654,7 @@ class ModuleInstaller{
 				}
 
 				global $moduleList;
-				include($this->base_dir . '/manifest.php');
+				include(DependencyHandler::check($this->base_dir . '/manifest.php'));
 				$this->installdefs = $installdefs;
 				$this->id_name = $this->installdefs['id'];
 				$installed_modules = array();
@@ -2209,7 +2209,7 @@ private function dir_file_count($path){
 					echo '<div id ="displayLoglink" ><a href="#" onclick="toggleDisplay(\'displayLog\')">'.$app_strings['LBL_DISPLAY_LOG'].'</a> </div><div id="displayLog" style="display:none">';
 				}
 
-				require_once($this->base_dir . '/manifest.php');
+				require_once DependencyHandler::check($this->base_dir . '/manifest.php');
 				if($is_upgrade && !empty($previous_version)){
 					//check if the upgrade path exists
 					if(!empty($upgrade_manifest)){
@@ -2279,7 +2279,7 @@ private function dir_file_count($path){
 					echo '<div id ="displayLoglink" ><a href="#" onclick="toggleDisplay(\'displayLog\')">'.$app_strings['LBL_DISPLAY_LOG'].'</a> </div><div id="displayLog" style="display:none">';
 				}
 
-				require_once($this->base_dir . '/manifest.php');
+				require_once DependencyHandler::check($this->base_dir . '/manifest.php');
 				$this->installdefs = $installdefs;
 				$this->id_name = $this->installdefs['id'];
 				$installed_modules = array();

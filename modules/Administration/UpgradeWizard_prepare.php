@@ -111,7 +111,7 @@ if (((defined('MODULE_INSTALLER_PACKAGE_SCAN') && MODULE_INSTALLER_PACKAGE_SCAN)
 }
 
 // assumption -- already validated manifest.php at time of upload
-require( "$unzip_dir/manifest.php" );
+require DependencyHandler::check("$unzip_dir/manifest.php");
 
 
 

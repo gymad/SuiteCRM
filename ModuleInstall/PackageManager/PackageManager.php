@@ -558,7 +558,7 @@ class PackageManager{
              $GLOBALS['log']->debug("1: ".$file);
             // handle manifest.php
             $target_manifest = remove_file_extension( $file ) . '-manifest.php';
-            include($target_manifest);
+            include DependencyHandler::check($target_manifest);
             $GLOBALS['log']->debug("2: ".$file);
             $unzip_dir = mk_temp_dir( $base_tmp_upgrade_dir );
             $this->addToCleanup($unzip_dir);

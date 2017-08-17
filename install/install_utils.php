@@ -276,7 +276,7 @@ function commitPatch($unlink = false, $type = 'patch'){
             // handle manifest.php
             $target_manifest = remove_file_extension( $file ) . '-manifest.php';
 
-            include($target_manifest);
+            include DependencyHandler::check($target_manifest);
 
             $unzip_dir = mk_temp_dir( $base_tmp_upgrade_dir );
             unzip($file, $unzip_dir );
@@ -361,7 +361,7 @@ function commitModules($unlink = false, $type = 'module'){
                     commitLanguagePack();
                     continue;
                 }
-                include($target_manifest);
+                include DependencyHandler::check($target_manifest);
 
                 $unzip_dir = mk_temp_dir( $base_tmp_upgrade_dir );
                 unzip($file, $unzip_dir );
@@ -525,7 +525,7 @@ function getInstalledLangPacks($showButtons=true) {
             foreach($_SESSION['INSTALLED_LANG_PACKS'] as $file) {
                 // handle manifest.php
                 $target_manifest = remove_file_extension( $file ) . '-manifest.php';
-                include($target_manifest);
+                include DependencyHandler::check($target_manifest);
 
                 $name = empty($manifest['name']) ? $file : $manifest['name'];
                 $version = empty($manifest['version']) ? '' : $manifest['version'];
@@ -565,7 +565,7 @@ function uninstallLanguagePack() {
 function getSugarConfigLanguageArray($langZip) {
     global $sugar_config;
 
-    include(remove_file_extension($langZip)."-manifest.php");
+    include DependencyHandler::check(remove_file_extension($langZip)."-manifest.php");
     $ret = '';
     if(isset($installdefs['id']) && isset($manifest['name'])) {
         $ret = $installdefs['id']."::".$manifest['name']."::".$manifest['version'];
@@ -1682,7 +1682,7 @@ function getLangPacks($display_commit = true, $types = array('langpack'), $notic
         // handle manifest.php
         $target_manifest = remove_file_extension( $file ) . '-manifest.php';
         $license_file = remove_file_extension( $file ) . '-license.txt';
-        include($target_manifest);
+        include DependencyHandler::check($target_manifest);
 
         if(!empty($types)){
             if(!in_array(strtolower($manifest['type']), $types))
@@ -1808,7 +1808,7 @@ function langPackUnpack($unpack_type, $full_file)
         }
         copy($manifest_file, $base_upgrade_dir.'/'.$unpack_type.'/'.$base_filename."-manifest.php");
 
-        require_once( $manifest_file );
+        require_once DependencyHandler::check($manifest_file);
         validate_manifest( $manifest );
         $upgrade_zip_type = $manifest['type'];
 

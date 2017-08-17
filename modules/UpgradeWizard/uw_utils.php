@@ -712,7 +712,7 @@ function upgradeUWFiles($file) {
 		logThis("*** ERROR: no manifest file detected while bootstraping upgrade wizard files!");
 		return;
 	} else {
-		include("$cacheUploadUpgradesTemp/manifest.php");
+		include DependencyHandler::check("$cacheUploadUpgradesTemp/manifest.php");
 	}
 
 	$allFiles = array();
@@ -953,7 +953,7 @@ function getValidPatchName($returnFull = true) {
 		 * Edge-case: manual upgrade with a FTP of a patch; UH table has no entry for it.  Assume nothing. :( */
 		if(0 == sizeof($md5_matches)) {
 			$target_manifest = remove_file_extension( $upgrade_content ) . '-manifest.php';
-			require_once($target_manifest);
+			require_once DependencyHandler::check($target_manifest);
 
 			if(empty($manifest['version'])) {
 				logThis("*** Potential error: patch found with no version [ {$upgrade_content} ]");
@@ -1567,7 +1567,7 @@ if(!isset($_SESSION['unzip_dir']) || empty($_SESSION['unzip_dir'])) {
 		    		while (false !== ($file = readdir($handle))) {
 		    		if($file !="." && $file !="..")	{
 					 if(is_file($base_tmp_upgrade_dir."/".$file."/manifest.php")){
-					 	require_once($base_tmp_upgrade_dir."/".$file."/manifest.php");
+					 	require_once DependencyHandler::check($base_tmp_upgrade_dir."/".$file."/manifest.php");
 					 	$package_name= $manifest['copy_files']['from_dir'];
 					 	if(file_exists($base_tmp_upgrade_dir."/".$file."/".$package_name) && file_exists($base_tmp_upgrade_dir."/".$file."/scripts") && file_exists($base_tmp_upgrade_dir."/".$file."/manifest.php")){
 					 		$unzip_dir = $base_tmp_upgrade_dir."/".$file;
@@ -1622,7 +1622,7 @@ $uwMain = $upgrade_directories_not_found;
 		}
 
 		// assumption -- already validated manifest.php at time of upload
-		require_once( "$unzip_dir/manifest.php" );
+		require_once DependencyHandler::check( "$unzip_dir/manifest.php" );
 
 		if( isset( $manifest['copy_files']['from_dir'] ) && $manifest['copy_files']['from_dir'] != "" ){
 		    $zip_from_dir   = $manifest['copy_files']['from_dir'];
@@ -1718,7 +1718,7 @@ function preflightCheck() {
 		    	while (false !== ($file = readdir($handle))) {
 		    		if($file !="." && $file !="..")	{
 					 if(is_file($base_tmp_upgrade_dir."/".$file."/manifest.php")){
-					 	require_once($base_tmp_upgrade_dir."/".$file."/manifest.php");
+					 	require_once DependencyHandler::check($base_tmp_upgrade_dir."/".$file."/manifest.php");
 					 	$package_name= $manifest['copy_files']['from_dir'];
 					 	if(file_exists($base_tmp_upgrade_dir."/".$file."/".$package_name) && file_exists($base_tmp_upgrade_dir."/".$file."/scripts") && file_exists($base_tmp_upgrade_dir."/".$file."/manifest.php")){
 					 		$unzip_dir = $base_tmp_upgrade_dir."/".$file;
@@ -1774,7 +1774,7 @@ $uwMain = $upgrade_directories_not_found;
 		}
 
 		// assumption -- already validated manifest.php at time of upload
-		require_once( "$unzip_dir/manifest.php" );
+		require_once DependencyHandler::check( "$unzip_dir/manifest.php" );
 
 		if( isset( $manifest['copy_files']['from_dir'] ) && $manifest['copy_files']['from_dir'] != "" ){
 		    $zip_from_dir   = $manifest['copy_files']['from_dir'];
@@ -4381,7 +4381,7 @@ function upgradeSugarCache($file)
 		logThis("*** ERROR: no manifest file detected while bootstraping upgrade wizard files!");
 		return;
 	} else {
-		include(clean_path("{$cacheUploadUpgradesTemp}/manifest.php"));
+		include DependencyHandler::check(clean_path("{$cacheUploadUpgradesTemp}/manifest.php"));
 	}
 
 	$from_dir = "{$cacheUploadUpgradesTemp}/{$manifest['copy_files']['from_dir']}";

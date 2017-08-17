@@ -457,7 +457,7 @@ switch( $mode ){
         //Check if we need to show a page for the user to finalize their install with.
         if (is_file("$unzip_dir/manifest.php"))
         {
-        	include("$unzip_dir/manifest.php");
+        	include DependencyHandler::check("$unzip_dir/manifest.php");
         	if (!empty($manifest['post_install_url']))
         	{
         		$url_conf = $manifest['post_install_url'];

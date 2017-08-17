@@ -599,7 +599,7 @@ class PackageManagerDisplay{
 			}
 
 			$target_manifest = remove_file_extension( $filename ) . "-manifest.php";
-			require_once( "$target_manifest" );
+			require_once DependencyHandler::check($target_manifest);
 
 			if(isset($manifest['icon']) && $manifest['icon'] != "")
 			{

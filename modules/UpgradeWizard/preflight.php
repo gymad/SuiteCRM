@@ -220,7 +220,7 @@ $diffs ='';
         include('sugar_version.php');
     }
 	if(!isset($manifest['version']) || empty($manifest['version'])) {
-		include($_SESSION['unzip_dir'].'/manifest.php');
+		include DependencyHandler::check($_SESSION['unzip_dir'].'/manifest.php');
 	}
 
     $origVersion = implodeVersion($sugar_db_version, 3, '0');

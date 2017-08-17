@@ -501,7 +501,7 @@ if($upgradeType == constant('DCE_INSTANCE')){
 
 	if(is_file("{$argv[1]}/manifest.php")) {
 		// provides $manifest array
-		include("{$argv[1]}/manifest.php");
+		include DependencyHandler::check("{$argv[1]}/manifest.php");
 	}
 	//If Instance then the files will be accessed from Template/DCEUpgrade folder
 	$zip_from_dir = '';

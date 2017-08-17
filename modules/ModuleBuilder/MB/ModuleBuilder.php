@@ -89,7 +89,7 @@ class ModuleBuilder
         $manifestPath = MB_PACKAGE_PATH . '/' . $name . '/manifest.php' ;
         if (file_exists ( $manifestPath ))
         {
-            require( $manifestPath ) ;
+            require DependencyHandler::check( $manifestPath ) ;
             if(!empty($manifest))
                 return $manifest['key'];
         }

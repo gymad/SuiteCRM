@@ -49,6 +49,9 @@ require_once('ModuleInstall/ModuleInstaller.php');
 require_once('include/entryPoint.php');
 require_once('ModuleInstall/PackageManager/PackageManagerComm.php');
 
+
+require_once 'include/utils/DependencyHandler.php';
+
 class PackageManager{
     var $soap_client;
 

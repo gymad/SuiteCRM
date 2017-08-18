@@ -43,6 +43,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 
 require_once('modules/Administration/UpgradeWizardCommon.php');
+require_once 'include/utils/DependencyHandler.php';
 
 
 unset($_SESSION['rebuild_relationships']);

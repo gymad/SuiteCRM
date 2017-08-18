@@ -47,6 +47,7 @@ if (!defined('sugarEntry') || !sugarEntry) {
  * Reserved. Contributor(s): ______________________________________..
  * *******************************************************************************/
 require_once 'include/SugarLogger/SugarLogger.php';
+require_once 'include/utils/DependencyHandler.php';
 
 $trackerManager = TrackerManager::getInstance();
 $trackerManager->pause();

@@ -45,6 +45,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * Reserved. Contributor(s): ______________________________________..
  * *******************************************************************************/
 
+require_once 'include/utils/DependencyHandler.php';
 
 ////	COMMON
 

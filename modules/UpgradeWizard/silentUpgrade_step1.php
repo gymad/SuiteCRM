@@ -35,6 +35,7 @@
  * "Powered by SugarCRM".
  ********************************************************************************/
 
+require_once 'include/utils/DependencyHandler.php';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //// This is a stand alone file that can be run from the command prompt for upgrading a

@@ -49,6 +49,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 define ( 'MB_PACKAGE_PATH', 'custom/modulebuilder/packages' ) ;
 define('MB_PACKAGE_BUILD', 'custom' . DIRECTORY_SEPARATOR . 'modulebuilder' . DIRECTORY_SEPARATOR . 'builds');
 require_once ('modules/ModuleBuilder/MB/MBPackage.php') ;
+require_once 'include/utils/DependencyHandler.php';
 
 class ModuleBuilder
 {

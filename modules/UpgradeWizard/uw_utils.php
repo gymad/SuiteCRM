@@ -43,6 +43,9 @@ if (!defined('sugarEntry') || !sugarEntry) {
 }
 
 
+require_once 'include/utils/DependencyHandler.php';
+
+
 /**
  * Implodes some parts of version with specified delimiter, beta & rc parts are removed all time
  *

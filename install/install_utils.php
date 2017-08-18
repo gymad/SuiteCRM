@@ -53,6 +53,8 @@ require_once('include/utils/zip_utils.php');
 
 require_once('include/upload_file.php');
 
+require_once 'include/utils/DependencyHandler.php';
+
 
 ////////////////
 ////  GLOBAL utility

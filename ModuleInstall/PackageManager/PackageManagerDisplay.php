@@ -44,6 +44,7 @@ require_once('ModuleInstall/PackageManager/PackageManager.php');
 require_once('include/ytree/Tree.php');
 require_once('include/ytree/Node.php');
 require_once('ModuleInstall/PackageManager/ListViewPackages.php');
+require_once 'include/utils/DependencyHandler.php';
 
 class PackageManagerDisplay{
 

@@ -58,6 +58,9 @@ require_once('include/utils/progress_bar_utils.php');
 require_once('ModuleInstall/ModuleScanner.php');
 define('DISABLED_PATH', 'Disabled');
 
+
+require_once 'include/utils/DependencyHandler.php';
+
 class ModuleInstaller{
 	var $modules = array();
 	var $silent = false;

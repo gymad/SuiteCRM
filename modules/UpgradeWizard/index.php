@@ -53,6 +53,7 @@ require_once('include/utils/db_utils.php');
 require_once('include/utils/zip_utils.php');
 require_once('modules/UpgradeWizard/uw_utils.php');
 require_once('modules/Administration/UpgradeHistory.php');
+require_once 'include/utils/DependencyHandler.php';
 
 $GLOBALS['top_message'] = '';
 

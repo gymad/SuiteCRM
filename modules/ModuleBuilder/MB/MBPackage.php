@@ -39,6 +39,7 @@
  */
 
 require_once 'modules/ModuleBuilder/MB/MBModule.php';
+require_once 'include/utils/DependencyHandler.php';
 
 /**
  * Class MBPackage

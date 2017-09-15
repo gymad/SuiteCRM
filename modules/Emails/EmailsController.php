@@ -369,7 +369,7 @@ class EmailsController extends SugarController
 
         $data = array();
         foreach ($accounts as $inboundEmailId => $inboundEmail) {
-            if(in_array($inboundEmail->id, $showFolders)) {
+            if($showFolders && in_array($inboundEmail->id, $showFolders)) {
                 $storedOptions = unserialize(base64_decode($inboundEmail->stored_options));
                 $isGroupEmailAccount = $inboundEmail->isGroupEmailAccount();
                 $isPersonalEmailAccount = $inboundEmail->isPersonalEmailAccount();

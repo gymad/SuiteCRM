@@ -1,9 +1,10 @@
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
-
- * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2014 Salesagility Ltd.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2017 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -14,7 +15,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -32,9 +33,9 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
- ********************************************************************************/
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
 
 (function () {
   //Do not double define
@@ -295,7 +296,7 @@
 
 
       // Prevent users from removing their primary email address
-      if (this.module == 'Users' &&  primaryCheckbox.attr("checked")) {
+      if (this.module == 'Users' && primaryCheckbox.attr("checked")) {
         removeButton.prop('disabled', true);
       }
 
@@ -400,11 +401,11 @@
 
 
       //var primaryFound = ($('[name='+ module + '0emailAddressPrimaryFlag]:checked').length != 0);
-      if ($('[name='+ module + id + 'emailAddressPrimaryFlag]:checked').length == 0) {
+      if ($('[name=' + module + id + 'emailAddressPrimaryFlag]:checked').length == 0) {
         //$('.email-address-remove-button').bind( "click", _eaw.removeEmailAddress);
-        $('[name='+module + id + 'emailAddressPrimaryFlag]').first().prop('checked', true);
-        var emailId = $('[name='+module + id + 'emailAddressPrimaryFlag]').first().closest('.email-address-line-container').find('.email-address-remove-button').attr('module-email-id');
-        $('[name='+module + id + 'emailAddressPrimaryFlag]:checked').val(module + id + 'emailAddress' + emailId);
+        $('[name=' + module + id + 'emailAddressPrimaryFlag]').first().prop('checked', true);
+        var emailId = $('[name=' + module + id + 'emailAddressPrimaryFlag]').first().closest('.email-address-line-container').find('.email-address-remove-button').attr('module-email-id');
+        $('[name=' + module + id + 'emailAddressPrimaryFlag]:checked').val(module + id + 'emailAddress' + emailId);
 
       }
 
@@ -413,9 +414,9 @@
 
       var elemName = '';
       var counter = 0;
-      $('.email-address-line-container').each(function(index, value) {
+      $('.email-address-line-container').each(function (index, value) {
         // skip template
-        if(!$(value).hasClass('template')) {
+        if (!$(value).hasClass('template')) {
 
           // email input
           $(value).find('input[type=email]').first().prop('name', module + id + "emailAddress" + counter);
@@ -423,7 +424,7 @@
 
           // primary flag
           elemName = '';
-          if($(value).find('input.email-address-primary-flag').first().prop('checked') == true) {
+          if ($(value).find('input.email-address-primary-flag').first().prop('checked') == true) {
             elemName = module + id + "emailAddressPrimaryFlag";
           }
           $(value).find('input.email-address-primary-flag').first().prop('name', elemName);
@@ -467,17 +468,17 @@
     },//removeEmailAddress
 
     //private
-    fixPrimaryRadioCheckboxValue: function() {
-      $('.email-address-line-container').find('input[type="email"]').each(function(){
-        if(!$(this).hasClass('template')) {
+    fixPrimaryRadioCheckboxValue: function () {
+      $('.email-address-line-container').find('input[type="email"]').each(function () {
+        if (!$(this).hasClass('template')) {
           var thisValueId = $(this).attr('name');
           $(this).closest('.email-address-line-container').find('.email-address-primary-flag').val(thisValueId);
         }
       });
       // bind click on primary radio checkbox
-      $('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').each(function(i,e){
-        if(typeof $._data($(e), 'events') == 'undefined') {
-          $(e).click(function(){
+      $('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').each(function (i, e) {
+        if (typeof $._data($(e), 'events') == 'undefined') {
+          $(e).click(function () {
             $('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').prop('checked', false);
             $(this).prop('checked', true);
           });

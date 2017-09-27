@@ -1,10 +1,11 @@
 <?php
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
-
- * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2014 Salesagility Ltd.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2017 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -15,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -33,24 +34,22 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
- ********************************************************************************/
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 
 /*********************************************************************************
-
  * Description: The primary Function of this file is to manage all the data
  * used by other files in this nodule. It should extend the SugarBean which implements
  * all the basic database operations. Any custom behaviors can be implemented here by
  * implementing functions available in the SugarBean.
  ********************************************************************************/
-
-
-
-
-
-
-class CampaignTracker extends SugarBean {
+class CampaignTracker extends SugarBean
+{
     /* Foreach instance of the bean you will need to access the fields in the table.
     * So define a variable for each one of them, the variable name should be same as the field name
     * Use this module's vardef file as a reference to create these variables.
@@ -90,45 +89,51 @@ class CampaignTracker extends SugarBean {
     * when fetching or saving data for the bean. As you modify a table you need to keep this up to date.
     */
     var $column_fields = Array(
-            'id'
-            ,'tracker_key'
-            ,'tracker_url'
-            ,'tracker_name'
-            ,'campaign_id'
+        'id'
+    ,
+        'tracker_key'
+    ,
+        'tracker_url'
+    ,
+        'tracker_name'
+    ,
+        'campaign_id'
     );
 
     // This is used to retrieve related fields from form posts.
     var $additional_column_fields = Array('campaign_id');
-    var $relationship_fields = Array('campaing_id'=>'campaign');
+    var $relationship_fields = Array('campaing_id' => 'campaign');
 
-    var $required_fields =  array('tracker_name'=>1,'tracker_url'=>1);
+    var $required_fields = array('tracker_name' => 1, 'tracker_url' => 1);
 
     /*This bean's constructor*/
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
     /**
      * @deprecated deprecated since version 7.6, PHP4 Style Constructors are deprecated and will be remove in 7.8, please update your code, use __construct instead
      */
-    public function CampaignTracker(){
+    public function CampaignTracker()
+    {
         $deprecatedMessage = 'PHP4 Style Constructors are deprecated and will be remove in 7.8, please update your code';
-        if(isset($GLOBALS['log'])) {
+        if (isset($GLOBALS['log'])) {
             $GLOBALS['log']->deprecated($deprecatedMessage);
-        }
-        else {
+        } else {
             trigger_error($deprecatedMessage, E_USER_DEPRECATED);
         }
         self::__construct();
     }
 
 
-    function save($check_notify = false) {
+    function save($check_notify = false)
+    {
         //make sure that the url has a scheme, if not then add http:// scheme
-        if ($this->is_optout!=1 && $this->is_optin!=1 ){
+        if ($this->is_optout != 1 && $this->is_optin != 1) {
             $url = strtolower(trim($this->tracker_url));
-            if(!preg_match('/^(http|https|ftp):\/\//i', $url)){
-                $this->tracker_url = 'http://'.$url;
+            if (!preg_match('/^(http|https|ftp):\/\//i', $url)) {
+                $this->tracker_url = 'http://' . $url;
             }
         }
 
@@ -148,36 +153,38 @@ class CampaignTracker extends SugarBean {
     * join and team filter. If you are implementing this function do not forget to consider the additional conditions.
     */
 
-    function fill_in_additional_detail_fields() {
+    function fill_in_additional_detail_fields()
+    {
         global $sugar_config;
 
         //setup campaign name.
         $query = "SELECT name from campaigns where id = '$this->campaign_id'";
-        $result =$this->db->query($query,true," Error filling in additional detail fields: ");
+        $result = $this->db->query($query, true, " Error filling in additional detail fields: ");
 
         // Get the id and the name.
         $row = $this->db->fetchByAssoc($result);
-        if($row != null) {
-            $this->campaign_name=$row['name'];
+        if ($row != null) {
+            $this->campaign_name = $row['name'];
         }
 
         if (!class_exists('Administration')) {
 
         }
-        $admin=new Administration();
+        $admin = new Administration();
         $admin->retrieveSettings('massemailer'); //retrieve all admin settings.
-        if (isset($admin->settings['massemailer_tracking_entities_location_type']) and $admin->settings['massemailer_tracking_entities_location_type']=='2'  and isset($admin->settings['massemailer_tracking_entities_location']) ) {
-            $this->message_url=$admin->settings['massemailer_tracking_entities_location'];
+        if (isset($admin->settings['massemailer_tracking_entities_location_type']) and $admin->settings['massemailer_tracking_entities_location_type'] == '2' and isset($admin->settings['massemailer_tracking_entities_location'])) {
+            $this->message_url = $admin->settings['massemailer_tracking_entities_location'];
         } else {
-            $this->message_url=$sugar_config['site_url'];
+            $this->message_url = $sugar_config['site_url'];
         }
         if ($this->is_optout == 1) {
             $this->message_url .= '/index.php?entryPoint=removeme&identifier={MESSAGE_ID}';
-        } elseif($this->is_optin == 1) {
+        } elseif ($this->is_optin == 1) {
             $this->message_url .= '/index.php?entryPoint=addme&identifier={MESSAGE_ID}';
         } else {
             $this->message_url .= '/index.php?entryPoint=campaign_trackerv2&track=' . $this->id;
         }
     }
 }
+
 ?>

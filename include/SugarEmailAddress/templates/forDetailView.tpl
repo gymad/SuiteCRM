@@ -65,8 +65,6 @@
                 </span>&nbsp;<i>({$app_strings.LBL_EMAIL_INVALID}&#x29;&#x200E;</i>
                 {elseif $address.key === 'opt_out_invalid'}
                 </span>&nbsp;<i class='error'>&#x28;{$app_strings.LBL_EMAIL_OPT_OUT_AND_INVALID}&#x29;&#x200E;</i>
-                {elseif $address.key === 'opt_in_invalid'}
-                </span>&nbsp;<i class='error'>&#x28;{$app_strings.LBL_EMAIL_OPT_IN_AND_INVALID}&#x29;&#x200E;</i>
                 {/if}
             </td>
         </tr>

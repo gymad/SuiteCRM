@@ -253,6 +253,7 @@
         optOutCheckbox.eaw = _eaw;
         optOutCheckbox.prop("checked", (optOutFlag == '1'));
       }
+
       var optInCheckbox = lineContainer.find('input#email-address-opt-in-flag');
       if (optInCheckbox.length == 1) {
         optInCheckbox.attr('name', this.module + _eaw.id + 'emailAddressOptInFlag[]');
@@ -263,6 +264,7 @@
         optInCheckbox.eaw = _eaw;
         optInCheckbox.prop("checked", (optInFlag == '1'));
       }
+
       var invalidCheckbox = lineContainer.find('input#email-address-invalid-flag');
       if (invalidCheckbox.length == 1) {
         invalidCheckbox.attr('name', this.module + _eaw.id + 'emailAddressInvalidFlag[]');
@@ -273,6 +275,7 @@
         invalidCheckbox.eaw = _eaw;
         invalidCheckbox.prop("checked", (invalidFlag == '1'));
       }
+
       var verifiedField = lineContainer.find('input#verired-flag');
       verifiedField.attr('name', this.module + _eaw.id + 'emailAddressVerifiedFlag');
       verifiedField.attr('id', this.module + _eaw.id + 'emailAddressVerifiedFlag' + _eaw.totalEmailAddresses);
@@ -328,6 +331,7 @@
           $(value).find('input.email-address-opt-out-flag').first().prop('name', module + id + "emailAddressOptOutFlag[]");
           $(value).find('input.email-address-opt-out-flag').first().prop('id', module + id + "emailAddressOptOutFlag" + counter);
           $(value).find('input.email-address-opt-out-flag').first().prop('value', module + id + 'emailAddress' + counter);
+
           $(value).find('input.email-address-opt-in-flag').first().prop('name', module + id + "emailAddressOptInFlag[]");
           $(value).find('input.email-address-opt-in-flag').first().prop('id', module + id + "emailAddressOptInFlag" + counter);
           $(value).find('input.email-address-opt-in-flag').first().prop('value', module + id + 'emailAddress' + counter);

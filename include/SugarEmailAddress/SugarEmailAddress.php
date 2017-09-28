@@ -1330,6 +1330,38 @@ class SugarEmailAddress extends SugarBean
         $this->db->query($query);
     }
 
+    /**
+     * @param null|string $id
+     * @return array
+     * @throws \RuntimeException
+     */
+    protected function getOptInInfo($id = null) {
+        if (null === $id) {
+            if(!$this->id) {
+                $msg = 'Trying to get opt-in info for email address without email address ID.';
+                $GLOBALS['log']->fatal($msg);
+                throw new RuntimeException($msg);
+            } else {
+                $id = $this->id;
+            }
+        }
+
+        $id = $this->db->quote($id);
+        $query = "SELECT id, opt_in, opt_in_ip, opt_in_datetime FROM email_addresses WHERE id = '$id'";
+        $this->db->query($query);
+        $results = $this->db->query($query);
+        $info = array();
+        while ($row = $this->db->fetchByAssoc($results)) {
+            if($info) {
+                $msg = 'Multiple email address ID.';
+                $GLOBALS['log']->fatal($msg);
+                throw new RuntimeException($msg);
+            }
+            $info = $row;
+        }
+        return $info;
+    }
+
 } // end class def
 
 

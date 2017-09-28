@@ -128,46 +128,29 @@
                                                                            value="{$APP.LBL_CANCEL_BUTTON_LABEL}">
 
                                             <script>
-                                              {
-                                                literal
-                                              }
-                                              $(function () {
-                                                $('#wiz_cancel_button').click(function () {
-                                                  this.form.action.value = 'WizardHome';
-                                                  this.form.module.value = 'Campaigns';
-                                                  this.form.record.value = '{/literal}{$CAMPAIGN_ID}{literal}';
+                                              {literal}
+                                              $(function(){
+                                                $('#wiz_cancel_button').click(function(){
+                                                  this.form.action.value='WizardHome';
+                                                  this.form.module.value='Campaigns';
+                                                  this.form.record.value='{/literal}{$CAMPAIGN_ID}{literal}';
 
                                                   // if mail box is not set up you can't cancel out of the wizard
-                                                  {/
-                                                    literal
-                                                  }
-                                                  {
-                                                    if $campaign_type == 'NewsLetter' || $campaign_type == 'Email'}
-                                                  {
-                                                    literal
-                                                  }
+                                                  {/literal}{if $campaign_type == 'NewsLetter' || $campaign_type=='Email'}{literal}
                                                   var current = document.getElementById('wiz_current_step').value;
-                                                  if (current == 1 || current == 2) {
+                                                  if(current == 1 || current == 2) {
                                                     var total = document.getElementById('wiz_total_steps').value;
                                                     document.getElementById('wiz_current_step').value = document.getElementById('wiz_total_steps').value;
                                                     $('#step' + current).hide();
                                                     $('#step' + total).show();
                                                     return false;
                                                   }
-                                                  {
-                                                    /literal}{/i
-                                                    f
-                                                  }
-                                                  {
-                                                    literal
-                                                  }
+                                                  {/literal}{/if}{literal}
 
                                                   $(this).closest('form').submit();
                                                 });
                                               });
-                                              {/
-                                                literal
-                                              }
+                                              {/literal}
                                             </script>
 
                                         </div>
@@ -203,9 +186,7 @@
             </p>
 
             <script type="text/javascript">
-              {
-                literal
-              }
+              {literal}
 
 
               var uploadFormCallback = function () {
@@ -500,9 +481,7 @@
                   }
                 })
               });
-              {/
-                literal
-              }
+              {/literal}
             </script>
 
 
@@ -582,9 +561,7 @@
                                             <div><label class="wizard-step-info">{$MOD.LBL_PLEASE_SELECT_OPTION}</label>
                                             </div>
                                             <style>
-                                                {
-                                                    literal
-                                                }
+                                                {literal}
                                                 ul.template_option_list {
                                                     list-style-type: none;
                                                     padding-left: 0;
@@ -600,10 +577,7 @@
                                                     font-weight: normal;
                                                 }
 
-                                                {
-                                                /
-                                                literal
-                                                }
+                                                {/literal}
                                             </style>
                                             <ul class="template_option_list">
                                                 <li><input type="radio" name="template_option_radio"
@@ -619,9 +593,7 @@
                                                 </li>
                                             </ul>
                                             <script>
-                                              {
-                                                literal
-                                              }
+                                              {literal}
                                               $(function () {
 
                                                 $('#template_option_select').click(function () {
@@ -670,9 +642,7 @@
                                                 $('#show_buttons_frm').removeClass('hidden');
 
                                               });
-                                              {/
-                                                literal
-                                              }
+                                              {/literal}
                                             </script>
                                             <div class="form-group clear-block">
                                                 <!--<label>{$MOD.LBL_TEMPLATE|replace:' ':'&nbsp'}<span class="required">{$APP.LBL_REQUIRED_SYMBOL}</span></label>-->
@@ -697,17 +667,13 @@
 							</span>
                                                 </div>
                                                 <script>
-                                                  {
-                                                    literal
-                                                  }
+                                                  {literal}
                                                   $(function () {
                                                     if (document.getElementById('template_id').value) {
                                                       onEmailTemplateChange(document.getElementById('template_id'), '{$MOD.LBL_COPY_OF}');
                                                     }
                                                   });
-                                                  {/
-                                                    literal
-                                                  }
+                                                  {/literal}
                                                 </script>
                                             </div>
                                             <div id="template_messages"></div>
@@ -1061,9 +1027,7 @@
                                                             class="dateFormat">{$USER_DATEFORMAT}</span></td><td nowrap><span
                                                             class="dateFormat">{$TIME_FORMAT}</span></td></tr></table></span>
                                                         <script type="text/javascript">
-                                                          {
-                                                            literal
-                                                          }
+                                                          {literal}
                                                           $(function () {
                                                             if ($('#date_start_meridiem').length) {
                                                               $('#date_start_hours option').each(function (i, e) {
@@ -1073,9 +1037,7 @@
                                                               });
                                                             }
                                                           });
-                                                          {/
-                                                            literal
-                                                          }
+                                                          {/literal}
                                                         </script>
                                                     </td>
 
@@ -1427,14 +1389,10 @@
                                     }
 
                                     function open_email_template_form() {
-                                      {/
-                                        literal
-                                      }
+                                      {/literal}
                                       URL = "index.php?module=EmailTemplates&action=EditView&campaign_id={$CAMPAIGN_ID}";
                                       URL += "&sugar_body_only=1";
-                                      {
-                                        literal
-                                      }
+                                      {literal}
                                       windowName = 'email_template';
                                       windowFeatures = 'width=800' + ',height=600' + ',resizable=1,scrollbars=1';
 
@@ -1445,15 +1403,11 @@
                                       }
                                     }
                                     function edit_email_template_form() {
-                                      {/
-                                        literal
-                                      }
+                                      {/literal}
                                       var field = document.getElementById('template_id');
                                       URL = "index.php?module=EmailTemplates&action=EditView&campaign_id={$CAMPAIGN_ID}";
                                       URL += "&sugar_body_only=1";
-                                      {
-                                        literal
-                                      }
+                                      {literal}
                                       if (field.options[field.selectedIndex].value != 'undefined') {
                                         URL += "&record=" + field.options[field.selectedIndex].value;
                                       }
@@ -1475,13 +1429,9 @@
                                         message_for.disabled = false;
                                       }
                                     }
-                                    {/
-                                      literal
-                                    }
+                                    {/literal}
                                     var from_emails = new Array({$FROM_EMAILS});
-                                    {
-                                      literal
-                                    }
+                                    {literal}
                                     function set_from_email_and_name(mailbox) {
                                       from_email_span = document.getElementById('from_email');
                                       from_name = document.getElementById('from_name');
@@ -1497,14 +1447,10 @@
                                       }
                                     }
 
-                                    {/
-                                      literal
-                                    }
+                                    {/literal}
                                     // cn: bug 12587 - allow setting of Reply-to X from campaigns
                                     var ie_stored_options = {$IEStoredOptions};
-                                    {
-                                      literal
-                                    }
+                                    {literal}
 
                                     function set_from_reply_info(mailbox) {
                                       var fn = document.getElementById('from_name');
@@ -1769,26 +1715,18 @@
             {literal}
             <script language="javascript">
               function determine_back() {
-                {/
-                  literal
-                }
+                {/literal}
                 var current_step = document.getElementById('wiz_current_step').value;
                 var total_steps = document.getElementById('wiz_total_steps').value;
-                {
-                  literal
-                }
+                {literal}
                 if (current_step == 1) {
-                  {/
-                    literal
-                  }
+                  {/literal}
                   document.getElementById('action').value = 'WizardNewsletter';
                   document.getElementById('record').value = '{$CAMPAIGN_ID}';
                   document.getElementById('return_id').value = '{$CAMPAIGN_ID}';
                   document.getElementById('direct_step').value = '4';
                   document.getElementById('wizform').submit();
-                  {
-                    literal
-                  }
+                  {literal}
                 } else {
                   if (current_step == 2) {
                     document.getElementById('wiz_current_step').value = 1;
@@ -1889,9 +1827,7 @@
       addToValidate('wizform', 'inbound_email_id', 'alphanumeric', true, document.getElementById('inbound_email_id').title);
 
 
-      {
-        literal
-      }
+      {literal}
       function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -1996,9 +1932,7 @@
         ;
       });
 
-      {/
-        literal
-      }
+      {/literal}
 
     </script>
 

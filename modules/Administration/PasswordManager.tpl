@@ -168,6 +168,15 @@
                     </tr>
                 </table>
 
+                <!-- PASSWORD SECURITY SETTINGS -->
+                <table id="pwdsec_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
+                    <tr>
+                        <td>{include file="modules/Administration/PasswordManagerSecurity.tpl"}</td>
+                    </tr>
+                </table>
+                <!-- END PASSWORD SECURITY SETTINGS -->
+
+
                 <table id="userResetPassId" name="userResetPassName" width="100%" border="0" cellspacing="1"
                        cellpadding="0" class="edit view">
                     <tr>
@@ -343,13 +352,11 @@
                                                            name='edit_lostpasswordtmpl' id='edit_lostpasswordtmpl'
                                                            style="{$EDIT_TEMPLATE}">
 												</span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-
-                    <tr>
+							        		 </td>
+									        <td ></td>
+									        <td ></td>
+										</tr>
+									<tr>
                         <td scope="row">{$MOD.LBL_TWO_FACTOR_AUTH_EMAIL_TPL}:</td>
                         <td>
 									<span>
@@ -366,10 +373,7 @@
                         </td>
                         <td></td>
                         <td></td>
-                    </tr>
-
-
-                </table>
+                    </tr></table>
 
 
                 {if !empty($settings.system_ldap_enabled)}

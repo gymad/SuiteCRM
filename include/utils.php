@@ -16,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -34,8 +34,8 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for technical reasons, the Appropriate Legal Notices must
- * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
+ * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
 if (!defined('sugarEntry') || !sugarEntry) {
@@ -3197,38 +3197,37 @@ function decodeJavascriptUTF8($str)
  *
  * @param string Version to check against, defaults to the current environment's.
  *
- * @return  integer  1 if version is greater than the recommended PHP version,
- *                   0 if version is between minimun and recomended PHP versions,
- *                   -1 otherwise (less than minimum or buggy version)
+ * @return integer1 if version is greater than the recommended PHP version,
+ * 0 if version is between minimun and recomended PHP versions,
+ * -1 otherwise (less than minimum or buggy version)
  */
 function check_php_version($sys_php_version = '')
-{
-    if ($sys_php_version === '') {
-        $sys_php_version = constant('PHP_VERSION');
-    }
+	{if ($sys_php_version === '') {
+		$sys_php_version = constant('PHP_VERSION');
+	}
 
-    // versions below MIN_PHP_VERSION are not accepted, so return early.
-    if (version_compare($sys_php_version, constant('SUITECRM_PHP_MIN_VERSION'), '<') === true) {
-        return -1;
-    }
+	// versions below MIN_PHP_VERSION are not accepted, so return early.
+	if (version_compare($sys_php_version, constant('SUITECRM_PHP_MIN_VERSION'), '<') === true) {
+		return -1;
+	}
 
-    // If there are some bug ridden versions, we should include them here
-    // and check immediately for one of this versions
-    $bug_php_versions = array();
+	// If there are some bug ridden versions, we should include them here
+	// and check immediately for one of this versions
+	$bug_php_versions = array();
 
-    foreach ($bug_php_versions as $v) {
-        if (version_compare($sys_php_version, $v, '=') === true) {
-            return -1;
-        }
-    }
+	foreach ($bug_php_versions as $v) {
+		if (version_compare($sys_php_version, $v, '=') === true) {
+			return -1;
 
-    // If the checked version is between the minimum and recommended versions, return 0
+	}}
+
+    //If the checked version is between the minimum and recommended versions, return 0
     if (version_compare($sys_php_version, constant('SUITECRM_PHP_REC_VERSION'), '<') === true) {
         return 0;
     }
 
-    // Everything else is fair game
-    return 1;
+	// Everything else is fair game
+	return 1;
 }
 
 /**
@@ -5091,13 +5090,13 @@ function verify_image_file($path, $jpeg = false)
             return false;
         }
         $data = '';
-        // read the whole file in chunks
+        // read the whole file in chunks
         while (!feof($fp)) {
             $data .= fread($fp, 8192);
         }
 
         fclose($fp);
-        if (preg_match("/<(\?php|html|!doctype|script|body|head|plaintext|table|img |pre(>| )|frameset|iframe|object|link|base|style|font|applet|meta|center|form|isindex)/i",
+        if (preg_match("/<(\?php|html|!doctype|script|body|head|plaintext|table|img |pre(>| )|frameset|iframe|object|link|base|style|font|applet|meta|center|form|isindex)/i",
             $data, $m)) {
             $GLOBALS['log']->fatal("Found {$m[0]} in $path, not allowing upload");
 

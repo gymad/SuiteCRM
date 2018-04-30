@@ -35,7 +35,7 @@ class ClientRepository implements ClientRepositoryInterface
         /** @var \OAuth2Clients $client */
         $client = $this->beanManager->getBeanSafe(\OAuth2Clients::class, $clientIdentifier);
 
-        if ($mustValidateSecret && !hash('sha256', $clientSecret) === hash('sha256', $client->secret)) {
+        if ($mustValidateSecret && hash('sha256', $clientSecret) !== hash('sha256', $client->secret)) {
             return null;
         }
 

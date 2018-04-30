@@ -71,7 +71,8 @@ class ModuleParams extends BaseParam
 
         $resolver
             ->setDefined('page')
-            ->setAllowedTypes('page', ['array'])
+	    ->setDefault('page', null)
+            ->setAllowedTypes('page', ['array', null])
             ->setAllowedValues('page', $this->validatorFactory->createClosureForIterator([
                 new Assert\NotBlank(),
                 new Assert\Regex([

@@ -155,7 +155,6 @@ class UnifiedSearchAdvanced {
 		}
 
 		$sugar_smarty->assign('SHOWGSDIV', $showDiv);
-		$sugar_smarty->debugging = false;
 		return $sugar_smarty->fetch($tpl);
 	}
 

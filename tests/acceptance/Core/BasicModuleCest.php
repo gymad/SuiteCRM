@@ -152,6 +152,7 @@ class BasicModuleCest
 
         // Create a record
         $this->fakeData->seed($this->fakeDataSeed);
+        $I->amOnUrl($webDriverHelper->getInstanceURL() . '/index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DTest_BasicTestModule%26action%3DEditView%26return_module%3DTest_BasicTestModule%26return_action%3DDetailView');
         $editView->waitForEditViewVisible();
         $editView->fillField('#name', $this->fakeData->name);
         $editView->fillField('#description', $this->fakeData->paragraph);

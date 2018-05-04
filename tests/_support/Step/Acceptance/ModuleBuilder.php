@@ -84,7 +84,8 @@ class ModuleBuilder extends Administration
 
 
         } else {
-            $I->getScenario()->skip($packageName . ' already exists. Please remove package and module manually.');
+            //$I->getScenario()->skip($packageName . ' already exists. Please remove package and module manually.');
+            $I->deployPackage($packageName, true);
         }
     }
 

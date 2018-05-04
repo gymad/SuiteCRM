@@ -58,21 +58,21 @@ class BasicModuleCest
        \Step\Acceptance\ModuleBuilder $moduleBuilder,
        \Helper\WebDriverHelper $webDriverHelper
     ) {
-        $I->wantTo('Create a basic module for testing');
-
-        $I->amOnUrl(
-            $webDriverHelper->getInstanceURL()
-        );
-
-        $I->loginAsAdmin();
-
-        $moduleBuilder->createModule(
-            \Page\BasicModule::$PACKAGE_NAME,
-            \Page\BasicModule::$NAME,
-            \SuiteCRM\Enumerator\SugarObjectType::basic
-        );
-
-        $this->lastView = 'ModuleBuilder';
+//        $I->wantTo('Create a basic module for testing');
+//
+//        $I->amOnUrl(
+//            $webDriverHelper->getInstanceURL()
+//        );
+//
+//        $I->loginAsAdmin();
+//
+//        $moduleBuilder->createModule(
+//            \Page\BasicModule::$PACKAGE_NAME,
+//            \Page\BasicModule::$NAME,
+//            \SuiteCRM\Enumerator\SugarObjectType::basic
+//        );
+//
+//        $this->lastView = 'ModuleBuilder';
     }
 
     /**

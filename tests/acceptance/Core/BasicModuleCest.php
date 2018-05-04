@@ -23,13 +23,16 @@ class BasicModuleCest
     /**
      * @param AcceptanceTester $I
      */
-    public function _before(AcceptanceTester $I)
-    {
+    public function _before(
+        AcceptanceTester $I,
+        \Step\Acceptance\Repair $repair
+    ) {
         if(!$this->fakeData) {
             $this->fakeData = Faker\Factory::create();
             $this->fakeDataSeed = rand(0, 2048);
         }
         $this->fakeData->seed($this->fakeDataSeed);
+        $repair->clickQuickRepairAndRebuild();
     }
 
     /**
@@ -53,7 +56,6 @@ class BasicModuleCest
     public function testScenarioCreateBasicModule(
        \AcceptanceTester $I,
        \Step\Acceptance\ModuleBuilder $moduleBuilder,
-       \Step\Acceptance\Repair $repair,
        \Helper\WebDriverHelper $webDriverHelper
     ) {
         $I->wantTo('Create a basic module for testing');
@@ -70,7 +72,6 @@ class BasicModuleCest
             \SuiteCRM\Enumerator\SugarObjectType::basic
         );
 
-        $repair->clickQuickRepairAndRebuild();
         $this->lastView = 'ModuleBuilder';
     }
 
@@ -120,6 +121,7 @@ class BasicModuleCest
         \Step\Acceptance\ListView $listView,
         \Step\Acceptance\EditView $editView,
         \Step\Acceptance\DetailView $detailView,
+        \Step\Acceptance\Repair $repair,
         \Helper\WebDriverHelper $webDriverHelper
     ) {
         $I->wantTo('Create Basic Test Module Record');
@@ -147,6 +149,7 @@ class BasicModuleCest
         $editView->fillField('#description', $this->fakeData->paragraph);
         $editView->clickSaveButton();
         $detailView->waitForDetailViewVisible();
+
         $this->lastView = 'DetailView';
     }
 

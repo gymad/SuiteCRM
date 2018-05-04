@@ -313,13 +313,11 @@ class SugarController
             
             
             if (!isset($GLOBALS['beanFiles'][$class])) {
-                //LoggerManager::getLogger()->error
-                        throw new Exception('Class file not set: ' . $GLOBALS['beanFiles'][$class] . ' - in SugarController::loadBean. Class was: ' . $class);
+                LoggerManager::getLogger()->error('Class file not set: ' . $GLOBALS['beanFiles'][$class] . ' - in SugarController::loadBean. Class was: ' . $class);
             }
                 
             if (!file_exists($GLOBALS['beanFiles'][$class])) {
-                //LoggerManager::getLogger()->error
-                        throw new Exception('File not found: ' . $GLOBALS['beanFiles'][$class] . ' - in SugarController::loadBean. Class was: ' . $class);
+                LoggerManager::getLogger()->error('File not found: ' . $GLOBALS['beanFiles'][$class] . ' - in SugarController::loadBean. Class was: ' . $class);
             }
             
             if (!empty($GLOBALS['beanFiles'][$class])) { 

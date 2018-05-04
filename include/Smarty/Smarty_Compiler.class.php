@@ -589,7 +589,7 @@ class Smarty_Compiler extends Smarty {
                 } else if ($this->_compile_custom_tag($tag_command, $tag_args, $tag_modifier, $output)) {
                     return $output;                    
                 } else {
-                    $this->_syntax_error("unrecognized tag '$tag_command'", E_USER_ERROR, __FILE__, __LINE__);
+                    $this->_syntax_error("unrecognized tag '$tag_command' dbg info:" . '<pre>' . file_get_contents('cache/themes/SuiteP/modules/Test_BasicTestModule.EditView.tpl') . '</pre>', E_USER_ERROR, __FILE__, __LINE__);
                 }
 
         }

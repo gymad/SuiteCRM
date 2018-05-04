@@ -37,7 +37,9 @@ before_script:
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipped"; else sudo apt-get update; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo apt-get install apache2 libapache2-mod-fastcgi; fi
   # Enable php-fpm  - images with PHP 7 or above
+  - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf; fi
+  - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf.default
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo a2enmod rewrite actions fastcgi alias; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi

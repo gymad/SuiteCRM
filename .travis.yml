@@ -68,7 +68,7 @@ script:
   # set the log level to error
   - echo "\$sugar_config['logger']['level']='error';" >> config_override.php
   # Run API functional tests
-    ############################################## TAKE IT BACK ===> - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else ./vendor/bin/codecept run api --steps; fi
+  - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else ./vendor/bin/codecept run api --steps; fi
   # RUN Basic Acceptance test
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else ./vendor/bin/codecept run acceptance --env travis-ci-hub -f -vvv -d; fi
 

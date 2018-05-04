@@ -121,7 +121,6 @@ class BasicModuleCest
         \Step\Acceptance\ListView $listView,
         \Step\Acceptance\EditView $editView,
         \Step\Acceptance\DetailView $detailView,
-        \Step\Acceptance\Repair $repair,
         \Helper\WebDriverHelper $webDriverHelper
     ) {
         $I->wantTo('Create Basic Test Module Record');

@@ -311,16 +311,19 @@ class SugarController
         if (!empty($GLOBALS['beanList'][$this->module])) {
             $class = $GLOBALS['beanList'][$this->module];
             
+            $beanFileFound = true;
             
             if (!isset($GLOBALS['beanFiles'][$class])) {
                 LoggerManager::getLogger()->error('Class file not set: ' . $GLOBALS['beanFiles'][$class] . ' - in SugarController::loadBean. Class was: ' . $class);
+                $beanFileFound = false;
             }
                 
             if (!file_exists($GLOBALS['beanFiles'][$class])) {
                 LoggerManager::getLogger()->error('File not found: ' . $GLOBALS['beanFiles'][$class] . ' - in SugarController::loadBean. Class was: ' . $class);
+                $beanFileFound = false;
             }
             
-            if (!empty($GLOBALS['beanFiles'][$class])) { 
+            if (!empty($GLOBALS['beanFiles'][$class]) && $beanFileFound) { 
                 LoggerManager::getLogger()->debug('Loading: ' . $GLOBALS['beanFiles'][$class]);
                 require_once($GLOBALS['beanFiles'][$class]);
                 $this->bean = new $class();

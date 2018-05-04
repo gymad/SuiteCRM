@@ -148,11 +148,11 @@ class BasicModuleCest
 
         // Select create Basic Test Module form the current menu
         //$navigationBar->clickCurrentMenuItem('Create ' . \Page\BasicModule::$NAME);
-        $I->amOnUrl($webDriverHelper->getInstanceURL() . '/index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DTest_BasicTestModule%26action%3DEditView%26return_module%3DTest_BasicTestModule%26return_action%3DDetailView');
+        $I->amOnUrl($webDriverHelper->getInstanceURL() . '/index.php?module=Test_BasicTestModule&action=EditView');
 
         // Create a record
         $this->fakeData->seed($this->fakeDataSeed);
-        $I->amOnUrl($webDriverHelper->getInstanceURL() . '/index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DTest_BasicTestModule%26action%3DEditView%26return_module%3DTest_BasicTestModule%26return_action%3DDetailView');
+        $I->amOnUrl($webDriverHelper->getInstanceURL() . '/index.php?module=Test_BasicTestModule&action=EditView');
         $editView->waitForEditViewVisible();
         $editView->fillField('#name', $this->fakeData->name);
         $editView->fillField('#description', $this->fakeData->paragraph);

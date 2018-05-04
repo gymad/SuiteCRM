@@ -149,12 +149,41 @@ class SugarFieldFile extends SugarFieldBase {
         }
 
 		if ($move) {
-            $upload_file->final_move($bean->id);
-            $upload_file->upload_doc($bean, $bean->id, $params[$prefix . $vardef['docType']], $bean->$field, $upload_file->mime_type);
+            $upload_file->final_move($bean->id);       
+            
+            $docType = null;
+            if (isset($vardef['docType'])) {
+                $docType = $vardef['docType'];
+            } else {
+                LoggerManager::getLogger()->warn('Doc type is not set for SugarFieldFile saving');
+            }
+            
+            $beanField = null;
+            if (isset($bean->$field)) {
+                $beanField = $bean->$field;
+            } else {
+                LoggerManager::getLogger()->warn('Bean field is not set for SugarFieldFile saving. Field was: ' . $field);
+            }
+            
+            $mimeType = null;
+            if (isset($upload_file->mime_type)) {
+                $mimeType = $upload_file->mime_type;
+            } else {
+                LoggerManager::getLogger()->warn('Mime type is not set for SugarFieldFile saving. Field was: ' . $mimeType);
+            }
+            
+            $upload_file->upload_doc($bean, $bean->id, $params[$prefix . $docType], $beanField, $upload_file->mime_type);
         } else if ( ! empty($old_id) ) {
             // It's a duplicate, I think
 
-            if ( empty($params[$prefix . $vardef['docUrl'] ]) ) {
+            $docUrl = null;
+            if (isset($vardef['docUrl'])) {
+                $docUrl = $vardef['docUrl'];
+            } else {
+                LoggerManager::getLogger()->warn('Doc URL is not set for SugarFieldFile saving');
+            }
+            
+            if ( empty($params[$prefix . $docUrl ]) ) {
                 $upload_file->duplicate_file($old_id, $bean->id, $bean->$field);
             } else {
                 $docType = $vardef['docType'];

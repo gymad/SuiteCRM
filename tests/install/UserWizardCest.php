@@ -40,14 +40,14 @@ class UserWizardCest
      */
     public function testScenarioInstallSuiteCRMWithDefaultConfiguration(InstallTester $I, \Helper\WebDriverHelper $webDriverHelper)
     {
-        $I->wantTo('check the php version meets the recommended requirements.');
-        $I->amOnUrl($webDriverHelper->getInstanceURL());
-        $I->waitForText('Setup');
-        $I->maySeeOldVersionDetected();
-        $I->acceptLicense();
-        $I->seeValidSystemEnvironment();
-        $I->configureInstaller($webDriverHelper);
-        $I->waitForInstallerToFinish();
+//        $I->wantTo('check the php version meets the recommended requirements.');
+//        $I->amOnUrl($webDriverHelper->getInstanceURL());
+//        $I->waitForText('Setup');
+//        $I->maySeeOldVersionDetected();
+//        $I->acceptLicense();
+//        $I->seeValidSystemEnvironment();
+//        $I->configureInstaller($webDriverHelper);
+//        $I->waitForInstallerToFinish();
     }
 
 }

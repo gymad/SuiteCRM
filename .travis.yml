@@ -45,7 +45,6 @@ before_script:
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo chown -R travis:travis /var/lib/apache2/fastcgi; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm; fi
   - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini;
-  - cat ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm;
   # Configure apache virtual hosts - images with PHP 7 or above
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/000-default.conf; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default.conf; fi

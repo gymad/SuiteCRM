@@ -74,8 +74,6 @@ script:
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then mv -f tests/travis_config_si.php config_si.php; else sudo git reset --hard; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then mv -f tests/travis_config_si.php config_si.php; else sudo chown www-data:travis . -R; fi
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then mv -f tests/travis_config_si.php config_si.php; else sudo chmod 776 . -R; fi
-  - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then mv -f tests/travis_config_si.php config_si.php; else echo "using install wizard"; fi
-  - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then php tests/testinstall.php; else ./vendor/bin/codecept run install --env travis-ci-hub -f -vvv -d; fi
   # RUN Basic Acceptance test
   - if [[ $(phpenv version-name) =~ ^5\.[0-9]$ ]]; then echo "skipping PHP 5.x Images"; else ./vendor/bin/codecept run acceptance --env travis-ci-hub -f -vvv -d; fi
 

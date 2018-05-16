@@ -41,15 +41,6 @@
 global $current_user, $timedate;
 $db = DBManagerFactory::getInstance();
 
-function displayAdminError($errorString)
-{
-    $output = '<p class="error">'.$errorString.'</p>';
-    echo $output;
-}
-
-global $db, $current_user, $timedate;
-
-
 
 if (isset($_SESSION['rebuild_relationships'])) {
     displayAdminError(translate('MSG_REBUILD_RELATIONSHIPS', 'Administration'));

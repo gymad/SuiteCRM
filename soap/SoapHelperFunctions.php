@@ -704,37 +704,99 @@ function new_handle_set_relationship($module_name, $module_id, $link_field_name,
     }
 }
 
-function new_handle_set_entries($module_name, $name_value_lists, $select_fields = false)
-{
-    global $beanList, $beanFiles, $app_list_strings;
-    global $current_user;
+function new_handle_set_entries($module_name, $name_value_lists, $select_fields = FALSE) {
+	global $beanList, $beanFiles, $app_list_strings;
+	global $current_user;
 
-    $ret_values = array();
+	$ret_values = array();
 
-    $class_name = $beanList[$module_name];
-    require_once($beanFiles[$class_name]);
-    $ids = array();
-    $count = 1;
-    $total = sizeof($name_value_lists);
-    foreach ($name_value_lists as $name_value_list) {
-        $seed = new $class_name();
+	$class_name = $beanList[$module_name];
+	require_once($beanFiles[$class_name]);
+	$ids = array();
+	$count = 1;
+	$total = sizeof($name_value_lists);
+	foreach($name_value_lists as $name_value_list){
+		$seed = new $class_name();
 
-        $seed->update_vcal = false;
-        foreach ($name_value_list as $value) {
-            if ($value['name'] == 'id') {
-                $seed->retrieve($value['value']);
-                break;
-            }
-        }
+		$seed->update_vcal = false;
+		foreach($name_value_list as $value){
+			if($value['name'] == 'id'){
+				$seed->retrieve($value['value']);
+				break;
+			}
+		}
 
-        foreach ($name_value_list as $value) {
-            $val = $value['value'];
-            if ($seed->field_name_map[$value['name']]['type'] == 'enum') {
-                $vardef = $seed->field_name_map[$value['name']];
-                if (isset($app_list_strings[$vardef['options']]) && !isset($app_list_strings[$vardef['options']][$value])) {
-                    if (in_array($val, $app_list_strings[$vardef['options']])) {
-                        $val = array_search($val, $app_list_strings[$vardef['options']]);
-                    }
+		foreach($name_value_list as $value) {
+			$val = $value['value'];
+			if($seed->field_name_map[$value['name']]['type'] == 'enum'){
+				$vardef = $seed->field_name_map[$value['name']];
+				if(isset($app_list_strings[$vardef['options']]) && !isset($app_list_strings[$vardef['options']][$value]) ) {
+		            if ( in_array($val,$app_list_strings[$vardef['options']]) ){
+		                $val = array_search($val,$app_list_strings[$vardef['options']]);
+		            }
+		        }
+			}
+			$seed->{$value['name']} = $val;
+		}
+
+		if($count == $total){
+			$seed->update_vcal = false;
+		}
+		$count++;
+
+		//Add the account to a contact
+		if($module_name == 'Contacts'){
+			$GLOBALS['log']->debug('Creating Contact Account');
+			add_create_account($seed);
+			$duplicate_id = check_for_duplicate_contacts($seed);
+			if($duplicate_id == null){
+				if($seed->ACLAccess('Save') && ($seed->deleted != 1 || $seed->ACLAccess('Delete'))){
+					$seed->save();
+					if($seed->deleted == 1){
+						$seed->mark_deleted($seed->id);
+					}
+					$ids[] = $seed->id;
+				}
+			}
+			else{
+				//since we found a duplicate we should set the sync flag
+				if( $seed->ACLAccess('Save')){
+					$seed = new $class_name();
+					$seed->id = $duplicate_id;
+					$seed->contacts_users_id = $current_user->id;
+					$seed->save();
+					$ids[] = $duplicate_id;//we have a conflict
+				}
+			}
+		}
+		else if($module_name == 'Meetings' || $module_name == 'Calls'){
+			//we are going to check if we have a meeting in the system
+			//with the same outlook_id. If we do find one then we will grab that
+			//id and save it
+			if( $seed->ACLAccess('Save') && ($seed->deleted != 1 || $seed->ACLAccess('Delete'))){
+				if(empty($seed->id) && !isset($seed->id)){
+					if(!empty($seed->outlook_id) && isset($seed->outlook_id)){
+						//at this point we have an object that does not have
+						//the id set, but does have the outlook_id set
+						//so we need to query the db to find if we already
+						//have an object with this outlook_id, if we do
+						//then we can set the id, otherwise this is a new object
+						$order_by = "";
+						$query = $seed->table_name.".outlook_id = '".DBManagerFactory::getInstance()->quote($seed->outlook_id)."'";
+						$response = $seed->get_list($order_by, $query, 0,-1,-1,0);
+						$list = $response['list'];
+						if(count($list) > 0){
+							foreach($list as $value)
+							{
+								$seed->id = $value->id;
+								break;
+							}
+						}//fi
+					}//fi
+				}//fi
+				$seed->save();
+                if($seed->deleted == 1){
+                    $seed->mark_deleted($seed->id);
                 }
             }
             $seed->{$value['name']} = $val;

@@ -55,9 +55,12 @@ function getPrintLink()
     {
         return "javascript:SUGAR.ajaxUI.print();";
     }
-    
-    $requestString = isset($GLOBALS['request_string']) ? $GLOBALS['request_string'] : null;
-    
+    $requestString = null;
+    if (isset($GLOBALS['request_string'])) {
+        $requestString = $GLOBALS['request_string'];
+    } else {
+        LoggerManager::getLogger()->warn('Undefined index: request_string');
+    }
     return "javascript:void window.open('index.php?{$requestString}',"
          . "'printwin','menubar=1,status=0,resizable=1,scrollbars=1,toolbar=0,location=1')";
 }

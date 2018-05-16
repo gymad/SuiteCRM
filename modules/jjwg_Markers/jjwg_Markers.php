@@ -80,14 +80,14 @@ class jjwg_Markers extends jjwg_Markers_sugar {
             $loc['lng'] = $this->settings['map_default_center_longitude'];
         }
         
-        if (!isset($marker->marker_image)) {
-            LoggerManager::getLogger()->warn('jjwg_Markers define_loc: Trying to get property of non-object ($marker->marker_image)');
-            $markerMarkerImage = null;
+        $markerImage = null;
+        if (isset($marker->marker_image)) {
+            $markerImage = $marker->marker_image;
         } else {
-            $markerMarkerImage = $marker->marker_image;
+            LoggerManager::getLogger()->warn('Marker image is not set for jjwg Markers :: define_loc');
         }
         
-        $loc['image'] = $markerMarkerImage;
+        $loc['image'] = $markerImage;
         return $loc;
     }
 

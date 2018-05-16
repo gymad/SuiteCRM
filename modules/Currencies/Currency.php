@@ -533,7 +533,6 @@ function toString($echo = true) {
     if($echo) {
        echo $s;
     }
-
     return $s;
 }
 

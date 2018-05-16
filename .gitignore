@@ -6,6 +6,7 @@ cache/*
 upload/*
 !upload/index.html
 # Ignore some files and directories from the custom directory.
+custom/
 custom/history/*
 custom/blowfish/*
 custom/modulebuilder/*
@@ -54,7 +55,7 @@ tramp
 .idea/
 .phpstorm.meta.php
 # NetBeans
-nbproject/
+nbproject/private
 # Vim
 .*.sw[a-z]
 *.un~
@@ -77,6 +78,7 @@ SuiteCRM.kdev4
 #Ignore composer vendor folder
 vendor/
 public/
+composer.lock
 
 #Ingore composer files
 composer.lock

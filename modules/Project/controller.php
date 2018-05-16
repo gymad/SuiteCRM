@@ -233,7 +233,8 @@ class ProjectController extends SugarController {
 
     //Returns new task start date including any lag via ajax call
     function action_get_end_date(){
-        global $db,  $timeDate;
+        global  $timeDate;
+        $db = DBManagerFactory::getInstance();
 
         $timeDate = new TimeDate();
         $id = $_POST['task_id'];

@@ -1470,17 +1470,17 @@ function handle_set_relationship($set_relationship_value, $session = '')
     require_once($beanFiles[$class_name]);
     $mod = new $class_name();
     $mod->retrieve($module1_id);
-    if (!$mod->ACLAccess('DetailView')) {
-        $error->set_error('no_access');
-
-        return $error->get_soap_array();
-    }
-    if ($module1 == "Contacts" && $module2 == "Users") {
-        $key = 'contacts_users_id';
-    } else {
-        $key = array_search(strtolower($module2), $mod->relationship_fields);
-        if (!$key) {
-            $key = Relationship::retrieve_by_modules($module1, $module2, $GLOBALS['db']);
+	if(!$mod->ACLAccess('DetailView')){
+		$error->set_error('no_access');
+		return $error->get_soap_array();
+	}
+	if($module1 == "Contacts" && $module2 == "Users"){
+		$key = 'contacts_users_id';
+	}
+	else{
+    	$key = array_search(strtolower($module2),$mod->relationship_fields);
+    	if(!$key) {
+    	    $key = Relationship::retrieve_by_modules($module1, $module2, DBManagerFactory::getInstance());
 
             // BEGIN SnapLogic fix for bug 32064
             if ($module1 == "Quotes" && $module2 == "ProductBundles") {

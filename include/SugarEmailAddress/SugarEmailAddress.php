@@ -1578,8 +1578,13 @@ class SugarEmailAddress extends SugarBean
             } else {
                 $form = 'form_DC' . $this->view . '_' . $module;
             }
-            if (isset($_REQUEST['action']) && (isset($_REQUEST['action']) && $_REQUEST['action'] == 'SubpanelCreates' || $_REQUEST['action'] == 'SubpanelEdits')) {
-                $form = 'form_Subpanel' . $this->view . '_' . $module;
+            
+            if (!isset($_REQUEST['action'])) {
+                LoggerManager::getLogger()->warn('Undefined index: action');
+            }
+            
+            if(isset($_REQUEST['action']) && ($_REQUEST['action']=='SubpanelCreates' ||  $_REQUEST['action']=='SubpanelEdits')){
+                $form = 'form_Subpanel'.$this->view .'_'.$module;
             }
         }
 

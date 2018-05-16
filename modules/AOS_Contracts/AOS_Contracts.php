@@ -115,6 +115,10 @@ class AOS_Contracts extends AOS_Contracts_sugar {
 	    $call = new call();
 
         if($this->renewal_reminder_date != 0){
+            
+            if (!isset($this->call_id)) {
+                LoggerManager::getLogger()->warn('AOS Contracts::createReminder(): Call ID is not set');
+            }
 
             if(!isset($this->call_id)) {
                 LoggerManager::getLogger()->warn('Call is not set for reminder creation.');

@@ -237,9 +237,15 @@ class ListViewSmarty extends ListViewDisplay
             $this->ss->assign('contextMenuScript', $script);
         }
 
-        $module = isset($_REQUEST['module']) ? $_REQUEST['module'] : null;
+        $module = null;
+        if (isset($_REQUEST['module'])) {
+            $module = $_REQUEST['module'];
+        } else {
+            LoggerManager::getLogger()->warn('Undefined index: module');
+        }
+        
         $this->ss->assign('showFilterIcon', !in_array($module, isset($sugar_config['enable_legacy_search']) ? $sugar_config['enable_legacy_search'] : array()));
-    }
+	}
 
     /**
      * Assigns the sort arrows in the tpl

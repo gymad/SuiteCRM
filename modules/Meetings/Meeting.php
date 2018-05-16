@@ -557,28 +557,28 @@ class Meeting extends SugarBean {
 		$today = $timedate->nowDb();
 		$nextday = $timedate->asDbDate($timedate->getNow()->get("+1 day"));
                 
-                if (!isset($meeting_fields['DATE_START'])) {
-                    LoggerManager::getLogger()->warn('Meeting get list view data: Undefined index: DATE_START');
-                    $meetingFieldsDateStart = null;
+                $dateStart = null;
+                if (isset($meeting_fields['DATE_START'])) {
+                    $dateStart = $meeting_fields['DATE_START'];
                 } else {
-                    $meetingFieldsDateStart = $meeting_fields['DATE_START'];
+                    LoggerManager::getLogger()->warn('Date start is not defined to get meeting list view data');
                 }
                 
-		$mergeTime = $meetingFieldsDateStart; //$timedate->merge_date_time($meeting_fields['DATE_START'], $meeting_fields['TIME_START']);
+		$mergeTime = $dateStart; //$timedate->merge_date_time($meeting_fields['DATE_START'], $meeting_fields['TIME_START']);
 		$date_db = $timedate->to_db($mergeTime);
 		if($date_db	< $today	) {
 			if($meeting_fields['STATUS']=='Held' || $meeting_fields['STATUS']=='Not Held')
 			{
-				$meeting_fields['DATE_START']= "<font>".$meeting_fields['DATE_START']."</font>";
+				$meeting_fields['DATE_START']= "<font>".$dateStart."</font>";
 			}
 			else
 			{
-				$meeting_fields['DATE_START']= "<font class='overdueTask'>".$meetingFieldsDateStart."</font>";
+				$meeting_fields['DATE_START']= "<font class='overdueTask'>".$dateStart."</font>";
 			}
 		}else if($date_db	< $nextday) {
-			$meeting_fields['DATE_START'] = "<font class='todaysTask'>".$meetingFieldsDateStart."</font>";
+			$meeting_fields['DATE_START'] = "<font class='todaysTask'>".$dateStart."</font>";
 		} else {
-			$meeting_fields['DATE_START'] = "<font class='futureTask'>".$meetingFieldsDateStart."</font>";
+			$meeting_fields['DATE_START'] = "<font class='futureTask'>".$dateStart."</font>";
 		}
 		$this->fill_in_additional_detail_fields();
 
@@ -653,6 +653,7 @@ class Meeting extends SugarBean {
                                 $meetingCurrentNotifyUserId.'&record='.
                                 $meetingId);
 		} else {
+                    
 			$xtpl->assign("ACCEPT_URL", $sugar_config['site_url'].
 							'/index.php?entryPoint=acceptDecline&module=Meetings&user_id='.
                                 $meetingCurrentNotifyUserId.'&record='.
@@ -712,13 +713,12 @@ class Meeting extends SugarBean {
 		$content = vCal::get_ical_event($this, $GLOBALS['current_user']);
 
                 if (is_dir($path)) {
-                    LoggerManager::getLogger()->warn('file_put_contents(' . $path . '): failed to open stream: Is a directory ');
-                } else {
-                
-                    if(file_put_contents($path,$content)){
-                            $notify_mail->AddAttachment($path, 'meeting.ics', 'base64', 'text/calendar');
-                    }
-                }
+                    LoggerManager::getLogger()->error('failed to open stream: Is a directory: ' . $path);
+                } elseif (!file_exists($path)) {
+                    LoggerManager::getLogger()->error('file not exists: ' . $path);
+                } elseif(file_put_contents($path,$content)){
+			$notify_mail->AddAttachment($path, 'meeting.ics', 'base64', 'text/calendar');
+		}
 		return $notify_mail;
 	}
 
@@ -766,6 +766,7 @@ class Meeting extends SugarBean {
 		// First, get the list of IDs.
 		$GLOBALS['log']->debug("Finding linked records $this->object_name: ");
 		$query = "SELECT meetings_users.required, meetings_users.accept_status, meetings_users.meeting_id from meetings_users where meetings_users.user_id='$user->id' AND( meetings_users.accept_status IS NULL OR	meetings_users.accept_status='none') AND meetings_users.deleted=0";
+		$GLOBALS['log']->debug("Finding linked records $this->object_name: ".$query);
 		$result = $this->db->query($query, true);
 		$list = Array();
 
@@ -1020,14 +1021,14 @@ function getMeetingsExternalApiDropDown($focus = null, $name = null, $value = nu
     }
 	//bug 46294: adding list of options to dropdown list (if it is not the default list)
     
-    if (!isset($dictionary['Meeting'])) {
-        LoggerManager::getLogger()->warn('Meeting getMeetingsExternalApiDropDown: Undefined index: Meeting ($dictionaryMeeting)');
-        $dictionaryMeeting = null;
+    $opt = null;
+    if (isset($dictionary['Meeting']['fields']['type']['options'])) {
+        $opt = $dictionary['Meeting']['fields']['type']['options'];
     } else {
-        $dictionaryMeeting = $dictionary['Meeting'];
+        LoggerManager::getLogger()->warn('Meeting fields type option is not set to Meeting External Api DropDown.');
     }
     
-    if ($dictionaryMeeting['fields']['type']['options'] != "eapm_list")
+    if ($opt != "eapm_list")
     {
         $apiList = array_merge(getMeetingTypeOptions($dictionary, $app_list_strings), $apiList);
     }

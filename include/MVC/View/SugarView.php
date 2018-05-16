@@ -153,8 +153,18 @@ class SugarView
     ) {
         $this->bean = $bean;
         $this->view_object_map = $view_object_map;
-        $this->action = isset($GLOBALS['action']) ? $GLOBALS['action'] : null;
-        $this->module = isset($GLOBALS['module']) ? $GLOBALS['module'] : null;
+        if (isset($GLOBALS['action'])) {
+            $this->action = $GLOBALS['action'];
+        } else {
+            LoggerManager::getLogger()->warn('Action is not defined for SugarView init');
+            $this->action = null;
+        }
+        if (isset($GLOBALS['module'])) {
+            $this->module = $GLOBALS['module'];
+        } else {
+            LoggerManager::getLogger()->warn('Module is not defined for SugarView init');
+            $this->module = null;
+        }
         $this->_initSmarty();
     }
 
@@ -164,16 +174,21 @@ class SugarView
     protected function _initSmarty()
     {
         $this->ss = new Sugar_Smarty();
-        if (!isset($GLOBALS['mod_strings'])) {
-            $GLOBALS['log']->warn('Undefined index: mod_strings');
-            $GLOBALS['mod_strings'] = array();
+        
+        if (isset($GLOBALS['mod_strings'])) {
+            $this->ss->assign('MOD', $GLOBALS['mod_strings']);
+        } else {
+            LoggerManager::getLogger()->warn('mod_string is not defined for SugarView smarty initializzation.');
+            $this->ss->assign('MOD', null);
         }
-        if (!isset($GLOBALS['app_strings'])) {
-            $GLOBALS['log']->warn('Undefined index: app_strings');
-            $GLOBALS['app_strings'] = array();
+        
+        if (isset($GLOBALS['app_strings'])) {
+            $this->ss->assign('APP', $GLOBALS['app_strings']);
+        } else {
+            LoggerManager::getLogger()->warn('app_strings is not defined for SugarView smarty initializzation.');
+            $this->ss->assign('APP', null);
         }
-        $this->ss->assign('MOD', $GLOBALS['mod_strings']);
-        $this->ss->assign('APP', $GLOBALS['app_strings']);
+        
     }
 
     /**
@@ -1136,6 +1151,9 @@ EOHTML;
         // here we allocate the help link data
         $help_actions_blacklist = array('Login'); // we don't want to show a context help link here
         if (!in_array($this->action, $help_actions_blacklist)) {
+            if (!isset($GLOBALS['server_unique_key'])) {
+                LoggerManager::getLogger()->warn('Undefined index: server_unique_key');
+            }
             $url =
                 'javascript:void(window.open(\'index.php?module=Administration&action=SupportPortal&view=documentation' .
                 '&version=' .
@@ -1149,7 +1167,7 @@ EOHTML;
                 '&help_action=' .
                 $this->action .
                 '&key=' .
-                (isset($GLOBALS['server_unique_key']) ? $GLOBALS['server_unique_key'] : null) .
+                (isset($GLOBALS['server_unique_key']) ? $GLOBALS['server_unique_key'] : '') .
                 '\'))';
             $label =
                 (isset($GLOBALS['app_list_strings']['moduleList'][$this->module]) ?
@@ -1707,7 +1725,7 @@ EOHTML;
      *
      * @return string
      */
-    public function getBreadCrumbSymbol()
+    public static function getBreadCrumbSymbol()
     {
         if (SugarThemeRegistry::current()->directionality == "ltr") {
             return "<span class='pointer'>&raquo;</span>";

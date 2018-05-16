@@ -37,25 +37,35 @@ function perform_aos_save($focus){
             $focus->$fieldNameDollar = '';
             if(!number_empty($focus->field_defs[$field['name']])){
                 $currency = new Currency();
-                if(!isset($focus->currency_id)) {
-                    LoggerManager::getLogger()->warn('Currency is not set for perform AOS save.');
-                    $currency->retrieve();
+                
+                $currencyId = null;
+                if (isset($focus->currency_id)) {
+                    $currencyId = $focus->currency_id;
                 } else {
-                    $currency->retrieve($focus->currency_id);
+                    LoggerManager::getLogger()->warn('Undefined currency ID: ' . get_class($focus) . '::$currency_id');
+                }
+                
+                $currency->retrieve($currencyId);
+                
+                $fieldValue = null;
+                if (isset($focus->$fieldName)) {
+                    $fieldValue = $focus->$fieldName;
+                } else {
+                    LoggerManager::getLogger('Undefined field: ' . get_class($focus) . '::$' . $fieldName);
                 }
 
-                if(!isset($focus->$fieldName)) {
-                    LoggerManager::getLogger()->warn('Perform AOS Save error: Undefined field name of focus. Focus and field name were: ' . get_class($focus) . ', ' . $fieldName);
-                }
-                $amountToConvert = isset($focus->$fieldName) ? $focus->$fieldName : null;
+                $amountToConvert = $fieldValue;
                 if (!amountToConvertIsDatabaseValue($focus, $fieldName)) {
-                    if (!isset($focus->$fieldName)) {
-                        LoggerManager::getLogger()->warn('Undefined field for AOS utils / perform aos save. Focus and field name were: [' . get_class($focus) . '], [' . $fieldName . ']');
-                        $focusFieldValue = null;
+                    
+                    $amountToConvert = null;
+                    $fieldName = null;
+                    if (isset($focus->$fieldName)) {
+                        $fieldName = $focus->$fieldName;
+                        $amountToConvert = unformat_number($fieldName);
                     } else {
-                        $focusFieldValue = $focus->$fieldName;
+                        LoggerManager::getLogger()->error('Filedname is not defined for class ' . get_class($focus));
                     }
-                    $amountToConvert = unformat_number($focusFieldValue);
+                    
                 }
 
                 $focus->$fieldNameDollar = $currency->convertToDollar($amountToConvert);

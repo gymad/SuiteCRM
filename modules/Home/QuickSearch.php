@@ -149,7 +149,8 @@ class quicksearchQuery
      */
     protected function constructWhere($focus, $args)
     {
-        global $db, $locale, $current_user;
+        global $locale, $current_user;
+        $db = DBManagerFactory::getInstance();
 
         $table = $focus->getTableName();
         if (!empty($table)) {

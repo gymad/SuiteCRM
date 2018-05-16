@@ -59,11 +59,11 @@ class jjwg_Address_Cache extends jjwg_Address_Cache_sugar {
 
         if (is_array($aInfo)) {
             
-            if (!isset($aInfo['address'])) {
-                LoggerManager::getLogger()->warn('address info not found');
-                $aInfoAddress = null;
-            } else {
+            $aInfoAddress = null;
+            if (isset($aInfo['address'])) {
                 $aInfoAddress = $aInfo['address'];
+            } else {
+                LoggerManager::getLogger()->warn('jjwg Address Cache did not get aInfo Address to get Address Cache Info');
             }
             
             $address = $aInfoAddress;

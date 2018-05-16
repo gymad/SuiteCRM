@@ -126,11 +126,11 @@ class ViewList extends SugarView
      */
     public function listViewPrepare()
     {
-        $module = isset($GLOBALS['module']) ? $GLOBALS['module'] : null;
-        
-        if(!isset($module)) {
-            LoggerManager::getLogger()->fatal('Undefined module for list view prepare');
-            return false;
+        if (!isset($GLOBALS['module'])) {
+            $module = null;
+            LoggerManager::getLogger()->warn('Undefined index: module');
+        } else {
+            $module = $GLOBALS['module'];
         }
 
         $metadataFile = $this->getMetaDataFile();
@@ -230,6 +230,12 @@ class ViewList extends SugarView
             $this->params['overrideOrder'] = true;
             if (!empty($_REQUEST['sortOrder'])) $this->params['sortOrder'] = $_REQUEST['sortOrder'];
         }
+        
+        if (!isset($this->lv)) {
+            $this->lv = new stdClass();
+            LoggerManager::getLogger()->warn('List view is not defined');
+        }
+        
         if(!isset($this->lv) || !$this->lv) {
             $this->lv = new stdClass();
         }
@@ -240,7 +246,15 @@ class ViewList extends SugarView
         $this->prepareSearchForm();
 
         if (isset($this->options['show_title']) && $this->options['show_title']) {
-            $moduleName = isset($this->seed->module_dir) ? $this->seed->module_dir : $GLOBALS['mod_strings']['LBL_MODULE_NAME'];
+            
+            $modStrings = null;
+            if (isset($GLOBALS['mod_strings'])) {
+                $modStrings = $GLOBALS['mod_strings'];
+            } else {
+                LoggerManager::getLogger()->warn('Undefined index: mod_strings');
+            }
+            
+            $moduleName = isset($this->seed->module_dir) ? $this->seed->module_dir : $modStrings['LBL_MODULE_NAME'];
             echo $this->getModuleTitle(true);
         }
     }
@@ -326,7 +340,13 @@ class ViewList extends SugarView
             $GLOBALS['log']->info("List View Where Clause: $this->where");
         }
         if ($this->use_old_search) {
-            switch (isset($view) ? $view : null) {
+            
+            if (!isset($view)) {
+                $view = null;
+                LoggerManager::getLogger()->warn('view is not defined');
+            }
+            
+            switch ($view) {
                 case 'basic_search':
                     $this->searchForm->setup();
                     $this->searchForm->displayBasic($this->headers);

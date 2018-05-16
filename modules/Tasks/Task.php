@@ -289,14 +289,15 @@ class Task extends SugarBean {
 		$today = $timedate->nowDb();
 		$task_fields = $this->get_list_view_array();
                 
-                if (!isset($task_fields['DATE_DUE'])) {
-                    LoggerManager::getLogger()->warn('Task get_list_view_data: Undefined index: DATE_DUE');
-                    $taskFieldsDateDue = null;
+                
+                $dateDue = null;
+                if (isset($task_fields['DATE_DUE'])) {
+                    $dateDue = $task_fields['DATE_DUE'];
                 } else {
-                    $taskFieldsDateDue = $task_fields['DATE_DUE'];
+                    LoggerManager::getLogger()->warn('Due date is not set for Test list view data');
                 }
                 
-		$dbtime = $timedate->to_db($taskFieldsDateDue);
+		$dbtime = $timedate->to_db($dateDue);
 		if($override_date_for_subpanel){
 			$dbtime = $timedate->to_db($task_fields['DATE_START']);
 		}

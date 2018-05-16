@@ -38,9 +38,13 @@
  * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
+global $current_user, $timedate;
+$db = DBManagerFactory::getInstance();
 
-if (!defined('sugarEntry') || !sugarEntry) {
-    die('Not A Valid Entry Point');
+function displayAdminError($errorString)
+{
+    $output = '<p class="error">'.$errorString.'</p>';
+    echo $output;
 }
 
 global $db, $current_user, $timedate;

@@ -307,14 +307,20 @@ class Lead extends Person implements EmailInterface {
 
 		$temp_array = parent::get_list_view_data();
                 
-                if (!isset($temp_array['ACCOUNT_NAME'])) {
-                    LoggerManager::getLogger()->warn('Leads get list view data error: account name is not defined in list view data.');
-                    $tempArrayAccountName = null;
+                $value = null;
+                if (empty($temp_array['ACC_NAME_FROM_ACCOUNTS'])) {
+                    
+                    if (isset($temp_array['ACCOUNT_NAME'])) {
+                        $value = $temp_array['ACCOUNT_NAME'];
+                    } else {
+                        LoggerManager::getLogger()->warn('Account name is not defined for Lead list view data');
+                    }
+                    
                 } else {
-                    $tempArrayAccountName = $temp_array['ACCOUNT_NAME'];
+                    $value = $temp_array['ACC_NAME_FROM_ACCOUNTS'];
                 }
 
-		$temp_array['ACC_NAME_FROM_ACCOUNTS'] = empty($temp_array['ACC_NAME_FROM_ACCOUNTS']) ? ($tempArrayAccountName) : ($temp_array['ACC_NAME_FROM_ACCOUNTS']);
+		$temp_array['ACC_NAME_FROM_ACCOUNTS'] = $value;
 
 		return $temp_array;
 	}
@@ -537,23 +543,26 @@ class Lead extends Person implements EmailInterface {
 						$form .= "<input name='".$prefix.$field."' id='jscal_field".$field."' type='text'  size='11' maxlength='10' value='".$this->$field."'>&nbsp;<span id=\"jscal_trigger\" class='suitepicon suitepicon-module-calendar'></span> <span class='dateFormat'>yyyy-mm-dd</span><script type='text/javascript'>Calendar.setup ({inputField : 'jscal_field".$field."', ifFormat : '%Y-%m-%d', showsTime : false, button : 'jscal_trigger".$field."', singleClick : true, step : 1, weekNumbers:false}); addToValidate('ConvertLead', '".$field."', 'date', false,'".$mod_strings[$tempBean->field_defs[$field]['vname']]."' );</script>";
 					} else {
                                             
-                                            if (!isset($this->$field)) {
-                                                LoggerManager::getLogger()->warn('Field not found: ' . $field);
-                                                $thisField = null;
-                                            } else {
+                                            $thisField = null;
+                                            if (isset($this->$field)) {
                                                 $thisField = $this->$field;
+                                            } else {
+                                                LoggerManager::getLogger()->warn('Field is not set (Lead): ' . $field);
                                             }
-
+                                            
 						$form .= "<input name='".$prefix.$field."' type='text' value='".$thisField."'>";
 
-                                                if (!isset($this->custom_fields->avail_fields)) {
-                                                    LoggerManager::getLogger()->warn('Undefined property: $avail_fields');
+                                                $customFieldsAvailType = null;
+                                                if (isset($this->custom_fields->avail_fields[$field]['type'])) {
+                                                    $customFieldsAvailType = $this->custom_fields->avail_fields[$field]['type'];
+                                                } else {
+                                                    LoggerManager::getLogger()->warn('Custom Fields / Avail Fields / Fields / type is not set. (Lead)');
                                                 }
                                                 
-						if(isset($this->custom_fields->avail_fields) && $this->custom_fields->avail_fields[$field]['type'] == 'int') {
+						if($customFieldsAvailType == 'int') {
 							$form .= "<script>addToValidate('ConvertLead', '".$prefix.$field."', 'int', false,'".$prefix.":".$mod_strings[$tempBean->field_defs[$field]['vname']]."' );</script>";
 						}
-						elseif(isset($this->custom_fields->avail_fields) && $this->custom_fields->avail_fields[$field]['type'] == 'float') {
+						elseif($customFieldsAvailType == 'float') {
 							$form .= "<script>addToValidate('ConvertLead', '".$prefix.$field."', 'float', false,'".$prefix.":".$mod_strings[$tempBean->field_defs[$field]['vname']]."' );</script>";
 						}
 

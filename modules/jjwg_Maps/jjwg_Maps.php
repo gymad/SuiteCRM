@@ -626,7 +626,7 @@ class jjwg_Maps extends jjwg_Maps_sugar {
         // Check to see if address info is already set, or redefine
         $bean_data = get_object_vars($bean);
         $aInfo = $this->defineMapsAddress($bean->object_name, $bean_data);
-        $GLOBALS['log']->debug(__METHOD__.' $bean_data: '.print_r($bean_data, true));
+        $GLOBALS['log']->debug(__METHOD__.' $bean_data: '. (is_array($bean_data) ? '[Array]' : $bean_data));
         $GLOBALS['log']->debug(__METHOD__.' $aInfo: '.$aInfo);
 
         // If needed, check the Address Cache Module for Geocode Info
@@ -974,7 +974,7 @@ class jjwg_Maps extends jjwg_Maps_sugar {
         curl_close($ch);
         $GLOBALS['log']->debug(__METHOD__.' $json_contents: '.$json_contents);
         $googlemaps = json_decode($json_contents, true);
-        $GLOBALS['log']->debug(__METHOD__.' $googlemaps: '.$googlemaps);
+        $GLOBALS['log']->debug(__METHOD__.' $googlemaps: '. (is_array($googlemaps) ? '[Array]' : $googlemaps));
 
         /**
          * https://developers.google.com/maps/documentation/geocoding/#Results
@@ -1089,15 +1089,15 @@ class jjwg_Maps extends jjwg_Maps_sugar {
 
             // Find Account from Case (account_id field)
             
-            if (!isset($display['account_id'])) {
-                LoggerManager::getLogger()->warn('jjwg_Maps defineMapsAddress: Undefined index: account_id  ');
-                $displayAccountId = null;
-            } else {
+            $displayAccountId = null;
+            if (isset($display['account_id'])) {
                 $displayAccountId = $display['account_id'];
+            } else {
+                LoggerManager::getLogger()->warn('Display Account Id is not set for jjwg Maps :: defaine Map Address');
             }
             
             $query = "SELECT accounts.*, accounts_cstm.* FROM accounts LEFT JOIN accounts_cstm ON accounts.id = accounts_cstm.id_c " .
-                    " WHERE accounts.deleted = 0 AND id = '" . $displayAccountId . "'";
+                    " WHERE accounts.deleted = 0 AND id = '" . $displayAccountId. "'";
             $GLOBALS['log']->debug(__METHOD__.' Case to Account');
             $result = $this->db->limitQuery($query, 0, 1);
             $fields = $this->db->fetchByAssoc($result);

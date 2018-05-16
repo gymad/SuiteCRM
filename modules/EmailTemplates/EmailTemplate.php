@@ -673,12 +673,11 @@ class EmailTemplate extends SugarBean
                 $fieldName = $field_def['name'];
                 if ($field_def['type'] == 'enum') {
                     
-                    
-                    if (!isset($contact->$fieldName)) {
-                        LoggerManager::getLogger()->warn('Email Template / parse template bean error: Contact field not found. Field name was: "' . $fieldName . '"');
-                        $contactFieldName = null;
-                    } else {
+                    $contactFieldName = null;
+                    if (isset($contact->$fieldName)) {
                         $contactFieldName = $contact->$fieldName;
+                    } else {
+                        LoggerManager::getLogger()->warn('EmailTemplate::parse_template_bean: Contact Field name does not set: ' . $fieldName);
                     }
                     
                     $translated = translate($field_def['options'], 'Accounts', $contactFieldName);
@@ -709,12 +708,23 @@ class EmailTemplate extends SugarBean
 
         ///////////////////////////////////////////////////////////////////////
         ////	LOAD FOCUS DATA INTO REPL_ARR
-        if (!isset($focus->field_defs)) {
-            LoggerManager::getLogger()->warn('Email Template / parse template bean error on load focus data into repl_arr: Focus field defs is undefined.');
-        } else { 
-            foreach ($focus->field_defs as $field_def) {
-                if(!isset($field_def['name'])) {
-                    LoggerManager::getLogger()->warn('Email Template / parse template bean error on load focus data into repl_arr: Focus field defs [name] is undefined.');
+        
+        if (!is_object($focus)) {
+            LoggerManager::getLogger()->warn('EmailTemplate::parse_template_bean: focus is not an object');
+        }
+        
+        $focusFieldDefs = null;
+        if (isset($focus->field_defs)) {
+            $focusFieldDefs = $focus->field_defs;
+        } else {
+            LoggerManager::getLogger()->warn('EmailTemplate::parse_template_bean: focus has not field_defs set');
+        }
+        
+        foreach ((array)$focusFieldDefs as $field_def) {
+            $fieldName = $field_def['name'];
+            if (isset($focus->$fieldName)) {
+                if (($field_def['type'] == 'relate' && empty($field_def['custom_type'])) || $field_def['type'] == 'assigned_user_name') {
+                    continue;
                 }
                 $fieldName = isset($field_def['name']) ? $field_def['name'] : null;
                 if (isset($focus->$fieldName)) {

@@ -169,6 +169,11 @@ class ListViewDisplay {
 	{
 		// create filter fields based off of display columns
         if(empty($filter_fields) || $this->mergeDisplayColumns) {
+            
+            if (!is_array($this->displayColumns)) {
+                LoggerManager::getLogger()->warn('displayColumns is not an array');
+            }
+            
             foreach((array)$this->displayColumns as $columnName => $def) {
 
                $filter_fields[strtolower($columnName)] = true;
@@ -699,6 +704,10 @@ EOF;
      */
     protected function fillDisplayColumnsWithVardefs()
     {
+        if (!is_array($this->displayColumns)) {
+            LoggerManager::getLogger()->warn('displayColumns is not an array');
+        }
+        
         foreach ((array)$this->displayColumns as $columnName => $def) {
             $seedName =  strtolower($columnName);
             if (!empty($this->lvd->seed->field_defs[$seedName])) {

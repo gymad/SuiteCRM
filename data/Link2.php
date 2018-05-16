@@ -306,6 +306,14 @@ class Link2
     public function getSide()
     {
         //First try the relationship
+        
+        $focusModuleName = null;
+        if (isset($this->focus->module_name)) {
+            $focusModuleName = $this->focus->module_name;
+        } else {
+            LoggerManager::getLogger()->error('Focus Module Name is not set for Link2 get side.');
+        }
+        
         if ($this->relationship->getLHSLink() == $this->name &&
             ($this->relationship->getLHSModule() == isset($this->focus->module_name) ? $this->focus->module_name : null)
         ) {

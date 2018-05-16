@@ -404,16 +404,20 @@ class EmailMan extends SugarBean
         global $locale, $current_user;
         $temp_array = parent::get_list_view_array();
 
-        $related_type = isset($temp_array['RELATED_TYPE']) ? $temp_array['RELATED_TYPE'] : null;
-        
-        if (!isset($temp_array['RELATED_ID'])) {
-            LoggerManager::getLogger()->warn('EmailMan List view array has not related id for list view data');
-            $tempArrayRelatedId = null;
+        $related_type = null;
+        if (isset($temp_array['RELATED_TYPE'])) {
+            $related_type = $temp_array['RELATED_TYPE'];            
         } else {
-            $tempArrayRelatedId = $temp_array['RELATED_ID'];
+            LoggerManager::getLogger()->warn('Related type is not defined for EmailMan list view data');
         }
         
-        $related_id = $tempArrayRelatedId;
+        $related_id = null;
+        if (isset($temp_array['RELATED_ID'])) {
+            $related_id = $temp_array['RELATED_ID'];            
+        } else {
+            LoggerManager::getLogger()->warn('Related ID is not defined for EmailMan list view data');
+        }
+        
         $is_person = SugarModule::get($related_type)->moduleImplements('Person');
 
         if ($is_person) {
@@ -439,59 +443,53 @@ class EmailMan extends SugarBean
             $temp_array['RECIPIENT_EMAIL'] = $row['email_address'];
         }
 
-        if (!isset($temp_array['RECIPIENT_EMAIL'])) {
-            LoggerManager::getLogger()->warn('EmailMan List view array has not recipient email for list view data');
-            $temArrayRecipientEmail = null;
+        
+        $this->email1 = null;
+        if (isset($temp_array['RECIPIENT_EMAIL'])) {
+            $this->email1 = $temp_array['RECIPIENT_EMAIL'];            
         } else {
-            $temArrayRecipientEmail = $temp_array['RECIPIENT_EMAIL'];
+            LoggerManager::getLogger()->warn('Recipient email is not defined for EmailMan list view data');
         }
         
-        $this->email1 = $temArrayRecipientEmail;
-        $temp_array['EMAIL1_LINK'] = $current_user->getEmailLink('email1', $this, '', '', 'ListView');
+		$temp_array['EMAIL1_LINK'] = $current_user->getEmailLink('email1', $this, '', '', 'ListView');
 
         return $temp_array;
     }
 
-    /**
-     * @param $email_address
-     * @param bool $delete
-     * @param null $email_id
-     * @param null $email_type
-     * @param null $activity_type
-     * @param null $resend_type
-     */
-    public function set_as_sent(
-        $email_address,
-        $delete = true,
-        $email_id = null,
-        $email_type = null,
-        $activity_type = null,
-        $resend_type = null
-    ) {
-        global $timedate;
 
-        $this->send_attempts++;
-        $this->id = (int)$this->id;
-        if ($delete || $this->send_attempts > 5) {
+	function set_as_sent($email_address, $delete= true,$email_id=null, $email_type=null,$activity_type=null){
 
-            //create new campaign log record.
-            $campaign_log = new CampaignLog();
-            $campaign_log->campaign_id = $this->campaign_id;
-            $campaign_log->target_tracker_key = $this->getTargetId();
-            $campaign_log->target_id = $this->related_id;
-            $campaign_log->target_type = $this->related_type;
-            $campaign_log->marketing_id = $this->marketing_id;
+		global $timedate;
 
-            // if test suppress duplicate email address checking.
-            if (!$this->test) {
-                $campaign_log->more_information = $email_address;
-            }
-            $campaign_log->activity_type = $activity_type;
-            $campaign_log->activity_date = $timedate->now();
-            $campaign_log->list_id = $this->list_id;
-            $campaign_log->related_id = $email_id;
-            $campaign_log->related_type = $email_type;
-            $campaign_log->resend_type = $resend_type;
+		$this->send_attempts++;
+		$this->id = (int)$this->id;
+		if($delete || $this->send_attempts > 5){
+
+			//create new campaign log record.
+
+			$campaign_log = new CampaignLog();
+			$campaign_log->campaign_id=$this->campaign_id;
+                        
+                        $targetTrackerKey = null;
+                        if (isset($this->target_tracker_key)) {
+                            $targetTrackerKey = $this->target_tracker_key;
+                        } else {
+                            LoggerManager::getLogger()->warn('EmailMan::set_as_sent: target_tracker_key is not set');
+                        }
+                        
+			$campaign_log->target_tracker_key= $targetTrackerKey;
+			$campaign_log->target_id= $this->related_id;
+			$campaign_log->target_type=$this->related_type;
+            $campaign_log->marketing_id=$this->marketing_id;
+			//if test suppress duplicate email address checking.
+			if (!$this->test) {
+				$campaign_log->more_information=$email_address;
+			}
+			$campaign_log->activity_type=$activity_type;
+			$campaign_log->activity_date=$timedate->now();
+			$campaign_log->list_id=$this->list_id;
+			$campaign_log->related_id= $email_id;
+			$campaign_log->related_type=$email_type;
             $campaign_log->save();
 
             $query = "DELETE FROM emailman WHERE id = $this->id";
@@ -582,14 +580,16 @@ class EmailMan extends SugarBean
                 $this->ref_email->status = 'sent';
                 $retId = $this->ref_email->save();
 
-                foreach ((array)$notes as $note) {
-                    
+                if (!is_array($notes)) {
+                    LoggerManager::getLogger()->warn('EmailMan::create_ref_email: notes should be an array, ' . gettype($notes) . ' given');
+                }
+                
+                foreach((array)$notes as $note) {
                     if (!is_object($note)) {
-                        LoggerManager::getLogger()->warn('EmailMan create a reference email but given note is not an object. Type of note was: "' . gettype($note) . '"');
+                        LoggerManager::getLogger()->warn('EmailMan::create_ref_email: notes should be an array of object, one of elements was: ' . gettype($note));
                     } else {
-                    
-                        if ($note->object_name == 'Note') {
-                            if (!empty($note->file->temp_file_location) && is_file($note->file->temp_file_location)) {
+                        if($note->object_name == 'Note') {
+                            if (! empty($note->file->temp_file_location) && is_file($note->file->temp_file_location)) {
                                 $file_location = $note->file->temp_file_location;
                                 $filename = $note->file->original_file_name;
                                 $mime_type = $note->file->mime_type;
@@ -602,6 +602,8 @@ class EmailMan extends SugarBean
                             $filename = $note->id . $note->filename;
                             $file_location = "upload://$filename";
                             $mime_type = $note->file_mime_type;
+                        } else {
+                            LoggerManager::getLogger()->warn('Unknown object name');
                         }
                     
                     }
@@ -610,36 +612,35 @@ class EmailMan extends SugarBean
                     $noteAudit->parent_id = $retId;
                     $noteAudit->parent_type = $this->ref_email->module_dir;
                     
-                    if (!isset($note->filename)) {
-                        LoggerManager::getLogger()->warn('EmailMan create ref email error: Note filename is undefined.');
-                        $noteFilename = null;
+                    $noteFilename = null;
+                    if (isset($note->filename)) {
+                        $noteFilename = $note->filename;
                     } else {
-                        $noteFilename = $note->filename ;
+                        LoggerManager::getLogger()->warn('EmailMan::create_ref_email: note filename is undefined');
                     }
                     
                     $noteAudit->description = "[" . $noteFilename . "] " . $mod_strings['LBL_ATTACHMENT_AUDIT'];
                     
-                    
                     if (!isset($filename)) {
-                        LoggerManager::getLogger()->warn('EmailMan create ref email error: Filename is undefined.');
                         $filename = null;
+                        LoggerManager::getLogger('EmailMan::create_ref_email: resolving filename is failed');
                     }
                     
-                    $noteAudit->filename = $filename;
+                    $noteAudit->filename=$filename;
                     
                     if (!isset($mime_type)) {
-                        LoggerManager::getLogger()->warn('EmailMan create ref email error: Mime Type is undefined.');
                         $mime_type = null;
+                        LoggerManager::getLogger('EmailMan::create_ref_email: resolving mime type is failed');
                     }
                     
-                    $noteAudit->file_mime_type = $mime_type;
-                    $noteAudit_id = $noteAudit->save();
+                    $noteAudit->file_mime_type=$mime_type;
+                    $noteAudit_id=$noteAudit->save();
 
-                    if (!isset($note->id)) {
-                        LoggerManager::getLogger()->warn('EmailMan create ref email but Note ID is undefined.');
-                        $noteId = null;
-                    } else {
+                    $noteId = null;
+                    if (isset($note->id)) {
                         $noteId = $note->id;
+                    } else {
+                        LoggerManager::getLogger()->warn('EmailMan::create_ref_email: resolving note id is failed');
                     }
                     
                     UploadFile::duplicate_file($noteId, $noteAudit_id, $filename);
@@ -707,28 +708,60 @@ class EmailMan extends SugarBean
         $email->type = 'archived';
         $email->deleted = '0';
         
-        if (!isset($this->current_campaign)) {
-            LoggerManager::getLogger()->warn('EmailMan has not current campaign for create individual email.');
-            $currentCampaignNameMailSubject = null;
+        $currentCampaignName = null;
+        if (isset($this->current_campaign->name)) {
+            $currentCampaignName = $this->current_campaign->name;
         } else {
-            $currentCampaignNameMailSubject = $this->current_campaign->name . ': ' . $mail->Subject;
+            LoggerManager::getLogger()->warn('EmailMan::create_indiv_email: current campaign name is undefined');
         }
         
-        $email->name = $currentCampaignNameMailSubject;
-        
-        if (!isset($mail->ContentType)) {
-            LoggerManager::getLogger()->warn('EmailMan given an mail for creating individual email but there is not content type.');
-            $mail->ContentType = null;
-        }
-            
-        if ($mail->ContentType == "text/plain") {
-            $email->description = $mail->Body;
-            $email->description_html = null;
+        $mailSubject = null;
+        if (isset($mail->Subject)) {
+            $mailSubject = $mail->Subject ;
         } else {
-            $email->description_html = $mail->Body;
-            $email->description = $mail->AltBody;
+            LoggerManager::getLogger()->warn('EmailMan::create_indiv_email: email subject is undefined');
         }
-        $email->from_addr = $mail->From;
+        
+        $email->name = $currentCampaignName . ': ' . $mailSubject;
+        
+        $mailContentType = null;
+        if (isset($mail->ContentType)) {
+            $mailContentType = $mail->ContentType;
+        } else {
+            LoggerManager::getLogger()->warn('EmailMan::create_indiv_email: mail content type is undefined');
+        }
+        
+        $mailBody = null;
+        if (isset($mail->Body)) {
+            $mailBody = $mail->Body;
+        } else {
+            LoggerManager::getLogger()->warn('EmailMan::create_indiv_email: mail body is undefined');
+        }
+        
+        if ($mailContentType == "text/plain") {
+            $email->description = $mailBody;
+            $email->description_html =null;
+        } else {
+            $email->description_html = $mailBody;
+        
+            $mailAltBody = null;
+            if (isset($mail->AltBody)) {
+                $mailAltBody = $mail->AltBody;
+            } else {
+                LoggerManager::getLogger()->warn('EmailMan::create_indiv_email: mail alt body is undefined');
+            }
+        
+            $email->description = $mailAltBody;
+        }
+        
+        $mailFrom = null;
+        if (isset($mail->From)) {
+            $mailFrom = $mail->From ;
+        } else {
+            LoggerManager::getLogger()->warn('EmailMan::create_indiv_email: mail from is undefined');
+        }
+        
+        $email->from_addr = $mailFrom;
         $email->assigned_user_id = $this->user_id;
         $email->parent_type = $this->related_type;
         $email->parent_id = $this->related_id;

@@ -274,8 +274,9 @@ $query .= 			"LEFT JOIN users
                 } else {
                     //update the select clause in the retruned query.
                     $query_array['select']="SELECT contacts.id, contacts.first_name, contacts.last_name, contacts.title, contacts.email1, contacts.phone_work, opportunities_contacts.contact_role as opportunity_role, opportunities_contacts.id as opportunity_rel_id ";
-                }
 
+                }
+                
 		$query='';
 		foreach ((array)$query_array as $qstring) {
 			$query.=' '.$qstring;

@@ -370,14 +370,14 @@ class SugarFeed extends Basic {
 		if (ACLController::moduleSupportsACL($data['RELATED_MODULE']) && !ACLController::checkAccess($data['RELATED_MODULE'], 'view', $data['CREATED_BY'] == $GLOBALS['current_user']->id) && !ACLController::checkAccess($data['RELATED_MODULE'], 'list', $data['CREATED_BY'] == $GLOBALS['current_user']->id)){
   		*/
                 
-                if (!isset($data['RELATED_MODULE'])) {
-                    LoggerManager::getLogger()->warn('SugarFeed get_list_view_data: Undefined index: RELATED_MODULE');
-                    $dataRelatedModule = null;
+                $relatedModule = null;
+                if (isset($data['RELATED_MODULE'])) {
+                    $relatedModule = $data['RELATED_MODULE'];
                 } else {
-                    $dataRelatedModule = $data['RELATED_MODULE'];
+                    LoggerManager::getLogger()->warn('Related module is not defined for SugarFeed list view data');
                 }
-            
-		if (ACLController::moduleSupportsACL($dataRelatedModule)) {
+                
+		if (ACLController::moduleSupportsACL($relatedModule)) {
     		$in_group = 'not_set';
 			require_once("modules/SecurityGroups/SecurityGroup.php");
 			$in_group = SecurityGroup::groupHasAccess($data['RELATED_MODULE'],$data['RELATED_ID'],'list');
@@ -395,18 +395,19 @@ class SugarFeed extends Basic {
         }
 		/* END - SECURITY GROUPS */
         
-        if (!isset($data['DESCRIPTION'])) {
-            LoggerManager::getLogger()->warn('SugarFeed get_list_view_data: Undefined index: DESCRIPTION ');
-            $dataDescription = null;
-        } else {
-            $dataDescription = $data['DESCRIPTION'];
-        }
-         
-        if (!isset($data['NAME'])) {
-            $data['NAME'] = '';
-        }
+                $description = null;
+                if (isset($data['DESCRIPTION'])) {
+                    $description = $data['DESCRIPTION'];
+                } else {
+                    LoggerManager::getLogger()->warn('Description is not set for SugarFeed list view data');
+                }
         
-		$data['NAME'] .= $dataDescription;
+                if (!isset($data['NAME'])) {
+                    $data['NAME'] = '';
+                    LoggerManager::getLogger()->warn('Undefined index: NAME');
+                }
+                
+		$data['NAME'] .= $description;
 		$data['NAME'] =  '<div style="padding:3px">' . html_entity_decode($data['NAME']);
 		if(!empty($data['LINK_URL'])){
             $linkClass = SugarFeed::getLinkClass($data['LINK_TYPE']);
@@ -416,21 +417,21 @@ class SugarFeed extends Basic {
 		}
         $data['NAME'] .= '<div class="byLineBox"><span class="byLineLeft">';
         
-        if (!isset($data['DATE_ENTERED'])) {
-            LoggerManager::getLogger()->warn('SugarFeed get_list_view_data: Undefined index: DATE_ENTERED ');
-            $dataDateEntered = null;
+        $dateEntered = null;
+        if (isset($data['DATE_ENTERED'])) {
+            $dateEntered = $data['DATE_ENTERED'];
         } else {
-            $dataDateEntered = $data['DATE_ENTERED'];
+            LoggerManager::getLogger()->warn('Date entered is not set for SugarFeed list view data');
         }
-            
-        if (!isset($data['ID'])) {
-            LoggerManager::getLogger()->warn('SugarFeed get_list_view_data: Undefined index: ID ');
-            $dataId = null;
+        
+        $id = null;
+        if (isset($data['ID'])) {
+            $id = $data['ID'];
         } else {
-            $dataId = $data['ID'];
+            LoggerManager::getLogger()->warn('ID is undefined for SugarFeed list view data');
         }
-            
-		$data['NAME'] .= $this->getTimeLapse($dataDateEntered) . '&nbsp;</span><div class="byLineRight"><a id="sugarFeedReplyLink'.$dataId.'" href="#" onclick=\'SugarFeed.buildReplyForm("'.$dataId.'", "{this.id}", this); return false;\'>'.$GLOBALS['app_strings']['LBL_EMAIL_REPLY'].'</a>' .$delete. '</div></div>';
+        
+		$data['NAME'] .= $this->getTimeLapse($dateEntered) . '&nbsp;</span><div class="byLineRight"><a id="sugarFeedReplyLink'.$id.'" href="#" onclick=\'SugarFeed.buildReplyForm("'.$id.'", "{this.id}", this); return false;\'>'.$GLOBALS['app_strings']['LBL_EMAIL_REPLY'].'</a>' .$delete. '</div></div>';
 
         $data['NAME'] .= $this->fetchReplies($data);
 		return  $data ;
@@ -439,14 +440,14 @@ class SugarFeed extends Basic {
     function fetchReplies($data) {
         $seedBean = new SugarFeed;
 
-        if (!isset($data['ID'])) {
-            LoggerManager::getLogger()->warn('SugarFeed fetchReplies: Undefined index: ID ');
-            $dataId = null;
+        $id = null;
+        if (isset($data['ID'])) {
+            $id = $data['ID'];
         } else {
-            $dataId = $data['ID'];
+            LoggerManager::getLogger()->warn('ID is undefined for SugarFeed fetch replies');
         }
-           
-        $replies = $seedBean->get_list('date_entered',"related_module = 'SugarFeed' AND related_id = '".$dataId."'");
+        
+        $replies = $seedBean->get_list('date_entered',"related_module = 'SugarFeed' AND related_id = '".$id."'");
 
         if ( count($replies['list']) < 1 ) {
             return '';
@@ -459,14 +460,14 @@ class SugarFeed extends Basic {
             // Setup the delete link
             $delete = '';
             
-            if (!isset($data['CREATED_BY'])) {
-                LoggerManager::getLogger()->warn('SugarFeed fetchReplies: Undefined index: $data[CREATED_BY]');
-                $dataCreateBy = null;
+            $dataCreatedBy = null;
+            if (isset($data['CREATED_BY'])) {
+                $dataCreatedBy = $data['CREATED_BY'];
             } else {
-                $dataCreateBy = $data['CREATED_BY'];
+                LoggerManager::getLogger()->warn('SugarFeed::fetchReplies - created by is not defined');
             }
             
-            if(is_admin($GLOBALS['current_user']) || $dataCreateBy == $GLOBALS['current_user']->id) {
+            if(is_admin($GLOBALS['current_user']) || $dataCreatedBy == $GLOBALS['current_user']->id) {
                 $delete = '<a id="sugarFieldDeleteLink'.$reply->id.'" href="#" onclick=\'SugarFeed.deleteFeed("'. $reply->id . '", "{this.id}"); return false;\'>'. $GLOBALS['app_strings']['LBL_DELETE_BUTTON_LABEL'].'</a>';
             }
 
@@ -475,14 +476,14 @@ class SugarFeed extends Basic {
                 $user = loadBean('Users');
                 $user->retrieve($reply->created_by);
                 
-                if (!isset($user->picture)) {
-                    LoggerManager::getLogger()->warn('SugarFeed fetchReplies: Undefined property: User::$picture');
-                    $userPicture = null;
-                } else {
+                $userPicture = null;
+                if (isset($user->picture)) {
                     $userPicture = $user->picture;
+                } else {
+                    LoggerManager::getLogger()->warn('SugarFeed::fetchReplies - user picture is not defined');
                 }
-            
-                $image_url = 'index.php?entryPoint=download&id=' . $userPicture . '&type=SugarFieldImage&isTempFile=1&isProfile=1';
+                
+                $image_url = 'index.php?entryPoint=download&id='.$userPicture.'&type=SugarFieldImage&isTempFile=1&isProfile=1';
             }
             $replyHTML .= '<div style="float: left; margin-right: 3px; width: 50px; height: 50px;"><!--not_in_theme!--><img src="'.$image_url.'" style="max-width: 50px; max-height: 50px;"></div> ';
             $replyHTML .= str_replace("{this.CREATED_BY}",get_assigned_user_name($reply->created_by),html_entity_decode($reply->name)).'<br>';
@@ -496,21 +497,38 @@ class SugarFeed extends Basic {
 
 	static function getTimeLapse($startDate)
 	{
-            if (!isset($GLOBALS['timedate']->getNow()->ts)) {
-                LoggerManager::getLogger()->warn('SugarFeed getTimeLapse: Trying to get property of non-object ($GLOBALS[timedate]->getNow()->ts)');
-                $globalsTimedateNowTs = null;
+            
+            $timedate = null;
+            if (isset($GLOBALS['timedate'])) {
+                $timedate = $GLOBALS['timedate'];
             } else {
-                $globalsTimedateNowTs = $GLOBALS['timedate']->getNow()->ts;
+                LoggerManager::getLogger()->warn('Timedate is not set for SugarFeed time lapse');
             }
             
-            if (!isset($GLOBALS['timedate']->fromUser($startDate)->ts)) {
-                LoggerManager::getLogger()->warn('SugarFeed getTimeLapse: Trying to get property of non-object ($GLOBALS[timedate]->fromUser($startDate)->ts)');
-                $globalsTimedateFromUserStartDateTs = null;
+            $now = null;
+            if ($timedate instanceof TimeDate) {
+                $now = $timedate->getNow();
+                $fromUser = $timedate->fromUser($startDate);
             } else {
-                $globalsTimedateFromUserStartDateTs = $GLOBALS['timedate']->fromUser($startDate)->ts;
+                LoggerManager::getLogger()->warn('Timedate is not a Timedate. Imposible to get "now" for SugarFeed time laps');
             }
             
-		$seconds = $globalsTimedateNowTs - $globalsTimedateFromUserStartDateTs;
+            $tsLeft = null;
+            if (isset($now->ts)) {
+                $tsLeft = $now->ts;
+            } else {
+                LoggerManager::getLogger()->warn('No current timestamp info');
+            }
+            
+            $tsRight = null;
+            if (isset($fromUser->ts)) {
+                $tsRight = $fromUser->ts;
+            } else {
+                LoggerManager::getLogger()->warn('No fromUser timestamp info');
+            }
+            
+            
+		$seconds = $tsLeft - $tsRight;
 		$minutes =   $seconds/60;
 		$seconds = $seconds % 60;
 		$hours = floor( $minutes / 60);

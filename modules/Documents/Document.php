@@ -226,10 +226,13 @@ class Document extends File
         return "$this->document_name";
     }
 
-    function is_authenticated()
-    {
-        return $this->authenticated;
-    }
+	function is_authenticated() {
+            if (!isset($this->authenticated)) {
+                LoggerManager::getLogger()->warn('Document::$authenticated is not set');
+                return null;
+            }
+		return $this->authenticated;
+	}
 
     function fill_in_additional_list_fields()
     {

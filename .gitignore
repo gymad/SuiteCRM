@@ -78,7 +78,6 @@ SuiteCRM.kdev4
 #Ignore composer vendor folder
 vendor/
 public/
-composer.lock
 
 #Ingore composer files
 composer.lock

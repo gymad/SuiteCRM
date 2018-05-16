@@ -2981,78 +2981,12 @@ class Email extends Basic
         return $array_assign;
     }
 
-		foreach ($this->bcc_addrs_arr as $addr_arr) {
-			if ( empty($addr_arr['display'])) {
-				$mail->AddBCC($addr_arr['email'], "");
-			} else {
-				$mail->AddBCC($addr_arr['email'],$locale->translateCharsetMIME(trim($addr_arr['display']), 'UTF-8', $OBCharset));
-			}
-		}
-
-		$mail = $this->setMailer($mail);
-
-		// FROM ADDRESS
-		if(!empty($this->from_addr)) {
-			$mail->From = $this->from_addr;
-		} else {
-			$mail->From = $current_user->getPreference('mail_fromaddress');
-			$this->from_addr = $mail->From;
-		}
-		// FROM NAME
-		if(!empty($this->from_name)) {
-			$mail->FromName = $this->from_name;
-		} else {
-			$mail->FromName =  $current_user->getPreference('mail_fromname');
-			$this->from_name = $mail->FromName;
-		}
-
-		//Reply to information for case create and autoreply.
-		if(!empty($this->reply_to_name)) {
-			$ReplyToName = $this->reply_to_name;
-		} else {
-			$ReplyToName = $mail->FromName;
-		}
-		if(!empty($this->reply_to_addr)) {
-			$ReplyToAddr = $this->reply_to_addr;
-		} else {
-			$ReplyToAddr = $mail->From;
-		}
-		$mail->Sender = $mail->From; /* set Return-Path field in header to reduce spam score in emails sent via Sugar's Email module */
-		$mail->AddReplyTo($ReplyToAddr,$locale->translateCharsetMIME(trim($ReplyToName), 'UTF-8', $OBCharset));
-
-		//$mail->Subject = html_entity_decode($this->name, ENT_QUOTES, 'UTF-8');
-		$mail->Subject = $this->name;
-
-		///////////////////////////////////////////////////////////////////////
-		////	ATTACHMENTS
-                
-                $savedAttachments = null;
-                if (isset($this->saved_attachments)) {
-                    $savedAttachments = $this->saved_attachments;
-                } else {
-                    LoggerManager::getLogger()->warn('Email::send: saved attachments is not set');
-                }
-                
-		foreach((array)$savedAttachments as $note) {
-			$mime_type = 'text/plain';
-			if($note->object_name == 'Note') {
-				if(!empty($note->file->temp_file_location) && is_file($note->file->temp_file_location)) { // brandy-new file upload/attachment
-					$file_location = "upload://$note->id";
-					$filename = $note->file->original_file_name;
-					$mime_type = $note->file->mime_type;
-				} else { // attachment coming from template/forward
-					$file_location = "upload://{$note->id}";
-					// cn: bug 9723 - documents from EmailTemplates sent with Doc Name, not file name.
-					$filename = !empty($note->filename) ? $note->filename : $note->name;
-					$mime_type = $note->file_mime_type;
-				}
-			} elseif($note->object_name == 'DocumentRevision') { // from Documents
-				$filePathName = $note->id;
-				// cn: bug 9723 - Emails with documents send GUID instead of Doc name
-				$filename = $note->getDocumentRevisionNameForDisplay();
-				$file_location = "upload://$note->id";
-				$mime_type = $note->file_mime_type;
-			}
+    /**
+     * @return array
+     */
+    public function getSystemDefaultEmail()
+    {
+        $email = array();
 
         $r1 = $this->db->query('SELECT config.value FROM config WHERE name=\'fromaddress\'');
         $r2 = $this->db->query('SELECT config.value FROM config WHERE name=\'fromname\'');

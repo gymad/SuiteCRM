@@ -479,7 +479,22 @@ eoq;
         );
 
         foreach ($this->sugarbean->field_defs as $field) {
-            if (!isset($banned[$field['name']]) && (!isset($field['massupdate']) || !empty($field['massupdate']))) {
+            
+            $fieldName = null;
+            if (isset($field['name'])) {
+                $fieldName = $field['name'];
+            } else {
+                LoggerManager::getLogger()->warn('MassUpdate::getMassUpdateForm: banned field is not set at name');
+            }
+            
+            $bannedFieldName = null;
+            if (isset($banned[$fieldName])) {
+                $bannedFieldName = $banned[$fieldName];
+            } else {
+                LoggerManager::getLogger()->warn('MassUpdate::getMassUpdateForm: banned is not set at field name');
+            }
+            
+            if (!isset($bannedFieldName) && (!isset($field['massupdate']) || !empty($field['massupdate']))) {
                 $newhtml = '';
 
                 if ($even) {
@@ -551,7 +566,15 @@ eoq;
                             } else {
                                 if (!empty($field['options'])) {
                                     $even = !$even;
-                                    $newhtml .= $this->addStatus($displayname, $field["name"],
+                                    
+                                    $fieldName = null;
+                                    if (isset($field['name'])) {
+                                        $fieldName = $field['name'];
+                                    } else {
+                                        LoggerManager::getLogger()->warn('MassUpdate::getMassUpdateForm: field is not set at name');
+                                    }
+                                    
+                                    $newhtml .= $this->addStatus($displayname, $fieldName,
                                         translate($field["options"]));
                                     break;
                                 } else {

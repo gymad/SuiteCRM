@@ -296,7 +296,7 @@ class SugarViewTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
     public function testgetMenu()
     {
 
-        ////error_reporting(E_ALL);
+        
 
         $SugarView = new SugarView();
 

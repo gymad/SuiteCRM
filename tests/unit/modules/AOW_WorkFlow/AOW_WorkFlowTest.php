@@ -319,7 +319,7 @@ class AOW_WorkFlowTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertTrue($aowWorkFlow->compare_condition('test', array('test1', 'test2'), 'Not_One_of'));
 
         //These do not return bool but 'strpos' result
-        //$this->assertNotFalse($aowWorkFlow->compare_condition('test1', 'test', 'Contains'));
+        
         $this->assertEquals(0, $aowWorkFlow->compare_condition('test1', 'test', 'Contains'));
 
         //$this->assertNotFalse($aowWorkFlow->compare_condition('test1', 'test', 'Starts_With'));

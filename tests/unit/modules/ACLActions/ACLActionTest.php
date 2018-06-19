@@ -116,7 +116,7 @@ $_POST['foo'] = 'bar123ase';
         //verify that all three results retunred are different
         
         
-        //$this->assertNotSame($result2, $result3);
+        
     }
 
     public function testhasAccess()

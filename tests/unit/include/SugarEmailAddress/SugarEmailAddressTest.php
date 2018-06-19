@@ -921,7 +921,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//                'invalid_email' => '1',
+
 //                'opt_out' => '0',
 //                'email_address_id' => null,
 //            ),

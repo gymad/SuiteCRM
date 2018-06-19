@@ -1123,7 +1123,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//            "DELETE FROM contacts WHERE id = 'test_contact_{$i}'";
+
 //        $db->query($q);
     }
 

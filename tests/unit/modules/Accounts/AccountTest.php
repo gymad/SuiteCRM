@@ -61,7 +61,7 @@ class AccountTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $state = new SuiteCRM\StateSaver();
         
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
 
         //test without name setting attribute
         $Account = new Account();

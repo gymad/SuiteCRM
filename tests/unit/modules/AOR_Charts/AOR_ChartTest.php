@@ -1,6 +1,6 @@
 <?php
 
-//require_once 'modules/AOR_Charts/lib/pChart/pChart.php';
+
 class AOR_ChartTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 {
     public function testAOR_Chart()

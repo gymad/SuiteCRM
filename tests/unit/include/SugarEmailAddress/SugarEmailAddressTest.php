@@ -1074,7 +1074,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
     {
         $this->markTestIncomplete('testUpdateFlags');
 //        // test
-//        $i = 1;
+
 //        $q = /** @lang sql */
 //            "
 //          INSERT INTO email_addr_bean_rel (id, email_address_id, bean_id, bean_module, primary_address, deleted)

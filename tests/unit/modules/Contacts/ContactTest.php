@@ -225,7 +225,7 @@ class ContactTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 					);
 
 		$actual = $contact->get_list_view_data();
-		//$this->assertSame($expected, $actual);
+		
 		$this->assertEquals($expected['NAME'], $actual['NAME']);
 		$this->assertEquals($expected['FIRST_NAME'], $actual['FIRST_NAME']);
 		$this->assertEquals($expected['LAST_NAME'], $actual['LAST_NAME']);

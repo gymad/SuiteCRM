@@ -80,7 +80,7 @@ $_POST['foo'] = 'bar123ase';
         $state = new SuiteCRM\StateSaver();
         
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
 
         $this->assertFalse(ACLAction::AccessName('')); //test with invalid value
         $this->assertEquals('All', ACLAction::AccessName(90)); //test with a valid value

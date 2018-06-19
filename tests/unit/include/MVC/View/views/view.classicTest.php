@@ -56,7 +56,7 @@ class ViewClassicTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         
         // folowing code says: "Test code or tested code did not (only) close its own output buffers"
 
-//        $ret = $view->display();
+
 //        $renderedContent = ob_get_contents();
 //        ob_end_clean();
 //        $this->assertEquals(0, strlen($renderedContent), 'Renderered Content was: ' . $renderedContent);

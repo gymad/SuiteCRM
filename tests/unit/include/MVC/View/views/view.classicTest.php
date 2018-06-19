@@ -59,7 +59,7 @@ class ViewClassicTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//        $this->assertEquals(0, strlen($renderedContent), 'Renderered Content was: ' . $renderedContent);
+
 //        $this->assertTrue($ret);
         
         $this->markTestIncomplete("Warning was: Test code or tested code did not (only) close its own output buffers");

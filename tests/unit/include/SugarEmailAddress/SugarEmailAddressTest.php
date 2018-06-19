@@ -1099,7 +1099,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//        $a = $db->fetchByAssoc($r);
+
 //
 //        self::assertSame(array(
 //            'id' => $a['id'],

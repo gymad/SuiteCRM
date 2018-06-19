@@ -32,7 +32,7 @@ class SugarApplicationTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
         //cannot test this method as it uses die which stops execution of php unit as well
         /*  
-        //error_reporting(E_ERROR | E_PARSE);
+        
         
         $SugarApplication = new SugarApplication();
         $SugarApplication->controller = new SugarController();

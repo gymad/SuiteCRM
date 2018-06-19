@@ -48,7 +48,7 @@ class php_zip_utilsTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
         $this->markTestIncomplete('File handling doesnt works in localy');
 
-//        $this->assertFileExists($cache_dir.'/config_override.php');
+
 
         unlink($cache_dir.'/config.php');
         unlink($cache_dir.'/config_override.php');

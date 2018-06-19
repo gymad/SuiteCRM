@@ -1086,7 +1086,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//        $db->query($q);
+
 //
 //        $this->ea->addAddress('test@email.com', true);
 //

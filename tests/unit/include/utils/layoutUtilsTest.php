@@ -42,7 +42,7 @@ class layout_utilsTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertContains('Users Home', $html2);
         $this->assertGreaterThan(strlen($html2), strlen($html1));
 
-        //with show_create flase and count > 1, generates more html compared to count =0
+        
         $html3 = get_module_title('Users', 'Users Home', false, 2);
         $this->assertGreaterThan(0, strlen($html3));
         $this->assertContains('Users', $html3);

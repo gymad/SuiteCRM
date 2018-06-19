@@ -8,7 +8,7 @@ class progress_bar_utilsTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstrac
         $state = new SuiteCRM\StateSaver();
         
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
         
         
         //execute the method and test if it doesn't throw an exception.

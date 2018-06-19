@@ -59,7 +59,7 @@ class array_utilsTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $tempArray['Key1']['Key2'] = array('Key3' => 'value', 'Key4' => 'value');
         $expected = "\$tempArray['key1']['key2']=array (\n  'Key1' => \n  array (\n    'Key2' => \n    array (\n      'Key3' => 'value',\n      'Key4' => 'value',\n    ),\n  ),\n);";
         $actual = override_value_to_string_recursive(array('key1', 'key2'), 'tempArray', $tempArray);
-        //var_dump( nl2br($actual));
+        
         $this->assertSame($actual, $expected);
     }
 

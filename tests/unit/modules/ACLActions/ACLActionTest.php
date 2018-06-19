@@ -51,7 +51,7 @@ $_POST['foo'] = 'bar123ase';
         $state->pushTable('acl_actions');
         $state->pushTable('aod_index');
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
 
         //take count of actions initially and then after method execution and test if action count increases
         $action_count = count(ACLAction::getDefaultActions());

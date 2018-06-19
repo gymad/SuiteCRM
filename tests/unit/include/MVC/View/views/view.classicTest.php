@@ -21,7 +21,7 @@ class ViewClassicTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertInstanceOf('SugarView', $view);
         $this->assertAttributeEquals('', 'type', $view);
 
-        //test with bean parameter;
+        
         $bean = new User();
         $view = new ViewClassic($bean);
         $this->assertInstanceOf('ViewClassic', $view);

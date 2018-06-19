@@ -35,7 +35,7 @@ class ContactTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         
         
         $this->markTestIncomplete('Breaks on php 7.1');
-		//error_reporting(E_ERROR | E_PARSE);
+		
 
 		$contact = new Contact();
 

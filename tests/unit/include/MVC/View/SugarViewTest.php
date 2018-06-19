@@ -310,7 +310,7 @@ class SugarViewTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
     		 
     	} catch (Exception $e) {
     		$this->assertTrue(TRUE);
-    		//$this->fail($e->getMessage() . "\nTrace:\n" . $e->getTraceAsString());
+    		
     	} */
 
         //check with valid value and check if it returns an array.

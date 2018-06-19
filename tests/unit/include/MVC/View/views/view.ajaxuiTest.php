@@ -19,7 +19,7 @@ class ViewAjaxUITest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //        try {
 
 
-//            $this->assertStringStartsWith('Cannot modify header information', $e->getMessage());
+
 //        }
         $this->markTestIncomplete('Can Not be implemented');
     }

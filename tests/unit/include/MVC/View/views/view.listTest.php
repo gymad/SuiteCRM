@@ -227,7 +227,7 @@ class ViewListTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         ob_end_clean();
         $this->assertGreaterThan(0, strlen($renderedContent));
 
-        //test with use_old_search = true. there is a $view variable which is never set so it doesn't returns anything.
+        
         $view = new ViewList();
         $view->prepareSearchForm();
         $view->use_old_search = true;

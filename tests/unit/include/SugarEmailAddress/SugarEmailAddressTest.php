@@ -1085,7 +1085,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//            "INSERT INTO contacts (id) VALUES ('test_contact_{$i}')";
+
 //        $db->query($q);
 //
 //        $this->ea->addAddress('test@email.com', true);

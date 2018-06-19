@@ -115,7 +115,7 @@ $_POST['foo'] = 'bar123ase';
         self::markTestIncomplete('Need to implement: verify that all three results retunred are different.');
         //verify that all three results retunred are different
         
-        //$this->assertNotSame($result1, $result3);
+        
         //$this->assertNotSame($result2, $result3);
     }
 

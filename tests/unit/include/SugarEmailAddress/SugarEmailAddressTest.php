@@ -915,7 +915,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $db->query($q);
         $results = $this->ea->populateAddresses('', $module, array('emailAddress0' => 'test@email.com'));
         $this->markTestIncomplete('We need to clear the emails after each test');
-//        self::assertEquals(false, $results);
+
 //        self::assertSame(array(
 //            1 => array(
 //                'email_address' => 'test@email.com',

@@ -1103,7 +1103,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //
 //        self::assertSame(array(
 
-//            'email_address' => 'test@email.com',
+
 //            'email_address_caps' => 'TEST@EMAIL.COM',
 //            'invalid_email' => '0',
 //            'opt_out' => '0',

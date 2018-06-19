@@ -205,7 +205,7 @@ class aCaseTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         );
 
         $actual = $aCase->get_list_view_data();
-        //$this->assertSame($expected ,$actual);
+        
         $this->assertEquals($expected['NAME'], $actual['NAME']);
         $this->assertEquals($expected['CASE_NUMBER'], $actual['CASE_NUMBER']);
         $this->assertEquals($expected['STATUS'], $actual['STATUS']);

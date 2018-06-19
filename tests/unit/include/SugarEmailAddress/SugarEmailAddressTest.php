@@ -917,7 +917,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->markTestIncomplete('We need to clear the emails after each test');
 
 //        self::assertSame(array(
-//            1 => array(
+
 //                'email_address' => 'test@email.com',
 //                'primary_address' => '0',
 //                'reply_to_address' => '0',

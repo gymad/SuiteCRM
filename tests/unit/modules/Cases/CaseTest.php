@@ -69,7 +69,7 @@ class aCaseTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $state = new SuiteCRM\StateSaver();
         $state->pushTable('aod_indexevent');
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
         
         
         $aCase = new aCase();

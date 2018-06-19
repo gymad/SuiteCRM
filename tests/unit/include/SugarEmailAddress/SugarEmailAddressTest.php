@@ -922,7 +922,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//                'opt_out' => '0',
+
 //                'email_address_id' => null,
 //            ),
 //        ), $this->ea->addresses);

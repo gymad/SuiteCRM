@@ -213,7 +213,7 @@ class SugarApplicationTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         //check that it returns Null
         $this->assertEquals(null, $result);
 
-        //check that controller->hasAccess is true i-e default setting.
+        
         $this->assertEquals(true, $SugarApplication->controller->hasAccess);
     }
 

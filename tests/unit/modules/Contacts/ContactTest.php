@@ -285,7 +285,7 @@ class ContactTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 		
-		//$this->assertEquals(null,$result);
+		
 
 		$this->markTestSkipped('Invalid Columns(email1,email2) in Query ');
 

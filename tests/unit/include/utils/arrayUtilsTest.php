@@ -180,7 +180,7 @@ class array_utilsTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $tempArray = array();
         $expected = array('key1' => array('key2' => array('key3' => 'value3')));
         setDeepArrayValue($tempArray, 'key1_key2_key3', 'value3');
-        //var_dump($tempArray);
+        
         $this->assertSame($tempArray, $expected);
     }
 

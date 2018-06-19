@@ -919,7 +919,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //        self::assertSame(array(
 
 
-//                'primary_address' => '0',
+
 //                'reply_to_address' => '0',
 //                'invalid_email' => '1',
 //                'opt_out' => '0',

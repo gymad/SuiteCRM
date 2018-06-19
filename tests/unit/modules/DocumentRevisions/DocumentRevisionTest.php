@@ -136,7 +136,7 @@ class DocumentRevisionTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $state->pushTable('cron_remove_documents');
         $state->pushTable('document_revisions');
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
         
         
         $documentRevision = new DocumentRevision();

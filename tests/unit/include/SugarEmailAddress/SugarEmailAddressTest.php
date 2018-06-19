@@ -1106,7 +1106,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//            'opt_out' => '0',
+
 //            'confirm_opt_in' => null,
 //            'confirm_opt_in_date' => null,
 //            'confirm_opt_in_sent_date' => null,

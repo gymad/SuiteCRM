@@ -1096,7 +1096,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //
 
 //
-//        $q = /** @lang sql */
+
 //            "SELECT * FROM email_addresses WHERE email_address_caps = 'TEST@EMAIL.COM'";
 //        $r = $db->query($q);
 //        $a = $db->fetchByAssoc($r);

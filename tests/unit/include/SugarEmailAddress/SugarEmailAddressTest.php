@@ -1090,7 +1090,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //
 
 //
-//        $q = /** @lang sql */
+
 //            "UPDATE email_addresses SET opt_out = 0, invalid_email = 1 WHERE email_address_caps = 'TEST@EMAIL.COM'";
 //        $db->query($q);
 //

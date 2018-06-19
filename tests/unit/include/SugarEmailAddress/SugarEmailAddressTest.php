@@ -1092,7 +1092,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //
 
 
-//        $db->query($q);
+
 //
 //        $this->ea->updateFlags();
 //

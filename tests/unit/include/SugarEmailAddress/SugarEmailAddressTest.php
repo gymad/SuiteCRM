@@ -1117,7 +1117,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 //
 //
 
-//            "DELETE FROM email_addr_bean_rel WHERE id = 'test_email_bean_rel_{$i}'";
+
 //        $db->query($q);
 //        $q = /** @lang sql */
 //            "DELETE FROM email_addresses WHERE id = 'test_email_{$i}'";

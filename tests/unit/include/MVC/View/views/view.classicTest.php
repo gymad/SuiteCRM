@@ -58,7 +58,7 @@ class ViewClassicTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//        ob_end_clean();
+
 //        $this->assertEquals(0, strlen($renderedContent), 'Renderered Content was: ' . $renderedContent);
 //        $this->assertTrue($ret);
         

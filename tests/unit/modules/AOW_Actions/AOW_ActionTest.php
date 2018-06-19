@@ -36,7 +36,7 @@ class AOW_ActionTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         
         $state->pushTable('aow_actions');
         
-        //error_reporting(E_ERROR | E_PARSE);
+        
 
         $aowAction = new AOW_Action();
 

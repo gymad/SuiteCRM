@@ -1083,7 +1083,7 @@ class SugarEmailAddressTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
 
 
-//        $db->query($q);
+
 //        $q = /** @lang sql */
 //            "INSERT INTO contacts (id) VALUES ('test_contact_{$i}')";
 //        $db->query($q);

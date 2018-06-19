@@ -68,7 +68,7 @@
          $state = new SuiteCRM\StateSaver();
          
          
-         ////error_reporting(E_ERROR | E_PARSE);
+         
          
         //execute the method with essential parameters set. it should return some html.
         $view = new ViewEdit();

@@ -273,7 +273,7 @@ class AOW_WorkFlowTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         
 
 
-//        error_reporting(E_ERROR | E_PARSE);
+
         $query = $aowWorkFlow->build_query_where($aowCondition, $call);
 //        $tmpstate->popErrorLevel();
         

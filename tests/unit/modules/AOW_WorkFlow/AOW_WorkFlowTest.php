@@ -325,7 +325,7 @@ class AOW_WorkFlowTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         
         $this->assertEquals(0, $aowWorkFlow->compare_condition('test1', 'test', 'Starts_With'));
 
-        //$this->assertNotFalse($aowWorkFlow->compare_condition('test1', '1', 'Ends_With'));
+        
         $this->assertEquals(4, $aowWorkFlow->compare_condition('test1', '1', 'Ends_With'));
     }
 

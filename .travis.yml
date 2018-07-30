@@ -8,12 +8,12 @@ php:
 
 matrix:
   fast_finish: true
-jobs:
-  include:
-      - stage: codecoverage
-        if: type IN (pull_request) OR branch in (master, develop)
-        php: 7.0
-        script: ./vendor/bin/codecept run install --env travis-ci-hub -f -vvv -d; ./vendor/bin/robo -vvv code:coverage; cat codeception.yml; bash <(curl -s https://codecov.io/bash) -f tests/_output/coverage.xml
+#jobs:
+#  include:
+#      - stage: codecoverage
+#        if: type IN (pull_request) OR branch in (master, develop)
+#        php: 7.0
+#        script: ./vendor/bin/codecept run install --env travis-ci-hub -f -vvv -d; ./vendor/bin/robo -vvv code:coverage; cat codeception.yml; bash <(curl -s https://codecov.io/bash) -f tests/_output/coverage.xml
 sudo: required
 dist: trusty
 services:
@@ -76,7 +76,11 @@ script:
   # Run API functional tests
   # RUN Basic Acceptance test
   - ./vendor/bin/codecept run -f unit --steps -v && ./vendor/bin/codecept run api --steps -f -v && sudo chmod -R 777 . && ./vendor/bin/codecept run acceptance --env travis-ci-hub -f -v;
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+    
 after_script:
   - ./build/push_output.sh
   - cat suitecrm.log

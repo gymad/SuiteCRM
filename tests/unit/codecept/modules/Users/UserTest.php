@@ -4,6 +4,33 @@
 class UserTest extends SuiteCRM\StateCheckerUnitAbstract
 {
 
+    public function testSaveWithNameAndPass()
+    {
+        $user = BeanFactory::getBean('Users');
+        $_REQUEST['page'] = 'EditView';
+        $_REQUEST['module'] = 'Users';
+        $_REQUEST['action'] = 'Save';
+        $_REQUEST['Users0emailAddress0'] = 'test@email.adr';
+        $_REQUEST['Users0emailAddressId0'] = '';
+        $_REQUEST['Users0emailAddressPrimaryFlag'] = 'Users0emailAddress0';
+        $resultWithoutNameAndPass = $user->save();
+        $this->assertFalse($resultWithoutNameAndPass);
+        
+        $user->name = 'TestUser1';
+        $resultWithNameOnly = $user->save();
+        $this->assertFalse($resultWithNameOnly);
+        
+        $user->name = null;
+        $user->password = 'TestPass1';
+        $resultWithPassOnly = $user->save();
+        $this->assertFalse($resultWithPassOnly);
+        
+        $user->name = 'TestUser2';
+        $user->password = 'TestPass2';
+        $resultWithNameAndPass = $user->save();
+        $this->assertNotFalse($resultWithNameAndPass);
+        
+    }
 
     public function testgetSignatureButtons()
     {

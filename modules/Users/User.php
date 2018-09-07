@@ -577,6 +577,26 @@ class User extends Person implements EmailInterface
 
         return "1<>1";
     }
+    
+    public static function isUserProfileEditViewPageSaveAction() {
+        $return =
+            (isset($request['page']) && $request['page'] == 'EditView') &&
+            (isset($request['module']) && $request['module'] == 'Users') &&
+            (isset($request['action']) && $request['action'] == 'Save');
+
+        return $return;
+    }
+    
+    protected function validate() {
+        if (!isset($this->user_name) || !$this->user_name) {
+            throw new Exception('User has to have name.');
+        }
+        if (!self::isUserProfileEditViewPageSaveAction()) {
+            if (!isset($this->user_hash) || !$this->user_hash) {
+                throw new Exception('User has to have hash.');
+            }
+        }
+    }
 
     public function save($check_notify = false)
     {
@@ -649,12 +669,15 @@ class User extends Person implements EmailInterface
         // set some default preferences when creating a new user
         $setNewUserPreferences = empty($this->id) || !empty($this->new_with_id);
 
-
         parent::save($check_notify);
 
         // User Profile specific save for Email addresses
         if (!$this->emailAddress->saveAtUserProfile($_REQUEST)) {
             $GLOBALS['log']->error('Email address save error');
+            if (!self::isUserProfileEditViewPageSaveAction()) {
+                $this->generatePasswordHash();
+            }
+            $this->validate();
             return false;
         }
 
@@ -666,7 +689,11 @@ class User extends Person implements EmailInterface
         }
 
         $this->savePreferencesToDB();
-
+        
+        if (!self::isUserProfileEditViewPageSaveAction()) {
+            $this->generatePasswordHash();
+        }
+        $this->validate();
         return $this->id;
     }
 

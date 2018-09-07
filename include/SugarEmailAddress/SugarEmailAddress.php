@@ -503,12 +503,7 @@ class SugarEmailAddress extends SugarBean
      */
     protected function isUserProfileEditViewPageSaveAction($request)
     {
-        $return =
-            (isset($request['page']) && $request['page'] == 'EditView') &&
-            (isset($request['module']) && $request['module'] == 'Users') &&
-            (isset($request['action']) && $request['action'] == 'Save');
-
-        return $return;
+        return User::isUserProfileEditViewPageSaveAction($request);
     }
 
 

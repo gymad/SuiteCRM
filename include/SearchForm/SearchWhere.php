@@ -439,8 +439,7 @@ class SearchWhere
                                     // we concat the db_field array() (both original, and in reverse order) and search for the whole string in it
                                     if ($UnifiedSearch && strpos($field_value, ' ') !== false && strpos($db_field, $parms['db_field'][count($parms['db_field']) - 1]) !== false) {
                                         // Get the table name used for concat
-                                        $concat_table = explode('.', $db_field);
-                                        $concat_table = $concat_table[0];
+                                        $concat_table = $this->getConcatTable($db_field);
                                         // Get the fields for concatenating
                                         $concat_fields = $this->getConcatFields($parms['db_field'], $concat_table);
 
@@ -550,6 +549,13 @@ class SearchWhere
         }
 
         return $where_clauses;
+    }
+       
+    protected function getConcatTable($dbField)
+    {
+        $concatTableSplits = explode('.', $dbField);
+        $concatTable = $concatTableSplits[0];
+        return $concatTable;
     }
                                         
     protected function getConcatFields($dbField, $concatTable)

@@ -90,17 +90,10 @@ class SearchWhere
                     $start_field = 'start_range_' . $real_field;
                     $end_field = 'end_range_' . $real_field;
 
-                    if (isset($form->searchFields[$start_field]['value']) && isset($form->searchFields[$end_field]['value'])) {
-                        $form->searchFields[$real_field]['value'] = $form->searchFields[$start_field]['value'] . '<>' . $form->searchFields[$end_field]['value'];
-                        $form->searchFields[$real_field]['operator'] = 'between';
-                        $parms['value'] = $form->searchFields[$real_field]['value'];
-                        $parms['operator'] = 'between';
-
-                        $field_type = isset($form->seed->field_name_map[$real_field]['type']) ? $form->seed->field_name_map[$real_field]['type'] : '';
-                        if ($field_type == 'datetimecombo' || $field_type == 'datetime') {
-                            $type = $field_type;
-                        }
-
+                    if ($this->isSearchFieldHasStartEndValue($form->searchFields, $start_field, $end_field)) {
+                        $form->searchFields = $this->updateFormSearchFields($form->searchFields, $real_field, $start_field, $end_field);
+                        $parms = $this->updateParamsValueAndOperator($parms, $form->searchFields, $real_field);
+                        $type = $this->updateType($type, $form->seed->field_name_map, $real_field);
                         $field = $real_field;
                         unset($form->searchFields[$end_field]['value']);
                     } else {
@@ -564,6 +557,41 @@ class SearchWhere
         }
 
         return $where_clauses;
+    }
+    
+    protected function isSearchFieldHasStartEndValue($searchFields, $startField, $endField)
+    {
+        $ret = isset($searchFields[$startField]['value']) && isset($searchFields[$endField]['value']);
+        return $ret;
+    }
+                            
+    protected function updateFormSearchFields($earchFields, $realField, $startField, $endField)
+    {
+        $searchFields[$realField]['value'] = $earchFields[$startField]['value'] . '<>' . $earchFields[$endField]['value'];
+        $searchFields[$realField]['operator'] = 'between';
+        return $searchFields;
+    }
+    
+    protected function updateParamsValueAndOperator($paramsArray, $searchFields, $realFields)
+    {
+        $paramsArray['value'] = searchFields[$realFields]['value'];
+        $paramsArray['operator'] = 'between';
+        return $paramsArray;
+    }
+                        
+    protected function updateType($type, $fieldNameMap, $realField)
+    {
+        $fieldType = $this->getFieldType($fieldNameMap, $realField);
+        if ($fieldType == 'datetimecombo' || $fieldType == 'datetime') {
+            $type = $fieldType;
+        }
+        return $type;
+    }
+                        
+    protected function getFieldType($fieldNameMap, $realField)
+    {
+        $fieldType = isset($fieldNameMap[$realField]['type']) ? $fieldNameMap[$realField]['type'] : '';
+        return $fieldType;
     }
     
     protected function isFieldNameMapMultiSelectAtField($fieldNameMap, $field)

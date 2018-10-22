@@ -93,7 +93,7 @@ class SearchWhere
                     if ($this->isSearchFieldHasStartEndValue($form->searchFields, $start_field, $end_field)) {
                         $form->searchFields = $this->updateFormSearchFields($form->searchFields, $real_field, $start_field, $end_field);
                         $parms = $this->updateParamsValueAndOperator($parms, $form->searchFields, $real_field);
-                        $type = $this->updateType($type, $form->seed->field_name_map, $real_field);
+                        $type = $this->updateTypeIfDateTime($type, $form->seed->field_name_map, $real_field);
                         $field = $real_field;
                         unset($form->searchFields[$end_field]['value']);
                     } else {
@@ -565,21 +565,21 @@ class SearchWhere
         return $ret;
     }
                             
-    protected function updateFormSearchFields($earchFields, $realField, $startField, $endField)
+    protected function updateFormSearchFields($searchFields, $realField, $startField, $endField)
     {
-        $searchFields[$realField]['value'] = $earchFields[$startField]['value'] . '<>' . $earchFields[$endField]['value'];
+        $searchFields[$realField]['value'] = $searchFields[$startField]['value'] . '<>' . $searchFields[$endField]['value'];
         $searchFields[$realField]['operator'] = 'between';
         return $searchFields;
     }
     
     protected function updateParamsValueAndOperator($paramsArray, $searchFields, $realFields)
     {
-        $paramsArray['value'] = searchFields[$realFields]['value'];
+        $paramsArray['value'] = $searchFields[$realFields]['value'];
         $paramsArray['operator'] = 'between';
         return $paramsArray;
     }
                         
-    protected function updateType($type, $fieldNameMap, $realField)
+    protected function updateTypeIfDateTime($type, $fieldNameMap, $realField)
     {
         $fieldType = $this->getFieldType($fieldNameMap, $realField);
         if ($fieldType == 'datetimecombo' || $fieldType == 'datetime') {
@@ -614,8 +614,8 @@ class SearchWhere
     protected function isFieldNameMapNonDbAtField($fieldNameMap, $field)
     {
         $ret = isset($fieldNameMap[$field]) &&
-                                isset($fieldNameMap[$field]['source']) &&
-                                $fieldNameMap[$field]['source'] == 'non-db';
+            isset($fieldNameMap[$field]['source']) &&
+            $fieldNameMap[$field]['source'] == 'non-db';
         return $ret;
     }
                             

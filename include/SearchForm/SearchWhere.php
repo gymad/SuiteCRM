@@ -442,14 +442,7 @@ class SearchWhere
                                         $concat_table = explode('.', $db_field);
                                         $concat_table = $concat_table[0];
                                         // Get the fields for concatenating
-                                        $concat_fields = $parms['db_field'];
-
-                                        // If db_fields (e.g. contacts.first_name) contain table name, need to remove it
-                                        for ($i = 0; $i < count($concat_fields); $i++) {
-                                            if (strpos($concat_fields[$i], $concat_table) !== false) {
-                                                $concat_fields[$i] = substr($concat_fields[$i], strlen($concat_table) + 1);
-                                            }
-                                        }
+                                        $concat_fields = $this->getConcatFields($parms['db_field'], $concat_table);
 
                                         // Concat the fields and search for the value
                                         $where .= $form->seed->db->concat($concat_table, $concat_fields) . " LIKE " . $form->seed->db->quoted($field_value . $like_char);
@@ -558,7 +551,20 @@ class SearchWhere
 
         return $where_clauses;
     }
-    
+                                        
+    protected function getConcatFields($dbField, $concatTable)
+    {
+        $concatFields = $dbField;
+
+        // If db_fields (e.g. contacts.first_name) contain table name, need to remove it
+        for ($i = 0; $i < count($concatFields); $i++) {
+            if (strpos($concatFields[$i], $concatTable) !== false) {
+                $concatFields[$i] = substr($concatFields[$i], strlen($concatTable) + 1);
+            }
+        }
+        return $concatFields;
+    }
+                                        
     protected function isSearchFieldHasStartEndValue($searchFields, $startField, $endField)
     {
         $ret = isset($searchFields[$startField]['value']) && isset($searchFields[$endField]['value']);
@@ -632,9 +638,7 @@ class SearchWhere
         foreach ($paramsValue as $val) {
             if ($val != ' ' and $val != '') {
                 $qVal = $db->quote($val);
-                if (!empty($fieldValue)) {
-                    $fieldValue .= ' or ';
-                }
+                $fieldValue .= (!empty($fieldValue) ? ' or ' : '');
                 $fieldValue .= "$dbField like '%^$qVal^%'";
             } else {
                 $fieldValue .= '(' . $dbField . ' IS NULL or ' . $dbField . "='^^' or " . $dbField . "='')";

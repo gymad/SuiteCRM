@@ -164,36 +164,15 @@ class SearchWhere
                     $field_value = '';
 
                     // always construct the where clause for multiselects using the 'like' form to handle combinations of multiple $vals and multiple $parms
-                    if (!empty($form->seed->field_name_map[$field]['isMultiSelect']) && $form->seed->field_name_map[$field]['isMultiSelect']) {
+                    if ($this->isFieldNameMapMultiSelectAtField($form->seed->field_name_map, $field)) {
                         // construct the query for multenums
                         // use the 'like' query as both custom and OOB multienums are implemented with types that cannot be used with an 'in'
                         $operator = 'custom_enum';
                         // Relationshipfields get their field name directly from the field name map,
                         // this alias-name is automatically replaced by the join table and rname through sugarbean::create_new_list_query
-                        if (isset($form->seed->field_name_map[$field]) &&
-                            isset($form->seed->field_name_map[$field]['source']) &&
-                            $form->seed->field_name_map[$field]['source'] == 'non-db'
-                        ) {
-                            $db_field = $form->seed->field_name_map[$field]['name'];
-                        } else {
-                            $table_name = $form->seed->table_name;
-                            if ($customField) {
-                                $table_name .= "_cstm";
-                            }
-                            $db_field = $table_name . "." . $field;
-                        }
-
-                        foreach ($parms['value'] as $val) {
-                            if ($val != ' ' and $val != '') {
-                                $qVal = $db->quote($val);
-                                if (!empty($field_value)) {
-                                    $field_value .= ' or ';
-                                }
-                                $field_value .= "$db_field like '%^$qVal^%'";
-                            } else {
-                                $field_value .= '(' . $db_field . ' IS NULL or ' . $db_field . "='^^' or " . $db_field . "='')";
-                            }
-                        }
+                        $db_field = $this->getDbField($form->seed->field_name_map, $field, $form->seed->table_name, $customField);
+                        
+                        $field_value = $this->updateFieldValueByParamsValue($db, $field_value, $params['value'], $db_field);
                     } else {
                         $operator = $operator != 'subquery' ? 'in' : $operator;
                         foreach ($parms['value'] as $val) {
@@ -586,8 +565,58 @@ class SearchWhere
 
         return $where_clauses;
     }
-     
-    public function updateFieldValueByVardefEntry($fieldValue, $vardefEntry)
+    
+    protected function isFieldNameMapMultiSelectAtField($fieldNameMap, $field)
+    {
+        $ret = !empty($fieldNameMap[$field]['isMultiSelect']) && $fieldNameMap[$field]['isMultiSelect'];
+        return $ret;
+    }
+                    
+    protected function getDbField($fieldNameMap, $field, $tableName, $customField)
+    {
+        if ($this->isFieldNameMapNonDbAtField($fieldNameMap, $field)) {
+            $dbField = $fieldNameMap[$field]['name'];
+        } else {
+            $tableName = $this->updateTableName($tableName, $customField);
+            $dbField = $tableName . "." . $field;
+        }
+        return $dbField;
+    }
+       
+    protected function isFieldNameMapNonDbAtField($fieldNameMap, $field)
+    {
+        $ret = isset($fieldNameMap[$field]) &&
+                                isset($fieldNameMap[$field]['source']) &&
+                                $fieldNameMap[$field]['source'] == 'non-db';
+        return $ret;
+    }
+                            
+    protected function updateTableName($tableName, $customField)
+    {
+        if ($customField) {
+            $tableName .= "_cstm";
+        }
+        return $tableName;
+    }
+    
+    protected function updateFieldValueByParamsValue($db, $fieldValue, $paramsValue, $dbField)
+    {
+        foreach ($paramsValue as $val) {
+            if ($val != ' ' and $val != '') {
+                $qVal = $db->quote($val);
+                if (!empty($fieldValue)) {
+                    $fieldValue .= ' or ';
+                }
+                $fieldValue .= "$dbField like '%^$qVal^%'";
+            } else {
+                $fieldValue .= '(' . $dbField . ' IS NULL or ' . $dbField . "='^^' or " . $dbField . "='')";
+            }
+        }
+                            
+        return $fieldValue;
+    }
+                        
+    protected function updateFieldValueByVardefEntry($fieldValue, $vardefEntry)
     {
         if (!empty($vardefEntry['db_concat_fields']) && in_array('first_name', $vardefEntry['db_concat_fields']) && in_array('last_name', $vardefEntry['db_concat_fields'])) {
             if (!empty($GLOBALS['app_list_strings']['salutation_dom']) && is_array($GLOBALS['app_list_strings']['salutation_dom'])) {
@@ -597,7 +626,7 @@ class SearchWhere
         return $fieldValue;
     }
                                             
-    public function updateFieldValueBySalutationDom($fieldValue, $salutationDom)
+    protected function updateFieldValueBySalutationDom($fieldValue, $salutationDom)
     {
         foreach ($salutationDom as $salutation) {
             if ($this->isSalutationInFieldValue($salutation, $fieldValue)) {

@@ -48,7 +48,8 @@ if (!defined('sugarEntry') || !sugarEntry) {
  *
  * @author gyula
  */
-class SearchWhere {
+class SearchWhere
+{
     /**
      * generateSearchWhere
      *
@@ -484,19 +485,8 @@ class SearchWhere {
                                     } else {
                                         //Check if this is a first_name, last_name search
                                         if (isset($form->seed->field_name_map) && isset($form->seed->field_name_map[$db_field])) {
-                                            $vardefEntry = $form->seed->field_name_map[$db_field];
-                                            if (!empty($vardefEntry['db_concat_fields']) && in_array('first_name', $vardefEntry['db_concat_fields']) && in_array('last_name', $vardefEntry['db_concat_fields'])) {
-                                                if (!empty($GLOBALS['app_list_strings']['salutation_dom']) && is_array($GLOBALS['app_list_strings']['salutation_dom'])) {
-                                                    foreach ($GLOBALS['app_list_strings']['salutation_dom'] as $salutation) {
-                                                        if (!empty($salutation) && strpos($field_value, $salutation) === 0) {
-                                                            $field_value = trim(substr($field_value, strlen($salutation)));
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
+                                            $field_value = $this->updateFieldValueByVardefEntry($field_value, $form->seed->field_name_map[$db_field]);
                                         }
-
                                         //field is not last name or this is not from global unified search, so do normal where clause
                                         $where .= $db_field . " like " . $form->seed->db->quoted(sql_like_string($field_value, $like_char));
                                     }
@@ -595,5 +585,32 @@ class SearchWhere {
         }
 
         return $where_clauses;
+    }
+     
+    public function updateFieldValueByVardefEntry($fieldValue, $vardefEntry)
+    {
+        if (!empty($vardefEntry['db_concat_fields']) && in_array('first_name', $vardefEntry['db_concat_fields']) && in_array('last_name', $vardefEntry['db_concat_fields'])) {
+            if (!empty($GLOBALS['app_list_strings']['salutation_dom']) && is_array($GLOBALS['app_list_strings']['salutation_dom'])) {
+                $fieldValue = $this->updateFieldValueBySalutationDom($fieldValue, $GLOBALS['app_list_strings']['salutation_dom']);
+            }
+        }
+        return $fieldValue;
+    }
+                                            
+    public function updateFieldValueBySalutationDom($fieldValue, $salutationDom)
+    {
+        foreach ($salutationDom as $salutation) {
+            if ($this->isSalutationInFieldValue($salutation, $fieldValue)) {
+                $fieldValue = trim(substr($fieldValue, strlen($salutation)));
+                break;
+            }
+        }
+        return $fieldValue;
+    }
+    
+    protected function isSalutationInFieldValue($salutation, $fieldValue)
+    {
+        $ret = !empty($salutation) && strpos($fieldValue, $salutation) === 0;
+        return $ret;
     }
 }

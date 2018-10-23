@@ -105,7 +105,9 @@ class SearchWhere
 
                     //Special case for datetime and datetimecombo fields.  By setting the type here we allow an actual between search
                     if (in_array($parms['operator'], array('=', 'between', "not_equal", 'less_than', 'greater_than', 'less_than_equals', 'greater_than_equals'))) {
-                        $field_type = isset($form->seed->field_name_map[$real_field]['type']) ? $form->seed->field_name_map[$real_field]['type'] : '';
+                        
+                        $field_type = $this->getFieldTypeFromFieldNameMapByRealField($form->seed->field_name_map, $real_field);
+                        $field_type = $this->updateFieldTypeIfReadOnlyDbType($field_type, $form->seed->field_name_map, $real_field);
                         if (strtolower($field_type) == 'readonly' && isset($form->seed->field_name_map[$real_field]['dbType'])) {
                             $field_type = $form->seed->field_name_map[$real_field]['dbType'];
                         }
@@ -593,14 +595,14 @@ class SearchWhere
                         
     protected function updateTypeIfDateTime($type, $fieldNameMap, $realField)
     {
-        $fieldType = $this->getFieldType($fieldNameMap, $realField);
+        $fieldType = $this->getFieldTypeFromFieldNameMapByRealField($fieldNameMap, $realField);
         if ($fieldType == 'datetimecombo' || $fieldType == 'datetime') {
             $type = $fieldType;
         }
         return $type;
     }
                         
-    protected function getFieldType($fieldNameMap, $realField)
+    protected function getFieldTypeFromFieldNameMapByRealField($fieldNameMap, $realField)
     {
         $fieldType = isset($fieldNameMap[$realField]['type']) ? $fieldNameMap[$realField]['type'] : '';
         return $fieldType;

@@ -19,9 +19,9 @@ curl -i -F file=@$FILE https://uguu.se/api.php?d=upload-tool
 echo -en $NC;
 echo " in your favorite web browser";
 echo " "
+}
 
 curl -i -F file="suitecrm.log" https://uguu.se/api.php?d=upload-tool
-}
 
 #
 cd $ROOTPATH/tests/_output

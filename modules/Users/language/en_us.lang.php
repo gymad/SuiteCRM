@@ -168,6 +168,7 @@ $mod_strings = array(
     'LBL_SUBTHEME_OPTIONS_DAY' => 'Day',
     'LBL_SUBTHEME_OPTIONS_DUSK' => 'Dusk',
     'LBL_SUBTHEME_OPTIONS_NIGHT' => 'Night',
+    'LBL_SUBTHEME_OPTIONS_NIGHT' => 'Noon',
     'LBL_SUBTHEME' => 'Style',
     'LBL_LDAP' => 'LDAP',
     'LBL_LDAP_AUTHENTICATION' => 'LDAP Authentication',

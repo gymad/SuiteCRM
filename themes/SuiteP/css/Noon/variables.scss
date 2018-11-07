@@ -7,7 +7,7 @@ $md-breakpoint: 1024px;
 $lg-breakpoint: 1200px;
 
 /// Colors
-$main-bg: $color-51;
+$main-bg: $color-51-1;
 
 // All panels
 $main-alternate-bg: $color-80-1;
@@ -166,7 +166,7 @@ $table-bg:                      transparent !default;
 //** Background color used for `.table-striped`.
 $table-bg-accent:               $color-78 !default;
 //** Background color used for `.table-hover`.
-$table-bg-hover:                $color-51 !default;
+$table-bg-hover:                $color-51-2 !default;
 $table-bg-active:               $table-bg-hover !default;
 
 //** Border color for table and cell borders.
@@ -179,7 +179,7 @@ $table-border-color:            $color-64 !default;
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              $color-51 !default;
+$btn-default-color:              $color-51-3 !default;
 $btn-default-bg:                 $color-87 !default;
 $btn-default-border:             $color-87 !default;
 
@@ -280,7 +280,7 @@ $dropdown-link-color:            $gray-dark !default;
 //** Hover color for dropdown links.
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg:         $color-51 !default;
+$dropdown-link-hover-bg:         $color-51-4 !default;
 
 //** Active dropdown menu item text color.
 $dropdown-link-active-color:     $component-active-color !default;
@@ -682,7 +682,7 @@ $alert-danger-border:         $state-danger-border !default;
 //##
 
 //** Background color of the whole progress component
-$progress-bg:                 $color-51 !default;
+$progress-bg:                 $color-51-5 !default;
 //** Progress bar text color
 $progress-bar-color:          $color-80-22 !default;
 //** Variable for setting rounded corners on progress bar.
@@ -712,7 +712,7 @@ $list-group-border:             $color-64 !default;
 $list-group-border-radius:      $border-radius-base !default;
 
 //** Background color of single list items on hover
-$list-group-hover-bg:           $color-51 !default;
+$list-group-hover-bg:           $color-51-6 !default;
 //** Text color of active list items
 $list-group-active-color:       $component-active-color !default;
 //** Background color of active list items
@@ -746,11 +746,11 @@ $panel-border-radius:         $border-radius-base !default;
 
 //** Border color for elements within panels
 $panel-inner-border:          $color-64 !default;
-$panel-footer-bg:             $color-51 !default;
+$panel-footer-bg:             $color-51-7 !default;
 
 $panel-default-text:          $gray-dark !default;
 $panel-default-border:        transparent !default;
-$panel-default-heading-bg:    $color-51 !default;
+$panel-default-heading-bg:    $color-51-8 !default;
 
 $panel-primary-text:          $color-80-24 !default;
 $panel-primary-border:        $brand-primary !default;
@@ -796,7 +796,7 @@ $thumbnail-caption-padding:   9px !default;
 //
 //##
 
-$well-bg:                     $color-51 !default;
+$well-bg:                     $color-51-9 !default;
 $well-border:                 darken($well-bg, 7%) !default;
 
 
@@ -826,7 +826,7 @@ $badge-border-radius:         10px !default;
 $breadcrumb-padding-vertical:   8px !default;
 $breadcrumb-padding-horizontal: 15px !default;
 //** Breadcrumb background color
-$breadcrumb-bg:                 $color-51 !default;
+$breadcrumb-bg:                 $color-51-10 !default;
 //** Breadcrumb text color
 $breadcrumb-color:              $color-62 !default;
 //** Text color of current page in the breadcrumb
@@ -871,7 +871,7 @@ $code-bg:                     $color-77 !default;
 $kbd-color:                   $color-80-33 !default;
 $kbd-bg:                      $color-3 !default;
 
-$pre-bg:                      $color-51 !default;
+$pre-bg:                      $color-51-11 !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            $color-62 !default;
 $pre-scrollable-max-height:   340px !default;
@@ -928,7 +928,8 @@ $login-top-bar-bg: $color-81-5;
 
 
 // Buttons
-$default-btn-color: $color-51;
+$default-btn-color: $color-81;
+$listview-action-submenu-text-color: $color-51-12;
 $default-text-disabled-bg: $color-52;
 $default-text-disabled-color: $color-52;
 $default-text-disabled-border-color: $color-45;
@@ -1061,7 +1062,7 @@ $panel-button-color: $color-81-21;
 $campaign-pagination-bg-hover: $color-22;
 
 // Detail view
-$detail-view-field-bg: $color-51;
+$detail-view-field-bg: $color-51-13;
 $detail-view-module-title-space: 12px;
 $opt-in-tick-color-not-sent: $color-35;
 $opt-in-tick-color-failed: $color-49;
@@ -1094,7 +1095,7 @@ $mass-update-text-color: $main-font-color;
 
 // mass assign form
 $mass-assign-color: $main-font-color;
-$mass-assign-bg: $color-51;
+$mass-assign-bg: $color-51-14;
 
 // Filters / Search
 $filters-input-bg: $color-80-47;
@@ -1177,14 +1178,14 @@ $calendar-user-height: 32px;
 $calendar-user-bg: $color-36;
 $calendar-user-height: 40px;
 $calendar-header-bg: $color-87;
-$calendar-header-color: $color-51;
+$calendar-header-color: $color-51-15;
 // YUI Popup calendar
 $calendar-month-day-header-bg: $color-81-32;
-$calendar-month-day-header-color: $color-51;
+$calendar-month-day-header-color: $color-51-16;
 $calendar-year-body-bg: $calendar-slot-bg;
 $calendar-year-body-border-color: $calendar-slot-bg;
 $calendar-other-month-day-header-bg: $color-60;
-$calendar-other-month-day-header-color: $color-51;
+$calendar-other-month-day-header-color: $color-51-17;
 $calendar-other-month-day-header-color-hover: $color-50;
 $calendar-nav-header-bg: $color-13;
 $calendar-nav-button-bg: $color-13;
@@ -1206,12 +1207,12 @@ $calendar-arrow-button-color: $btn-info-color;
 
 // Qtip popups in the full calendar
 $qtip-font-size: 12px;
-$qtip-btn-color: $color-51;
+$qtip-btn-color: $color-51-18;
 $qtip-btn-hover: $color-37;
 $qtip-title-bg: $color-9;
-$qtip-title-color: $color-51;
+$qtip-title-color: $color-51-19;
 $qtip-content-bg: $color-11;
-$qtip-content-color: $color-51;
+$qtip-content-color: $color-51-20;
 
 
 // yui

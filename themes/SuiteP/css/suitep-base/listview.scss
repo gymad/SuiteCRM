@@ -3598,4 +3598,24 @@ ul.clickMenu > li > span.searchAppliedAlert {
     color: $list-view-action-menu-link;
 }
 
+#selectLinkTop li.sugar_action_button,
+#selectLinkTop li.sugar_action_button:hover,
+ul.clickMenu.selectmenu.SugarActionMenu.searchLink.listViewLinkButton > li,
+.listViewLinkButton li.sugar_action_button,
+#actionLinkTop li.sugar_action_button,
+#selectLinkBottom li.sugar_action_button,
+#actionLinkBottom li.sugar_action_button,
+#actionLinkBottom li.sugar_action_button:hover,
+#listViewStartButton_top,
+#listViewPrevButton_top,
+.paginationTable .list-view-pagination-button,
+#listViewEndButton_top,
+#listViewStartButton_bottom,
+#listViewPrevButton_bottom,
+.paginationTable .list-view-pagination-button,
+#listViewEndButton_bottom {
+    border: 1px solid;
+    border-color: $list-view-action-button-border-color;
+}
+
 

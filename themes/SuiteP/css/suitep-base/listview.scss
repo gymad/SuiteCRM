@@ -3590,3 +3590,12 @@ ul.clickMenu > li > span.searchAppliedAlert {
     display: inline-block;
   }
 }
+
+#actionLinkTop .sugar_action_button .subnav.ddopen a,
+#actionLinkBottom .sugar_action_button .subnav.ddopen a,
+#actionLinkTop .sugar_action_button .subnav.ddopen a:hover,
+#actionLinkBottom .sugar_action_button .subnav.ddopen a:hover {
+    color: $list-view-action-menu-link;
+}
+
+

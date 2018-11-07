@@ -58,7 +58,7 @@ tr#pagination {
 .list #pagination td .paginationTable .pageNumbers {
   position: static;
   font-weight: bold;
-  color: $list-view-header-color;
+  color: $list-view-pagination-color;
   padding: 0 8px 0 0;
   margin: 0 0 0 0;
 }
@@ -668,7 +668,7 @@ a.listViewTdToolsS1 {
 }
 
 .list .pagination td table td span.pageNumbers {
-  color: $list-view-header-color;
+  color: $list-view-pagination-color;
 }
 
 .list tr.pagination td.buttons ul.clickMenu > li > a:link {

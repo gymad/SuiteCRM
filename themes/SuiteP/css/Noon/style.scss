@@ -94,7 +94,6 @@ select.form-control {
   background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
 }
 
-
 select {
   background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
 }
@@ -103,7 +102,10 @@ select {
   background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
 }
 
-
 select.ui-widget-content {
   background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
+}
+
+.quickcreatetop .dropdown-menu li a:hover {
+    background-color: $color-88;
 }

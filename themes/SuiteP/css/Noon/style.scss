@@ -85,3 +85,25 @@
 #MassUpdate > div.list-view-rounded-corners > table > tbody > tr > td.inlineEdit > b > a {
     text-decoration: underline;
 }
+
+select[size] {
+  background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
+}
+
+select.form-control {
+  background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
+}
+
+
+select {
+  background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
+}
+
+.saved_search_select {
+  background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
+}
+
+
+select.ui-widget-content {
+  background: url("../../../../../themes/SuiteP/css/Noon/select.ico") no-repeat right $input-select-option;
+}

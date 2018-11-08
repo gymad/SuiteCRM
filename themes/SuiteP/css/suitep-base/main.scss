@@ -6,7 +6,7 @@ html {
 body {
   font-family: $page-font-family;
   font-size: $page-font-size;
-  background: $main-bg;
+  background: $main-bg-25;
   color: $main-font-color;
   margin: 0;
   overflow: auto;
@@ -73,12 +73,12 @@ a:hover {
 }
 
 .bootstrap-container.col-sm-offset-3 {
-  background-color: $main-bg;
+  background-color: $main-bg-26;
   margin-top: $navbar-height + 20px;
 }
 
 .bootstrap-container {
-  background-color: $main-bg;
+  background-color: $main-bg-27;
   margin-top: 80px;
 
   .dropdown-menu em {

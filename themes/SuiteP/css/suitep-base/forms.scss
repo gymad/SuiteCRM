@@ -342,7 +342,7 @@ fieldset[disabled] .btn-primary.active {
 
 #conditionLines > tbody > tr {
   display: block;
-  background-color: $main-bg;
+  background-color: $main-bg-17;
   border-bottom: 5px $main-alternate-bg solid;
 }
 
@@ -1196,7 +1196,7 @@ input[type="submit"][disabled] {
   font-size: $page-font-size;
   font-weight: 500;
   background-color: $disabled-btn-bg;
-  color: $main-bg;
+  color: $main-bg-18;
   cursor: pointer;
   margin: 0 0 0 0;
   border: none;
@@ -1212,7 +1212,7 @@ input[type="reset"][disabled] {
   font-size: $page-font-size;
   font-weight: 500;
   background-color: $disabled-btn-bg;
-  color: $main-bg;
+  color: $main-bg-19;
   cursor: pointer;
   margin: 0 0 0 0;
   border: none;
@@ -1228,7 +1228,7 @@ input[type="button"][disabled] {
   font-size: $page-font-size;
   font-weight: 500;
   background-color: $disabled-btn-bg;
-  color: $main-bg;
+  color: $main-bg-20;
   cursor: pointer;
   margin: 0 0 0 0;
   border: none;

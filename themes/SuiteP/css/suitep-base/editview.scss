@@ -2219,7 +2219,7 @@ table.view {
 }
 
 .evenListRowS1 {
-  background: $main-bg;
+  background: $main-bg-12;
 }
 
 .toggler {
@@ -2813,17 +2813,17 @@ table#lineItems tr td table tfoot tr td span {
 }
 
 #lineItems .group > thead {
-  background-color: $main-bg;
+  background-color: $main-bg-13;
   min-height: 52px;
 }
 
 #lineItems .group > thead > tr {
-  background-color: $main-bg;
+  background-color: $main-bg-14;
   min-height: 52px;
 }
 
 #lineItems .group > thead > tr > td {
-  background-color: $main-bg;
+  background-color: $main-bg-15;
   min-height: 52px;
 }
 
@@ -4005,7 +4005,7 @@ select#sales_stage_advanced {
 
 #fieldChoices .field-list {
   display: inline-block;
-  background-color: $main-bg;
+  background-color: $main-bg-16;
   padding: 8px;
   margin-right: 1%;
   border: 1px solid transparent;

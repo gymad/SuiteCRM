@@ -13,14 +13,30 @@ $main-bg: $color-51-1;
 $main-alternate-bg: $color-80-1;
 
 $primary: $color-81-1;
-$danger: $color-50;
-$danger-hover: $color-50;
+
+$danger-1: $color-81-39;
+$danger-2: $color-50-2-2;
+$danger-3: $color-50-2-3;
+$danger-4: $color-50-2-4;
+$danger-5: $color-50-2-5;
+$danger-6: $color-50-2-6;
+$danger-7: $color-50-2-7;
+$danger-8: $color-50-2-8;
+$danger-9: $color-50-2-9;
+$danger-10: $color-50-2-10;
+$danger-11: $color-50-2-11;
+$danger-12: $color-50-2-12;
+$danger-13: $color-50-2-13;
+$danger-14: $color-50-2-14;
+$danger-15: $color-50-2-15;
+
+$danger-hover: $color-50-3;
 $success: $color-5;
 $info: $color-35;
 $warning: $color-47;
 
 $selection-color: $color-80-2;
-$selection-bg: $color-50;
+$selection-bg: $color-50-4;
 
 
 //
@@ -48,7 +64,7 @@ $brand-primary:         $color-81-2 !default; // $color-4
 $brand-success:         $color-10 !default;
 $brand-info:            $color-35 !default;
 $brand-warning:         $color-47 !default;
-$brand-danger:          $color-50 !default;
+$brand-danger:          $color-50-5 !default;
 
 
 //== Scaffolding
@@ -912,7 +928,7 @@ $page-title-space: 40px; // normal 40px
 $main-font-color: $color-81-4;
 $main-header-font-color: $main-font-color;
 
-$link-color: $danger;
+$link-color: $danger-1;
 $link-color-hover: $danger-hover;
 
 $page-title-spacing: 30px; // 30px normal
@@ -943,7 +959,7 @@ $primary-btn-bg-hover: $color-81-6;
 $info-btn-bg: $info;
 $info-btn-bg-hover: $color-29;
 
-$danger-btn-bg: $danger;
+$danger-btn-bg: $danger-2;
 $danger-btn-bg-hover: $color-43;
 $danger-btn-color: $btn-default-color;
 $danger-btn-color-hover: $btn-default-color;
@@ -998,7 +1014,7 @@ $navbar-alert-body-bg: $main-bg;
 $navbar-alert-title-bg: $color-9;
 $navbar-alert-title-color: $main-font-color;
 $navbar-alert-seperator: $navbar-menu-seperator;
-$navbar-alert-count-bg: $color-50;
+$navbar-alert-count-bg: $color-50-6;
 
 $navbar-user-color: $navbar-link-color;
 $navbar-user-color-hover: $navbar-link-color-hover;
@@ -1039,8 +1055,8 @@ $default-tab-bg: $color-87;
 $default-tab-bg-hover: $color-87;
 $default-tab-color-hover: $color-80-41;
 $default-tab-color: $color-80-42;
-$action-tab-bg: $color-50;
-$action-tab-bg-hover: $color-50;
+$action-tab-bg: $color-50-7;
+$action-tab-bg-hover: $color-50-8;
 $action-tab-seperator: $color-53;
 $action-tab-color: $color-80-43;
 $action-tab-color-hover: $color-80-44;
@@ -1145,11 +1161,11 @@ $add-dashlet-tab-color: $color-80-51;
 
 // Campaigns
 $campaign-type-color: $color-80-52;
-$campaign-type-bg: $color-50;
+$campaign-type-bg: $color-50-9;
 $campaign-type-bg-hover: $color-22;
 $campaign-progression-color: $color-80-53;
 $campaign-progression-color-hover:$color-80-54;
-$campaign-progression-bg: $color-50;
+$campaign-progression-bg: $color-50-10;
 $campaign-progression-bg-hover: $color-22;
 $campaign-progression-bg-active: $color-22;
 
@@ -1188,7 +1204,7 @@ $calendar-year-body-bg: $calendar-slot-bg;
 $calendar-year-body-border-color: $calendar-slot-bg;
 $calendar-other-month-day-header-bg: $color-60;
 $calendar-other-month-day-header-color: $color-51-17;
-$calendar-other-month-day-header-color-hover: $color-50;
+$calendar-other-month-day-header-color-hover: $color-50-11;
 $calendar-nav-header-bg: $color-13;
 $calendar-nav-button-bg: $color-13;
 $calendar-body-bg: $main-alternate-bg;
@@ -1275,7 +1291,7 @@ $email-tree-color: $color-9;
 $email-tree-selected: $color-53;
 
 // Notifications
-$notification-bg: $danger !default;
+$notification-bg: $danger-3 !default;
 $notification-text: $danger-btn-color !default;
 
 // Required *

@@ -1935,7 +1935,7 @@ a.tabFormAdvLink:visited {
   position: fixed;
   top: 7px;
   background: $panel-bg;
-  color: $danger;
+  color: $danger-4;
   padding: 5px;
   border: 1px solid $panel-default-border;
   filter: alpha(opacity=80);
@@ -2481,7 +2481,7 @@ input[type=text].cstm_code {
 }
 
 .headerlinks a:hover {
-  color: $danger;
+  color: $danger-5;
 }
 
 .nav-pills li {
@@ -4564,12 +4564,12 @@ object {
 
 #reminders #reminder_view .reminder_item.reminder-error {
   background-color: #fff8f8;
-  border: 1px solid $danger;
+  border: 1px solid $danger-6;
 }
 
 #reminders #reminder_view .reminder_item .error-msg {
   font-weight: bold;
-  color: $danger;
+  color: $danger-7;
 }
 
 #report-editview-footer {

@@ -285,12 +285,12 @@ a#powered_by {
 }
 
 a#admin_options:hover {
-  color: $danger-btn-bg-hover;
+  color: $danger-btn-bg-hover-2;
   text-decoration: none;
 }
 
 a#powered_by:hover {
-  color: $danger-btn-bg-hover;
+  color: $danger-btn-bg-hover-3;
   text-decoration: none;
 }
 
@@ -308,7 +308,7 @@ a#powered_by:hover {
 
 .footer_right a {
   font-size: 12px;
-  color: #4D4D4D;
+  color: $back-to-top-color;
   padding-right: 20px;
   letter-spacing: 1px;
   vertical-align: middle;
@@ -317,7 +317,7 @@ a#powered_by:hover {
 
 .footer_right a:hover {
   background-position: right -15px;
-  color: $danger-btn-bg-hover;
+  color: $danger-btn-bg-hover-4;
 }
 
 .footer_right .suitepicon {
@@ -3362,7 +3362,7 @@ table legend {
 }
 
 .ui-widget-content a:hover {
-  color: $danger-btn-bg-hover;
+  color: $danger-btn-bg-hover-5;
 }
 
 .ui-tabs ul li a {
@@ -3408,7 +3408,7 @@ span.id-ff button {
 }
 
 span.id-ff button:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-6;
 }
 
 span.id-ff button img {
@@ -4249,7 +4249,7 @@ tr:hover img.info {
 
 #EditView div.action_buttons .button:hover,
 #save_and_continue.button:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-7;
 }
 
 .paginationWrapper {

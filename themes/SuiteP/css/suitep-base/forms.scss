@@ -667,7 +667,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-danger:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-8;
 }
 
 .btn-danger:active {
@@ -771,7 +771,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .buttons .primary:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-9;
 }
 
 .buttons .button {
@@ -779,7 +779,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .buttons .button:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-10;
 }
 
 .removeFileButton {
@@ -801,7 +801,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .removeFileButton:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-11;
 }
 
 .buttonOn {
@@ -990,7 +990,7 @@ input[type=button].btn-info:focus {
 }
 
 input[type=submit].button:hover {
-  background: $danger-btn-bg-hover;
+  background: $danger-btn-bg-hover-12;
 }
 
 input[type=submit] {
@@ -1121,14 +1121,14 @@ input[type=submit]:focus, input[type=button] {
 
 .moremenu ul li a:hover {
   background: none ;
-  background: $danger-btn-bg-hover ;
+  background: $danger-btn-bg-hover-13 ;
   color: $default-btn-color ;
   cursor: pointer;
   padding: 5px;
 }
 
 [button]:focus, input[type=reset]:focus {
-  background: $danger-btn-bg-hover;
+  background: $danger-btn-bg-hover-14;
 }
 
 
@@ -1174,7 +1174,7 @@ form[name=DetailView] input[type=reset] {
 }
 
 td.submitButtons .button:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-15;
 }
 
 button[disabled] {
@@ -1667,7 +1667,7 @@ div.col-sm-6 #email1_span td.email-address-add-button {
 }
 
 .emailaddresses button:hover {
-  background-color: $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-16;
 }
 
 .email-address-add-button .suitepicon-action-plus {
@@ -1720,8 +1720,8 @@ div.col-sm-6 #email1_span td.email-address-add-button {
 }
 
 .email-address-add-line-container .email-address-add-button:hover {
-  background-color: $danger-btn-bg-hover;
-  border: 0px solid $danger-btn-bg-hover;
+  background-color: $danger-btn-bg-hover-17;
+  border: 0px solid $danger-btn-bg-hover-18;
 }
 
 /* override bootstrap (Needs to be stacked) */

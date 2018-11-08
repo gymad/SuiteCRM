@@ -82,3 +82,6 @@
 @import '../suitep-base/tinemce.scss';
 @import '../suitep-base/jstree';
 //
+#MassUpdate > div.list-view-rounded-corners > table > tbody > tr > td.inlineEdit > b > a {
+    text-decoration: underline;
+}

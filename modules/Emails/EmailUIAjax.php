@@ -1266,7 +1266,7 @@ eoq;
                 die();
             } else {
                 echo "NOOP";
-
+            }
             break;
 
         case "saveOutbound":
@@ -1523,7 +1523,7 @@ eoq;
                 die();
             } else {
                 echo "NOOP: no search criteria found";
-
+            }
             break;
 
         case "searchAdvanced":

@@ -30,7 +30,7 @@ $danger-13: $color-50-2-13;
 $danger-14: $color-50-2-14;
 $danger-15: $color-50-2-15;
 
-$danger-hover: $color-50-3;
+$danger-hover: $color-81;
 $success: $color-5;
 $info: $color-35;
 $warning: $color-47;
@@ -561,7 +561,7 @@ $state-warning-text:             $color-26 !default;
 $state-warning-bg:               $color-79 !default;
 $state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
 
-$state-danger-text:              $color-58 !default;
+$state-danger-text:              $color-81 !default;
 $state-danger-bg:                $color-73 !default;
 $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 

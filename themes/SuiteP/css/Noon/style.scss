@@ -82,6 +82,10 @@
 @import '../suitep-base/tinemce.scss';
 @import '../suitep-base/jstree';
 //
+
+
+// list view and some common styles
+
 #MassUpdate > div.list-view-rounded-corners > table > tbody > tr > td.inlineEdit > b > a {
     text-decoration: underline;
 }
@@ -114,6 +118,9 @@ select.ui-widget-content {
     background-color: $color-82; 
 }
 
+
+// detail view sub panels
+
 .subpanel-table .clickMenu  > .sugar_action_button:hover > .suitepicon {
     color: $color-80-64;
 }
@@ -124,4 +131,16 @@ table.subpanel-table .pagination li.sugar_action_button:hover > form > a {
 
 td.footable-last-visible ul.clickMenu.SugarActionMenu li.sugar_action_button:hover span.suitepicon.suitepicon-action-caret {
     color: $color-81-50;   
+}
+
+ul.clickMenu.fancymenu.SugarActionMenu li.sugar_action_button ul.subnav.ddopen li form a {
+    color: $color-80-67;
+}
+
+ul.clickMenu.fancymenu.SugarActionMenu li.sugar_action_button ul.subnav.ddopen li a.email-link {
+    color: $color-80-68;
+}
+
+ul.clickMenu.SugarActionMenu li.sugar_action_button ul.subnav.ddopen li a {
+    color: $color-80-69;
 }

@@ -14,7 +14,7 @@
 }
 
 .panel-default > .panel-heading {
-  background: $panel-expanded-bg;
+  background: $panel-expanded-bg-1;
   color: $panel-expanded-color;
   padding: 0;
   height:$panel-header-height;
@@ -24,7 +24,7 @@
 .panel-default > .panel-heading > div {
   font-size: 14px ;
   font-weight: 500;
-  background-color: $panel-expanded-bg;
+  background-color: $panel-expanded-bg-2;
   color: $panel-expanded-color;
   vertical-align: middle;
 }
@@ -73,11 +73,10 @@
   border-top-right-radius: 4px;
   height: $panel-header-height;
   text-decoration: none;
-  //background-color: $panel-expanded-bg;
 }
 
 .panel-default > .panel-heading  > a:not(.panel-heading a div) {
-  background-color: $panel-expanded-bg;
+  background-color: $panel-expanded-bg-3;
 }
 
 .sub-panel  div.tab-content {
@@ -99,7 +98,7 @@
 }
 
 div.panel-heading a.collapsed-override {
-  background-color: $panel-expanded-bg ;
+  background-color: $panel-expanded-bg-4 ;
 }
 
 

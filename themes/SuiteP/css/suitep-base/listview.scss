@@ -3618,4 +3618,43 @@ ul.clickMenu.selectmenu.SugarActionMenu.searchLink.listViewLinkButton > li,
     border-color: $list-view-action-button-border-color;
 }
 
+@if $list-view-links-is-underlined {
+    #MassUpdate > div.list-view-rounded-corners > table > tbody > tr > td.inlineEdit > b > a {
+        text-decoration: underline;
+    }
+}
+
+@if $select-background-override {
+    select[size] {
+      background: $select-background-override;
+    }
+
+    select.form-control {
+      background: $select-background-override;
+    }
+
+    select {
+      background: $select-background-override;
+    }
+
+    .saved_search_select {
+      background: $select-background-override;
+    }
+
+    select.ui-widget-content {
+      background: $select-background-override;
+    }
+}
+
+@if $quickcreatetop-dropdown-menu-li-a-hover-background-color {
+    .quickcreatetop .dropdown-menu li a:hover {
+        background-color: $quickcreatetop-dropdown-menu-li-a-hover-background-color;
+    }
+}
+
+@if $error-background-color {
+    .error {
+        background-color: $error-background-color; 
+    }
+}
 

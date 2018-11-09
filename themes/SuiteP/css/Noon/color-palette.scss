@@ -1,7 +1,7 @@
 //********************
 //* color palette
 //********************
-$color-1: #000000;
+/* $color-1: #000000; */
 $color-2: #31708F;
 $color-3: #333333;
 $color-4: #337AB7;
@@ -28,7 +28,7 @@ $color-24: #8499AB;
 $color-25: #888888;
 $color-26: #8A6D3B;
 $color-27: #93A0AB;
-$color-28: #E5E8EB;
+/* $color-28: #E5E8EB; */
 $color-29: #9589B3;
 $color-30: #99534D;
 $color-31: #999999;
@@ -50,7 +50,7 @@ $color-46: #E56455;
 $color-47: #E6D5A5;
 $color-48: #E6E6E6;
 $color-49: #FF0000;
-$color-50: #F08377;
+/* $color-50: #F08377; */
 /* $color-51: #F5F5F5; */
 $color-52: #F8F8F8;
 $color-53: #FA988D;
@@ -85,7 +85,7 @@ $color-79: #FCF8E3;
 $color-82: #FFDE00;
 $color-86: #7BDBFF;
 /* $color-87: #D9DEE3; */
-$color-88: #B1E7FC;
+/* $color-88: #B1E7FC; */
 
 /* --------- 1 ------------ 
 $color-1-1: #000001;
@@ -129,7 +129,14 @@ $color-13-2: #66727D;
 $color-13-3: #66727D;
 $color-13-4: #66727D;
 
-
+/* ---------- $color-28: #E5E8EB; -------------- 
+$color-28-1: #E5E8E1;
+$color-28-2: #E5E8E2;
+$color-28-2: #E5E8E3;
+*/
+$color-28-1: #E5E8EB;
+$color-28-2: #E5E8EB;
+$color-28-3: #E5E8EB;
 
 /* ---------- 50 -------------- 
 $color-50-1: #F08371;
@@ -379,7 +386,12 @@ $color-80-41: #FFFF41;
 $color-80-42: #FFFF42;
 $color-80-43: #FFFF43;
 $color-80-44: #FFFF44;
-$color-80-45: #FFFF45;
+$color-80-45-1: #FFF145;
+$color-80-45-2: #FFF245;
+$color-80-45-3: #FFF345;
+$color-80-45-4: #FFF445;
+$color-80-45-5: #FFF545;
+$color-80-45-6: #FFF645;
 $color-80-46: #FFFF46;
 $color-80-47: #FFFF47;
 $color-80-48: #FFFF48;
@@ -444,7 +456,12 @@ $color-80-41: #FFFFFF;
 $color-80-42: #FFFFFF;
 $color-80-43: #FFFFFF;
 $color-80-44: #FFFFFF;
-$color-80-45: #FFFFFF;
+$color-80-45-1: #FFFFFF;
+$color-80-45-2: #FFFFFF;
+$color-80-45-3: #FFFFFF;
+$color-80-45-4: #FFFFFF;
+$color-80-45-5: #FFFFFF;
+$color-80-45-6: #FFFFFF;
 $color-80-46: #FFFFFF;
 $color-80-47: #FFFFFF;
 $color-80-48: #FFFFFF;
@@ -514,6 +531,7 @@ $color-81-45: #001E45;
 $color-81-46: #001E46;
 $color-81-47: #001E47;
 $color-81-48: #001E48;
+$color-81-49: #001E49;
 */
 $color-81-1: #001E40;
 $color-81-2: #001E40;
@@ -563,6 +581,56 @@ $color-81-45: #001E40;
 $color-81-46: #001E40;
 $color-81-47: #001E40;
 $color-81-48: #001E40;
+$color-81-49: #001E40;
+
+
+/* ------------- 87 (D9DEE3) ------------- 
+
+$color-87-1: #D9DEE1;
+$color-87-2: #D9DEE2;
+$color-87-3: #D9DEE3;
+$color-87-4: #D9DEE4;
+$color-87-5: #D9DEE5;
+$color-87-6: #D9DEE6;
+$color-87-7: #D9DEE7;
+$color-87-8: #D9DEE8;
+$color-87-9: #D9DEE9;
+$color-87-10: #D9DEF0;
+$color-87-11: #D9DEF1;
+$color-87-12: #D9DEF2;
+$color-87-13: #D9DEF3;
+$color-87-14: #D9DEF4;
+$color-87-15: #D9DEF5;
+$color-87-16: #D9DEF6;
+$color-87-17: #D9DEF7;
+$color-87-18: #D9DEF8;
+$color-87-19: #D9DEF9;
+$color-87-20: #D9DED0;
+$color-87-21: #D9DED1;
+*/
+
+$color-87-1: #D9DEE3;
+$color-87-2: #D9DEE3;
+$color-87-3: #D9DEE3;
+$color-87-4: #D9DEE3;
+$color-87-5: #D9DEE3;
+$color-87-6: #D9DEE3;
+$color-87-7: #D9DEE3;
+$color-87-8: #D9DEE3;
+$color-87-9: #D9DEE3;
+$color-87-10: #D9DEE3;
+$color-87-11: #D9DEE3;
+$color-87-12: #D9DEE3;
+$color-87-13: #D9DEE3;
+$color-87-14: #D9DEE3;
+$color-87-15: #D9DEE3;
+$color-87-16: #D9DEE3;
+$color-87-17: #D9DEE3;
+$color-87-18: #D9DEE3;
+$color-87-19: #D9DEE3;
+$color-87-20: #D9DEE3;
+$color-87-21: #D9DEE3;
+
 
 /* ----------- 88 ------------ 
 
@@ -625,49 +693,3 @@ $color-88-2-25: #B1E7FC;
 $color-88-3: #B1E7FC;
 $color-88-4: #B1E7FC;
 
-/* ------------- 87 (D9DEE3) ------------- 
-
-$color-87-1: #D9DEE1;
-$color-87-2: #D9DEE2;
-$color-87-3: #D9DEE3;
-$color-87-4: #D9DEE4;
-$color-87-5: #D9DEE5;
-$color-87-6: #D9DEE6;
-$color-87-7: #D9DEE7;
-$color-87-8: #D9DEE8;
-$color-87-9: #D9DEE9;
-$color-87-10: #D9DEF0;
-$color-87-11: #D9DEF1;
-$color-87-12: #D9DEF2;
-$color-87-13: #D9DEF3;
-$color-87-14: #D9DEF4;
-$color-87-15: #D9DEF5;
-$color-87-16: #D9DEF6;
-$color-87-17: #D9DEF7;
-$color-87-18: #D9DEF8;
-$color-87-19: #D9DEF9;
-$color-87-20: #D9DED0;
-$color-87-21: #D9DED1;
-*/
-
-$color-87-1: #D9DEE3;
-$color-87-2: #D9DEE3;
-$color-87-3: #D9DEE3;
-$color-87-4: #D9DEE3;
-$color-87-5: #D9DEE3;
-$color-87-6: #D9DEE3;
-$color-87-7: #D9DEE3;
-$color-87-8: #D9DEE3;
-$color-87-9: #D9DEE3;
-$color-87-10: #D9DEE3;
-$color-87-11: #D9DEE3;
-$color-87-12: #D9DEE3;
-$color-87-13: #D9DEE3;
-$color-87-14: #D9DEE3;
-$color-87-15: #D9DEE3;
-$color-87-16: #D9DEE3;
-$color-87-17: #D9DEE3;
-$color-87-18: #D9DEE3;
-$color-87-19: #D9DEE3;
-$color-87-20: #D9DEE3;
-$color-87-21: #D9DEE3;

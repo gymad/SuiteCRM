@@ -15,7 +15,7 @@
 
 .panel-default > .panel-heading {
   background: $panel-expanded-bg-1;
-  color: $panel-expanded-color;
+  color: $panel-expanded-color-1;
   padding: 0;
   height:$panel-header-height;
   border-color: $panel-bg;//
@@ -25,7 +25,7 @@
   font-size: 14px ;
   font-weight: 500;
   background-color: $panel-expanded-bg-2;
-  color: $panel-expanded-color;
+  color: $panel-expanded-color-2;
   vertical-align: middle;
 }
 
@@ -46,7 +46,7 @@
 .panel-default > .panel-heading > a {
   display: block;
   font-weight: 500;
-  color: $panel-expanded-color;
+  color: $panel-expanded-color-3;
   padding: 0 10px 0 10px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -67,7 +67,7 @@
   display: block;
   font-size: $panel-header-font-size;
   font-weight: 500;
-  color: $panel-expanded-color;
+  color: $panel-expanded-color-4;
   padding: 0 10px 0 10px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -232,7 +232,7 @@ div.sub-panel {
 }
 
 .sugar_action_button a {
-  color: $panel-expanded-color;
+  color: $panel-expanded-color-5;
 }
 
 .subpanel-table .pagination li.sugar_action_button > form > a {

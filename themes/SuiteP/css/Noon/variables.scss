@@ -64,7 +64,7 @@ $main-alternate-bg: $color-80-1;
 $primary: $color-81-1;
 
 $danger-1: $color-81-39;
-$danger-2: $color-86;
+$danger-2: $color-86-1;
 $danger-3: $color-50-2-3;
 $danger-4: $color-50-2-4;
 $danger-5: $color-50-2-5;
@@ -1075,8 +1075,8 @@ $navbar-search-query-btn-color-hover: $navbar-link-color-hover;
 
 $navbar-quick-create-link-color: $color-81-12;
 $navbar-quick-create-mobile-btn-bg: $color-33;
-$navbar-quick-create-btn-bg: $color-86;
-$navbar-quick-create-menu-bg: $color-86;
+$navbar-quick-create-btn-bg: $color-86-2;
+$navbar-quick-create-menu-bg: $color-86-3;
 $navbar-quick-create-menu-color: $color-81-13;
 $navbar-quick-create-menu-color-hover: $color-81-14;
 $navbar-quick-create-menu-seperator: $color-81-15;
@@ -1131,7 +1131,17 @@ $default-tab-bg: $color-87-7;
 $default-tab-bg-hover: $color-87-8;
 $default-tab-color-hover: $color-81-48;
 $default-tab-color: $color-80-42;
-$action-tab-bg: $color-50-7;
+
+$action-tab-bg-1: $color-50-7-1;
+$action-tab-bg-2: $color-86-4;
+$action-tab-bg-3: $color-50-7-3;
+$action-tab-bg-4: $color-50-7-4;
+$action-tab-bg-5: $color-50-7-5;
+$action-tab-bg-6: $color-50-7-6;
+$action-tab-bg-7: $color-50-7-7;
+$action-tab-bg-8: $color-50-7-8;
+$action-tab-bg-9: $color-50-7-9;
+
 $action-tab-bg-hover: $color-50-8;
 $action-tab-seperator: $color-53;
 $action-tab-color: $color-80-43;

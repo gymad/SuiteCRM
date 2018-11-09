@@ -131,16 +131,16 @@
   .dropdown-menu > li > a,
   .dropdown-menu > li > a:focus,
   .dropdown-menu > li > a:hover {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-1;
     color: $action-tab-color;
     text-decoration: none;
   }
 
   #tab-actions > a {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-2;
     color: $action-tab-color;
     cursor: pointer;
-    border-color: $action-tab-bg;
+    border-color: $action-tab-bg-3;
     border-bottom: $action-tab-seperator;
   }
 
@@ -165,7 +165,7 @@
   #tab-actions > .dropdown-menu {
     left: auto;
     right: 0;
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-4;
     margin-right: 2px;
     border-top-left-radius: 4px;
     border-top-right-radius: 0;
@@ -174,7 +174,7 @@
   }
 
   #tab-actions > .dropdown-menu li {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-5;
     border-bottom: 1px solid $action-tab-seperator;
   }
 
@@ -188,11 +188,11 @@
   }
 
   #tab-actions > .dropdown-menu a {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-6;
   }
 
   #tab-actions > .dropdown-menu .button {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-7;
   }
 
   #tab-actions > .dropdown-menu .button:hover {
@@ -208,11 +208,11 @@
   }
 
   #tab-actions > .dropdown-menu .open > .dropdown-toggle.btn-primary {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-8;
   }
 
   #tab-actions > .dropdown-menu li:last-of-type a {
-    background-color: $action-tab-bg;
+    background-color: $action-tab-bg-9;
     border: none;
   }
 

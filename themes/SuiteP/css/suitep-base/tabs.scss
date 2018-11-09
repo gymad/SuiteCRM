@@ -151,8 +151,8 @@
   }
 
   #tab-actions > a:hover {
-    background-color: $action-tab-bg-hover;
-    border-color: $action-tab-bg-hover;
+    background-color: $action-tab-bg-hover-1;
+    border-color: $action-tab-bg-hover-2;
     color: $action-tab-color-hover;
     cursor: pointer;
   }
@@ -196,15 +196,15 @@
   }
 
   #tab-actions > .dropdown-menu .button:hover {
-    background-color: $action-tab-bg-hover;
+    background-color: $action-tab-bg-hover-3;
   }
 
   #tab-actions > .dropdown-menu .button:focus {
-    background-color: $action-tab-bg-hover;
+    background-color: $action-tab-bg-hover-4;
   }
 
   #tab-actions > .dropdown-menu .button:active {
-    background-color: $action-tab-bg-hover;
+    background-color: $action-tab-bg-hover-5;
   }
 
   #tab-actions > .dropdown-menu .open > .dropdown-toggle.btn-primary {

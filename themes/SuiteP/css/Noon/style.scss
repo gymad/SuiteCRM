@@ -113,3 +113,15 @@ select.ui-widget-content {
 .error {
     background-color: $color-82; 
 }
+
+.subpanel-table .clickMenu  > .sugar_action_button:hover > .suitepicon {
+    color: $color-80-64;
+}
+
+table.subpanel-table .pagination li.sugar_action_button:hover > form > a {
+    color: $color-80-65;
+}
+
+td.footable-last-visible ul.clickMenu.SugarActionMenu li.sugar_action_button:hover span.suitepicon.suitepicon-action-caret {
+    color: $color-81-50;   
+}

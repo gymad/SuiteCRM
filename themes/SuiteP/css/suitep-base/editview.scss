@@ -2017,7 +2017,7 @@ ul.clickMenu ul.subnav-sub li a:hover {
 
 ul.clickMenu > li {
   position: relative;
-  color: $panel-button-color;
+  color: $panel-button-color-1;
   cursor: pointer;
   padding: 5px;
   margin: 0 5px 0 0;
@@ -2028,7 +2028,7 @@ ul.clickMenu > li {
 
 ul.SugarActionMenuIESub li {
   position: relative;
-  color: $panel-button-color;
+  color: $panel-button-color-2;
   cursor: pointer;
   padding: 5px;
   margin: 0;
@@ -2039,7 +2039,7 @@ ul.SugarActionMenuIESub li {
 
 ul.SugarActionMenuIESub li {
   display: block;
-  color: $panel-button-color;
+  color: $panel-button-color-3;
   margin: 0 5px 0 0;
   float: left;
   text-decoration: none;
@@ -2047,7 +2047,7 @@ ul.SugarActionMenuIESub li {
 
 ul.clickMenu li a {
   display: block;
-  color: $panel-button-color;
+  color: $panel-button-color-4;
   margin: 0 0 0 4px;
   display: inline-block;
   text-decoration: none;
@@ -2056,7 +2056,7 @@ ul.clickMenu li a {
 .subpanel-table .clickMenu  > .sugar_action_button > .suitepicon {
   font-size: inherit;
   line-height: inherit;
-  color: $panel-button-color;
+  color: $panel-button-color-5;
   display:inline;
   margin: 0 4px 0 0;
 }

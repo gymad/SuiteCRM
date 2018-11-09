@@ -132,13 +132,13 @@
   .dropdown-menu > li > a:focus,
   .dropdown-menu > li > a:hover {
     background-color: $action-tab-bg-1;
-    color: $action-tab-color;
+    color: $action-tab-color-3;
     text-decoration: none;
   }
 
   #tab-actions > a {
     background-color: $action-tab-bg-2;
-    color: $action-tab-color;
+    color: $action-tab-color-4;
     cursor: pointer;
     border-color: $action-tab-bg-3;
     border-bottom: $action-tab-seperator;

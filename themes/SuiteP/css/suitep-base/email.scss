@@ -51,7 +51,7 @@
 .email-indicator .email-flagged {
   background-color: $danger-btn-bg;
   border-radius: 28px;
-  color: $default-btn-color;
+  color: $default-btn-color-25;
   font-size: 18px;
 }
 
@@ -62,7 +62,7 @@
 
 .email-indicator .email-imported {
   background-color: $info-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-26;
   border-radius: $border-radius-base;
 }
 

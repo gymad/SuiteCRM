@@ -88,7 +88,7 @@ div#searchResults {
 }
 
 #scheduler .schedulerDiv table tr.schedulerAttendeeRow td.schedulerSlotCellStartTime {
-  background-color: $default-btn-color;
+  background-color: $default-btn-color-9;
   border-left: 4px solid $scheduler-start-color ;
 }
 
@@ -157,7 +157,7 @@ div#searchResults {
 #create_invitee_as_lead {
   font-size: $page-font-size;
   background-color: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-10;
   padding: 0 10px;
   margin: 4px;
   border: 1px solid transparent;
@@ -170,7 +170,7 @@ div#searchResults {
 #create_invitee_as_contact {
   font-size: $page-font-size;
   background-color: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-11;
   padding: 0 10px;
   margin: 4px;
   border: 1px solid transparent;
@@ -188,7 +188,7 @@ div#searchResults {
 #create-invitee-edit button {
   font-size: $page-font-size;
   background-color: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-12;
   padding: 0 10px;
   margin: 4px;
   border: 1px solid transparent;
@@ -202,7 +202,7 @@ div#searchResults {
 #EditView .edit input[type=submit]#invitees_search  {
   font-size: $page-font-size;
   background-color: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-13;
   padding: 0 10px;
   margin: 4px;
   border: 1px solid transparent;
@@ -1180,7 +1180,7 @@ li.noBullet {
 
 .error {
   background-color: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-14;
   padding: 7px 10px;
   font-size:12px;
   margin-bottom: 20px;
@@ -1288,7 +1288,7 @@ input.sqsEnabled {
 .pageNumbers {
   position: static;
   font-weight: bold;
-  color: $default-btn-color;
+  color: $default-btn-color-15;
   padding: 0 8px 0 0;
   margin: 0 0 0 0;
 }
@@ -1965,12 +1965,12 @@ td.teamset-row {
 }
 
 span#selectedRecordsTop {
-  color: $default-btn-color;
+  color: $default-btn-color-16;
 }
 
 ul.clickMenu {
   display: inline-block;
-  color: $default-btn-color;
+  color: $default-btn-color-17;
   padding: 0;
   margin: 0;
   border-radius: 3px;
@@ -2298,12 +2298,12 @@ span.crumbLink {
 
 a#delete_listview_top:hover {
   font-size: 14px;
-  color: $default-btn-color;
+  color: $default-btn-color-18;
 }
 
 a#delete_listview_bottom:hover {
   font-size: 14px;
-  color: $default-btn-color;
+  color: $default-btn-color-19;
 }
 
 .about_suite {
@@ -2469,13 +2469,13 @@ input[type=text].cstm_code {
 }
 
 .headerlinks a:link {
-  color: $default-btn-color;
+  color: $default-btn-color-20;
   padding: 14px 5px 14px 0;
   width: 100%;
 }
 
 .headerlinks a:visited {
-  color: $default-btn-color;
+  color: $default-btn-color-21;
   padding: 14px 5px 14px 0;
   width: 100%;
 }
@@ -3301,7 +3301,7 @@ ul::-webkit-scrollbar-thumb { /* 5 */
 }
 
 .headerlinks a:hover {
-  color: $default-btn-color;
+  color: $default-btn-color-22;
 }
 
 table {
@@ -4045,7 +4045,7 @@ select#sales_stage_advanced {
   font-size: 14px;
   background-clip: padding-box;
   background-color: #BFCAD3;
-  color: $default-btn-color;
+  color: $default-btn-color-23;
   padding: 8px;
   border: 1px solid transparent;
   border-radius: $border-radius-base;
@@ -4055,7 +4055,7 @@ select#sales_stage_advanced {
 
 #fieldChoices .required > .field-header {
   background-color: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-24;
   padding: 8px;
   margin: 0;
   border: 1px solid transparent;

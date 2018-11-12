@@ -57,7 +57,7 @@ table#goto_date_trigger_div_t thead {
 .yui-calendar a.calnav {
   font-weight: normal;
   background-color: $calendar-nav-button-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-158;
   padding: 8px;
   border: 1px solid $calendar-nav-button-bg;
   border-radius: $border-radius-base;
@@ -68,7 +68,7 @@ table#goto_date_trigger_div_t thead {
 
 .yui-calendar a.calnavleft
 {
-  color: $default-btn-color;
+  color: $default-btn-color-159;
   background-color: $calendar-arrow-button-bg;
   border: 1px solid $calendar-arrow-button-bg;
   padding: 0;
@@ -578,7 +578,7 @@ td.fc-day-top.fc-today {
 
 
 .pagecontent > div.row.monthHeader > div > a {
-  color: $default-btn-color;
+  color: $default-btn-color-4;
 }
 
 .pagecontent > div.row.monthHeader {
@@ -691,12 +691,12 @@ td.fc-day-top.fc-today {
 }
 
 .monthCalBody > .calSharedUser {
-  color: $default-btn-color;
+  color: $default-btn-color-5;
 }
 
 thead.fc-head {
   background: $calendar-month-day-header-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-6;
 }
 
 thead.fc-head tr td {

@@ -95,7 +95,7 @@
 
 #toolbox .special:nth-of-type(2) {
   background: $default-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-146;
   padding: 5px;
   margin: 2px 3px;
   border: 1px solid transparent;
@@ -109,7 +109,7 @@
 
 #toolbox .special:nth-of-type(3) {
   background: $default-tab-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-147;
   padding: 5px;
   margin: 2px 3px;
   border: 1px solid transparent;
@@ -183,7 +183,7 @@ body > .le_panel .le_edit, #toolbox .le_panel .le_edit {
 }
 
 #delete span {
-  color: $default-btn-color;
+  color: $default-btn-color-148;
 }
 #panels .le_row .le_field, #availablefields .le_field, #layoutPreview .le_row .le_field {
   display: block;

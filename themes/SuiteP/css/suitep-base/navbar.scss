@@ -103,7 +103,7 @@
 
     .action-links-title {
       a:hover {
-        color: $default-btn-color;
+        color: $default-btn-color-131;
       }
     }
     .recentlinks {
@@ -113,7 +113,7 @@
         margin-right: 5px;
       }
       a:hover {
-        color: $default-btn-color;
+        color: $default-btn-color-132;
       }
     }
     .favoritelinks {
@@ -123,7 +123,7 @@
         margin-right: 5px;
       }
       a:hover {
-        color: $default-btn-color;
+        color: $default-btn-color-133;
       }
     }
 
@@ -242,13 +242,13 @@
     border-color: transparent;
   }
   .headerlinks a:link {
-    color: $default-btn-color;
+    color: $default-btn-color-134;
     padding: 0;
     width: 100%;
   }
 
   .headerlinks a:visited {
-    color: $default-btn-color;
+    color: $default-btn-color-135;
     padding: 0;
     width: 100%;
   }
@@ -267,7 +267,7 @@
 }
 
 .recent_h3 {
-  color: $default-btn-color;
+  color: $default-btn-color-136;
   line-height: 42px;
 }
 
@@ -293,15 +293,15 @@
 }
 
 .dropdown-menu li.action-links-title a:hover {
-  color: $default-btn-color;
+  color: $default-btn-color-137;
 }
 
 .dropdown-menu li.recent-links-title a:hover {
-  color: $default-btn-color;
+  color: $default-btn-color-138;
 }
 
 .dropdown-menu li.favorite-links-title a:hover {
-  color: $default-btn-color;
+  color: $default-btn-color-139;
 }
 
 .with-actions span {
@@ -557,7 +557,7 @@
 
 .moremenu a {
   font-size: 1.2em;
-  color: $default-btn-color;
+  color: $default-btn-color-140;
   cursor: pointer;
   padding: 8px 0 0 0;
   margin: 0;
@@ -583,7 +583,7 @@
 .moremenu ul li a:hover {
   background: none;
   background: $danger-btn-bg;
-  color: $default-btn-color;
+  color: $default-btn-color-141;
   cursor: pointer;
   padding: 5px;
 }
@@ -633,7 +633,7 @@
 }
 
 .navbar-inverse .globalLinks-desktop > li > a {
-  color: $default-btn-color;
+  color: $default-btn-color-142;
 }
 
 .globalLinks-desktop ul li a {
@@ -1399,7 +1399,7 @@
   .globalLinks-mobile.open>.dropdown-toggle.btn-default.focus,
   .globalLinks-mobile.open>.dropdown-toggle.btn-default:focus,
   .globalLinks-mobile.open>.dropdown-toggle.btn-default:hover {
-    color: $default-btn-color;
+    color: $default-btn-color-143;
     background-color: transparent;
     border-color: transparent;
   }
@@ -2154,7 +2154,7 @@
   .globalLinks-desktop.open>.dropdown-toggle.btn-default.focus,
   .globalLinks-desktop.open>.dropdown-toggle.btn-default:focus,
   .globalLinks-desktop.open>.dropdown-toggle.btn-default:hover {
-    color: $default-btn-color;
+    color: $default-btn-color-144;
   }
 }
 

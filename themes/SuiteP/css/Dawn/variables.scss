@@ -9,7 +9,12 @@ $lg-breakpoint: 1200px;
 /// Colors
 $main-bg-1: $color-51;
 $main-bg-2: $color-51;
-$main-bg-3: $color-51;
+$main-bg-3-1: $color-51;
+$main-bg-3-2-1: $color-51;
+$main-bg-3-2-2: $color-51;
+$main-bg-3-2-3: $color-51;
+$main-bg-3-2-4: $color-51;
+$main-bg-3-2-5: $color-51;
 $main-bg-4: $color-51;
 $main-bg-5: $color-51;
 $main-bg-6: $color-51;
@@ -1262,7 +1267,11 @@ $table-header-bg: $color-20;
 $table-nav-bg: $color-39;
 $table-focus-bg: $color-54; // also hover
 $table-row-bg: $main-bg-2;
-$table-alternate-row-bg: $main-bg-3;
+$table-alternate-row-bg-1: $main-bg-3-2-1;
+$table-alternate-row-bg-2: $main-bg-3-2-2;
+$table-alternate-row-bg-3: $main-bg-3-2-3;
+$table-alternate-row-bg-4: $main-bg-3-2-4;
+$table-alternate-row-bg-5: $main-bg-3-2-5;
 $table-row-bg: $main-alternate-bg;
 
 
@@ -1323,7 +1332,8 @@ $calendar-user-height: 32px;
 $calendar-user-bg: $color-36;
 $calendar-user-height: 40px;
 $calendar-header-bg: $color-39;
-$calendar-header-color: $color-51;
+$calendar-header-color-1: $color-51;
+$calendar-header-color-2: $color-51;
 // YUI Popup calendar
 $calendar-month-day-header-bg: $color-20;
 $calendar-month-day-header-color: $color-51;

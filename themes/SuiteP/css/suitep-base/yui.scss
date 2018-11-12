@@ -1392,7 +1392,7 @@ tr.yui-dt-even {
 }
 
 tr.yui-dt-odd {
-  background-color: $table-alternate-row-bg;
+  background-color: $table-alternate-row-bg-2;
 }
 
 tr.yui-dt-even td.yui-dt-asc, tr.yui-dt-even td.yui-dt-desc
@@ -1410,7 +1410,7 @@ tr.yui-dt-odd td.yui-dt-asc, tr.yui-dt-odd td.yui-dt-desc
 }
 
 .yui-dt-list tr.yui-dt-odd {
-  background-color: $table-alternate-row-bg;
+  background-color: $table-alternate-row-bg-3;
 }
 
 .yui-dt-list tr.yui-dt-even td.yui-dt-asc, .yui-dt-list tr.yui-dt-even td.yui-dt-desc
@@ -3748,12 +3748,12 @@ a.yuimenuitemlabel:hover {
 }
 
 .yui-pv .yui-pv-table tr.yui-dt-even {
-  background: $table-alternate-row-bg;
+  background: $table-alternate-row-bg-4;
 }
 
 .yui-pv .yui-pv-table tr.yui-dt-even td.yui-dt-asc, .yui-pv .yui-pv-table tr.yui-dt-even td.yui-dt-desc
 {
-  background: $table-alternate-row-bg;
+  background: $table-alternate-row-bg-5;
 }
 
 .yui-pv .yui-pv-table tr.yui-dt-odd td.yui-dt-asc, .yui-pv .yui-pv-table tr.yui-dt-odd td.yui-dt-desc

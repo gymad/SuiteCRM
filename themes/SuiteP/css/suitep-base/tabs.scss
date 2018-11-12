@@ -141,7 +141,7 @@
     color: $action-tab-color-4;
     cursor: pointer;
     border-color: $action-tab-bg-3;
-    border-bottom: $action-tab-seperator;
+    border-bottom: $action-tab-seperator-1;
   }
 
   #tab-actions > a .suitepicon-action-caret {
@@ -175,7 +175,7 @@
 
   #tab-actions > .dropdown-menu li {
     background-color: $action-tab-bg-5;
-    border-bottom: 1px solid $action-tab-seperator;
+    border-bottom: 1px solid $action-tab-seperator-2;
   }
 
   #tab-actions > .dropdown-menu li:last-of-type {

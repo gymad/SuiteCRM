@@ -3358,7 +3358,7 @@ table legend {
 }
 
 .ui-widget-content a {
-  color: #F08377;
+  color: $color-50-12;
 }
 
 .ui-widget-content a:hover {
@@ -4089,7 +4089,7 @@ select#sales_stage_advanced {
   display: inline-block;
   font-size: 20px;
   font-weight: 300;
-  color: #F08377;
+  color: $color-50-13;
   padding-bottom: 8px;
   text-align: center;
   width: 30%;
@@ -4319,7 +4319,7 @@ h3 span {
 }
 
 .inlineEditIcon {
-  color: #F08377;
+  color: $color-50-14;
   padding-left: 3px;
   float: right;
   width: 15px;
@@ -4332,7 +4332,7 @@ h3 span {
 
 .inlineEditIcon svg {
   display: none;
-  fill: #F08377;
+  fill: $color-50-15;
 }
 
 .inlineEdit:hover .inlineEditIcon svg {

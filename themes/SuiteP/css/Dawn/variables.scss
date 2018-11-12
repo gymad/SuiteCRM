@@ -607,7 +607,13 @@ $state-success-text:             $color-5 !default;
 $state-success-bg:               $color-66 !default;
 $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
-$state-info-text:                $color-2 !default;
+$state-info-text-1:                $color-2 !default;
+$state-info-text-2:                $color-2 !default;
+$state-info-text-3:                $color-2 !default;
+$state-info-text-4:                $color-2 !default;
+$state-info-text-5:                $color-2 !default;
+$state-info-text-6:                $color-2 !default;
+$state-info-text-7:                $color-2 !default;
 $state-info-bg:                  $color-63 !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
@@ -735,7 +741,13 @@ $alert-success-text:          $state-success-text !default;
 $alert-success-border:        $state-success-border !default;
 
 $alert-info-bg:               $state-info-bg !default;
-$alert-info-text:             $state-info-text !default;
+$alert-info-text-1:             $state-info-text-1 !default;
+$alert-info-text-2:             $state-info-text-2 !default;
+$alert-info-text-3:             $state-info-text-3 !default;
+$alert-info-text-4:             $state-info-text-4 !default;
+$alert-info-text-5:             $state-info-text-5 !default;
+$alert-info-text-6:             $state-info-text-6 !default;
+$alert-info-text-7:             $state-info-text-7 !default;
 $alert-info-border:           $state-info-border !default;
 
 $alert-warning-bg:            $state-warning-bg !default;
@@ -830,7 +842,7 @@ $panel-success-text:          $state-success-text !default;
 $panel-success-border:        $state-success-border !default;
 $panel-success-heading-bg:    $state-success-bg !default;
 
-$panel-info-text:             $state-info-text !default;
+$panel-info-text:             $state-info-text-2 !default;
 $panel-info-border:           $state-info-border !default;
 $panel-info-heading-bg:       $state-info-bg !default;
 

@@ -1066,7 +1066,7 @@ div.row.monthHeader {
 
 .aclNone {
   font-weight: bold;
-  color: $alert-info-text;
+  color: $alert-info-text-2;
 }
 
 .aclEnabled {
@@ -1076,7 +1076,7 @@ div.row.monthHeader {
 
 .aclDisabled {
   font-weight: bold;
-  color: $alert-info-text;
+  color: $alert-info-text-3;
 }
 
 .aclAdmin {
@@ -1091,7 +1091,7 @@ div.row.monthHeader {
 
 .aclGroup {
   font-weight: bold;
-  color: $alert-info-text;
+  color: $alert-info-text-4;
 }
 
 ul.noBullet {
@@ -1152,7 +1152,7 @@ li.noBullet {
 .sqsNoMatch {
   font-weight: bold;
   background-color: $panel-bg;
-  color: $alert-info-text;
+  color: $alert-info-text-5;
   padding: 2px 5px 2px 5px;
 }
 
@@ -1161,7 +1161,7 @@ li.noBullet {
 }
 
 .overdueTask {
-  color: $alert-info-text;
+  color: $alert-info-text-6;
 }
 
 .product_group .required {

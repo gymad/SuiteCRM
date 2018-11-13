@@ -3618,4 +3618,37 @@ ul.clickMenu.selectmenu.SugarActionMenu.searchLink.listViewLinkButton > li,
     border-color: $list-view-action-button-border-color;
 }
 
+// list view and some common styles
+
+#MassUpdate > div.list-view-rounded-corners > table > tbody > tr > td.inlineEdit > b > a {
+    text-decoration: $inline-edit-text-decoration;
+}
+
+select[size] {
+  background: url($select-size-background-url) no-repeat right $input-select-option;
+}
+
+select.form-control {
+  background: url($select-form-control-background-url) no-repeat right $input-select-option;
+}
+
+select {
+  background: url($select-background-url) no-repeat right $input-select-option;
+}
+
+.saved_search_select {
+  background: url($saved-search-select-background-url) no-repeat right $input-select-option;
+}
+
+select.ui-widget-content {
+  background: url($select-ui-widget-control-background-url) no-repeat right $input-select-option;
+}
+
+.quickcreatetop .dropdown-menu li a:hover {
+    background-color: $quick-create-top-dropdown-menu-color;
+}
+
+.error {
+    background-color: $error-background-color;
+}
 

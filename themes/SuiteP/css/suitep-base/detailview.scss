@@ -440,3 +440,34 @@ p.msg {
 .email-opt-in .suitepicon {
   line-height: inherit;
 }
+
+
+// detail view sub panels
+
+.subpanel-table .clickMenu  > .sugar_action_button:hover > .suitepicon {
+    color: $subpanel-action-button-color; 
+}
+
+table.subpanel-table .pagination li.sugar_action_button:hover > form > a {
+    color: $subpanel-action-pagination-color;
+}
+
+td.footable-last-visible ul.clickMenu.SugarActionMenu li.sugar_action_button:hover span.suitepicon.suitepicon-action-caret {
+    color: $action-caret-color;   
+}
+
+ul.clickMenu.fancymenu.SugarActionMenu li.sugar_action_button ul.subnav.ddopen li form a {
+    color: $action-ddopen-color;
+}
+
+ul.clickMenu.fancymenu.SugarActionMenu li.sugar_action_button ul.subnav.ddopen li a.email-link {
+    color: $action-ddopen-link-color;
+}
+
+ul.clickMenu.SugarActionMenu li.sugar_action_button ul.subnav.ddopen li a {
+    color: $action-ddopen-color-a;
+}
+
+.yui-panel-container .container-close {
+    color: $container-close-color;
+}

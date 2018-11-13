@@ -543,11 +543,11 @@ form[name="wizform"] .icon-btn-lst .icon-btn a br {
 
 /* campaign wizard progress bar stuff */
 form[name="wizform"] .progression-container .progression .nav-steps {
-  background-color: $campaign-progression-bg;
+  background-color: $campaign-progression-bg-1;
 }
 
 form[name="wizform"] .progression-container .progression .nav-steps:hover {
-  background-color: $campaign-progression-bg-hover;
+  background-color: $campaign-progression-bg-hover-1;
   color: $campaign-progression-color-hover;
 }
 
@@ -567,19 +567,19 @@ form[name="wizform"] .progression li.selected::after {
 }
 
 form[name="wizform"] .progression li:hover{
-  border-left-color: $campaign-progression-bg-hover;
+  border-left-color: $campaign-progression-bg-hover-2;
 }
 
 form[name="wizform"] .progression li:hover::after{
-  border-left-color: $campaign-progression-bg-hover;
+  border-left-color: $campaign-progression-bg-hover-3;
 }
 
 form[name="wizform"] .progression li::after {
-  border-left-color: $campaign-progression-bg;
+  border-left-color: $campaign-progression-bg-2;
 }
 
 form[name="wizform"] .progression li::after {
-  border-left-color: $campaign-progression-bg;
+  border-left-color: $campaign-progression-bg-3;
 }
 
 form[name="wizform"] .progression li::before {

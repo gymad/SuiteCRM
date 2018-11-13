@@ -994,7 +994,7 @@ $page-title-space: 40px; // normal 40px
 $main-font-color: $color-81-4;
 $main-header-font-color: $main-font-color;
 
-$link-color: $danger-1;
+$link-color: $color-81-60;
 $link-color-hover: $danger-hover;
 
 $page-title-spacing: 30px; // 30px normal
@@ -1162,7 +1162,7 @@ $default-btn-color-149: $color-81-35-149;
 $default-btn-color-150: $color-81-35-150;
 $default-btn-color-151: $color-81-35-151;
 $default-btn-color-152: $color-81-35-152;
-$default-btn-color-153: $color-81-35-153;
+$default-btn-color-153: $color-80-71;
 $default-btn-color-154: $color-81-35-154;
 $default-btn-color-155: $color-81-35-155;
 $default-btn-color-156: $color-81-35-156;
@@ -1220,7 +1220,7 @@ $danger-btn-color-hover: $btn-default-color;
 $success-btn-bg: $success;
 $success-btn-bg-hover: $color-16;
 
-$disabled-btn-color: $color-22;
+$disabled-btn-color: $color-22-1;
 $disabled-btn-bg: $color-19;
 
 
@@ -1359,7 +1359,7 @@ $panel-button-color-2: $color-81-21-2;
 $panel-button-color-3: $color-81-21-3;
 $panel-button-color-4: $color-81-21-4;
 $panel-button-color-5: $color-81-21-5;
-$campaign-pagination-bg-hover: $color-22;
+$campaign-pagination-bg-hover: $color-22-2;
 
 // Detail view
 $detail-view-field-bg: $color-51-13;
@@ -1469,12 +1469,16 @@ $add-dashlet-tab-color: $color-80-51;
 // Campaigns
 $campaign-type-color: $color-80-52;
 $campaign-type-bg: $color-50-9;
-$campaign-type-bg-hover: $color-22;
-$campaign-progression-color: $color-80-53;
-$campaign-progression-color-hover:$color-80-54;
-$campaign-progression-bg: $color-50-10;
-$campaign-progression-bg-hover: $color-22;
-$campaign-progression-bg-active: $color-22;
+$campaign-type-bg-hover: $color-22-3;
+$campaign-progression-color: $color-81-58;
+$campaign-progression-color-hover: $color-81-59;
+$campaign-progression-bg-1: $color-86-10;
+$campaign-progression-bg-2: $color-50-10-2;
+$campaign-progression-bg-3: $color-86-11;
+$campaign-progression-bg-hover-1: $color-88-10;
+$campaign-progression-bg-hover-2: $color-22-4-2;
+$campaign-progression-bg-hover-3: $color-88-11;
+$campaign-progression-bg-active: $color-22-5;
 
 // Cases
 $case-internal-bg: $color-57;
@@ -1511,7 +1515,8 @@ $calendar-month-day-header-color: $color-51-16;
 $calendar-year-body-bg: $calendar-slot-bg;
 $calendar-year-body-border-color: $calendar-slot-bg;
 $calendar-other-month-day-header-bg: $color-60;
-$calendar-other-month-day-header-color: $color-51-17;
+$calendar-other-month-day-header-color-1: $color-81-61;
+$calendar-other-month-day-header-color-2: $color-51-17-2;
 $calendar-other-month-day-header-color-hover: $color-50-11;
 $calendar-nav-header-bg: $color-13-3;
 $calendar-nav-button-bg: $color-13-4;

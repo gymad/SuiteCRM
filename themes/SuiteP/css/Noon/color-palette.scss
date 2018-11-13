@@ -22,7 +22,7 @@ $color-18: #757083;
 $color-19: #777777;
 $color-20: #778591;
 $color-21: #79996A;
-$color-22: #808F9C;
+/* $color-22: #808F9C; */
 $color-23: #829EB5;
 $color-24: #8499AB;
 $color-25: #888888;
@@ -147,6 +147,24 @@ $color-13-2: #66727D;
 $color-13-3: #66727D;
 $color-13-4: #66727D;
 
+/* ---------- $color-22: #808F9C; -------------- 
+$color-22-1: #808F91;
+$color-22-2: #808F92;
+$color-22-3: #808F93;
+$color-22-4-1: #808F14;
+$color-22-4-2: #808F24;
+$color-22-4-3: #808F34;
+$color-22-5: #808F95;
+*/
+$color-22-1: #808F9C;
+$color-22-2: #808F9C;
+$color-22-3: #808F9C;
+$color-22-4-1: #808F9C;
+$color-22-4-2: #808F9C;
+$color-22-4-3: #808F9C;
+$color-22-5: #808F9C;
+
+
 /* ---------- $color-28: #E5E8EB; -------------- 
 $color-28-1: #E5E8E1;
 $color-28-2: #E5E8E2;
@@ -193,7 +211,9 @@ $color-50-8-3: #F03378;
 $color-50-8-4: #F04378;
 $color-50-8-5: #F05378;
 $color-50-9: #F08379;
-$color-50-10: #F08360;
+$color-50-10-1: #F18360;
+$color-50-10-2: #F28360;
+$color-50-10-3: #F38360;
 $color-50-11: #F08361;
 $color-50-12: #F01312;
 $color-50-13: #F01313;
@@ -237,14 +257,15 @@ $color-50-8-3: #F08377;
 $color-50-8-4: #F08377;
 $color-50-8-5: #F08377;
 $color-50-9: #F08377;
-$color-50-10: #F08377;
+$color-50-10-1: #F08377;
+$color-50-10-2: #F08377;
+$color-50-10-3: #F08377;
 $color-50-11: #F08377;
 $color-50-12: #F08377;
 $color-50-13: #001E40;
 $color-50-14: #F08377;
 $color-50-15: #F08377;
 $color-50-16: #F08377;
-
 
 /* ----------- 51 ------------ 
 $color-51-1-1: #F501e1;
@@ -318,7 +339,8 @@ $color-51-14: #F5F5d4;
 $color-51-15-1: #F5F115;
 $color-51-15-2: #F5F225;
 $color-51-16: #F5F5d6;
-$color-51-17: #F5F5d7;
+$color-51-17-1: #F5F517;
+$color-51-17-2: #F5F527;
 $color-51-18: #F5F5d8;
 $color-51-19: #F5F5d9;
 $color-51-20: #F5F5d0;
@@ -394,7 +416,8 @@ $color-51-14: #F5F5F5;
 $color-51-15-1: #F5F5F5;
 $color-51-15-2: #F5F5F5;
 $color-51-16: #F5F5F5;
-$color-51-17: #F5F5F5;
+$color-51-17-1: #F5F5F5;
+$color-51-17-2: #F5F5F5;
 $color-51-18: #F5F5F5;
 $color-51-19: #F5F5F5;
 $color-51-20: #F5F5F5;
@@ -535,6 +558,8 @@ $color-80-67: #FFFF67;
 $color-80-68: #FFFF68;
 $color-80-69: #FFFF69;
 $color-80-70: #FFFF70;
+$color-80-71: #FFFF71;
+$color-80-72: #FFFF72;
 */
 $color-80-1: #FFFFFF;
 $color-80-2: #FFFFFF;
@@ -615,6 +640,8 @@ $color-80-67: #FFFFFF;
 $color-80-68: #FFFFFF;
 $color-80-69: #FFFFFF;
 $color-80-70: #FFFFFF;
+$color-80-71: #FFFFFF;
+$color-80-72: #FFFFFF;
 
 /* ------------------ 81 ------------------ 
 $color-81-1: #001E01;
@@ -853,6 +880,10 @@ $color-81-54: #001E54;
 $color-81-55: #001E55;
 $color-81-56: #001E56;
 $color-81-57: #001E57;
+$color-81-58: #001E58;
+$color-81-59: #001E59;
+$color-81-60: #001E60;
+$color-81-61: #001E61;
 */
 $color-81-1: #001E40;
 $color-81-2: #001E40;
@@ -1090,6 +1121,10 @@ $color-81-54: #001E40;
 $color-81-55: #001E40;
 $color-81-56: #001E40;
 $color-81-57: #001E40;
+$color-81-58: #001E40;
+$color-81-59: #001E40;
+$color-81-60: #001E40;
+$color-81-61: #001E40;
 
 
 /* -------------- $color-86: #7BDBFF; -------------- 
@@ -1102,6 +1137,9 @@ $color-86-5: #7BDBF5;
 $color-86-6: #7BDBF6;
 $color-86-7: #7BDBF7;
 $color-86-8: #7BDBF8;
+$color-86-9: #7BDBF9;
+$color-86-10: #7BDB10;
+$color-86-11: #7BDB11;
 */
 $color-86-1: #7BDBFF;
 $color-86-2: #7BDBFF;
@@ -1111,6 +1149,9 @@ $color-86-5: #7BDBFF;
 $color-86-6: #7BDBFF;
 $color-86-7: #7BDBFF;
 $color-86-8: #7BDBFF;
+$color-86-9: #7BDBFF;
+$color-86-10: #7BDBFF;
+$color-86-11: #7BDBFF;
 
 /* ------------- 87 (D9DEE3) ------------- 
 
@@ -1197,8 +1238,9 @@ $color-88-6: #B1E7F6;
 $color-88-7: #B1E7F7;
 $color-88-8: #B1E7F8;
 $color-88-9: #B1E7F9;
+$color-88-10: #B1E710;
+$color-88-11: #B1E711;
 */
-
 $color-88-1: #B1E7FC;
 $color-88-2-1: #B1E7FC;
 $color-88-2-2: #B1E7FC;
@@ -1232,4 +1274,6 @@ $color-88-6: #B1E7FC;
 $color-88-7: #B1E7FC;
 $color-88-8: #B1E7FC;
 $color-88-9: #B1E7FC;
+$color-88-10: #B1E7FC;
+$color-88-11: #B1E7FC;
 

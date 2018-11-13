@@ -169,7 +169,7 @@ table#goto_date_trigger_div_t thead {
 }
 
 .yui-calendar .calweekdaycell {
-  color: $calendar-other-month-day-header-color;
+  color: $calendar-other-month-day-header-color-1;
 }
 
 .yui-calendar a.calnav {
@@ -704,7 +704,7 @@ thead.fc-head tr td {
 }
 
 a.fc-day-number {
-  color: $calendar-other-month-day-header-color;
+  color: $calendar-other-month-day-header-color-2;
   text-decoration: none;
 }
 

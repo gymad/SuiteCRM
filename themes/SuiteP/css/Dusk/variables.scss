@@ -1475,8 +1475,12 @@ $campaign-type-bg: $color-50;
 $campaign-type-bg-hover: $color-22;
 $campaign-progression-color: $color-80;
 $campaign-progression-color-hover:$color-80;
-$campaign-progression-bg: $color-50;
-$campaign-progression-bg-hover: $color-22;
+$campaign-progression-bg-1: $color-50;
+$campaign-progression-bg-2: $color-50;
+$campaign-progression-bg-3: $color-50;
+$campaign-progression-bg-hover-1: $color-22;
+$campaign-progression-bg-hover-2: $color-22;
+$campaign-progression-bg-hover-3: $color-22;
 $campaign-progression-bg-active: $color-22;
 
 // Cases
@@ -1514,7 +1518,8 @@ $calendar-month-day-header-color: $color-51;
 $calendar-year-body-bg: $calendar-slot-bg;
 $calendar-year-body-border-color: $calendar-slot-bg;
 $calendar-other-month-day-header-bg: $color-60;
-$calendar-other-month-day-header-color: $color-51;
+$calendar-other-month-day-header-color-1: $color-51;
+$calendar-other-month-day-header-color-2: $color-51;
 $calendar-other-month-day-header-color-hover: $color-50;
 $calendar-nav-header-bg: $color-13;
 $calendar-nav-button-bg: $color-13;

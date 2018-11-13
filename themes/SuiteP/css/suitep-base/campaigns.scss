@@ -302,7 +302,7 @@ div.target-list-table {
 
 .icon-btn-lst .icon-btn a {
   display: block;
-  background-color: $campaign-type-bg;
+  background-color: $campaign-type-bg-1;
   margin: 10px;
   border: none;
   float: left;
@@ -318,7 +318,7 @@ div.target-list-table {
 
 .icon-btn-lst .icon-btn {
   display: block;
-  background-color: $campaign-type-bg;
+  background-color: $campaign-type-bg-2;
   margin: 10px;
   border: none;
   float: left;
@@ -329,11 +329,11 @@ div.target-list-table {
 }
 
 .icon-btn-lst .icon-btn:hover {
-  background-color: $campaign-type-bg-hover;
+  background-color: $campaign-type-bg-hover-1;
 }
 
 .icon-btn-lst .icon-btn a:hover {
-  background-color: $campaign-type-bg-hover;
+  background-color: $campaign-type-bg-hover-2;
 }
 
 .icon-btn-lst .icon-btn img {

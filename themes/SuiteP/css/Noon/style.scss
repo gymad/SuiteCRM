@@ -82,3 +82,7 @@
 @import '../suitep-base/tinemce.scss';
 @import '../suitep-base/jstree';
 //
+
+.error {
+    background-color: $error-background-color;
+}

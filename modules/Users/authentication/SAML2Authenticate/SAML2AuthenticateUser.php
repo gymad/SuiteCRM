@@ -61,6 +61,13 @@ class SAML2AuthenticateUser extends SugarAuthenticateUser
      * @return STRING id - used for loading the user
      */
     public function authenticateUser($name, $password, $fallback=false, $checkPasswordMD5 = false) {
+        
+        if(!isset($_SESSION['samlNameId']) || $_SESSION['samlNameId'] !== $name) {
+            $log = LoggerManager::getLogger();
+            $log->error('Incorrect auth data given.');
+            return '';
+        }
+        
         $row = User::findUserPassword($name, null, "(portal_only IS NULL OR portal_only !='1') AND (is_group IS NULL OR is_group !='1') AND status !='Inactive'", $checkPasswordMD5);
 
         // set the ID in the seed user.  This can be used for retrieving the full user record later

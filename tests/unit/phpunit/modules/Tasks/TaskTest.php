@@ -76,6 +76,15 @@ class TaskTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $task->mark_deleted($task->id);
         $result = $task->retrieve($task->id);
         $this->assertEquals(null, $result);
+        
+        // clean up
+        
+        $state->popGlobals();
+        $state->popTable('tracker');
+        $state->popTable('tasks');
+        $state->popTable('aod_indexevent');
+        $state->popTable('aod_index');
+        
     }
 
     public function testget_summary_text()
@@ -120,6 +129,9 @@ class TaskTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
         $this->markTestIncomplete('method has no implementation');
         
+        // clean up
+        
+        
     }
 
     public function testfill_in_additional_detail_fields()
@@ -140,6 +152,8 @@ class TaskTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         }
         
         // clean up
+        
+        
     }
 
     public function testfill_in_additional_parent_fields()
@@ -157,6 +171,8 @@ class TaskTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         }
         
         // clean up
+        
+        
     }
 
     public function testget_list_view_data()
@@ -226,6 +242,12 @@ class TaskTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
     public function testlistviewACLHelper()
     {
+        // save state
+
+        $state = new \SuiteCRM\StateSaver();
+        $state->pushGlobals();
+
+	// test
         
         $task = new Task();
 
@@ -233,6 +255,10 @@ class TaskTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $actual = $task->listviewACLHelper();
         $this->assertSame($expected, $actual);
         
+        // clean up
+        
+        $state->popGlobals();
+
     }
 
     public function testgetDefaultStatus()

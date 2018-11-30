@@ -106,6 +106,16 @@ class SuiteLoggerTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertNotEmpty($matches);
     }
 
+    public function testLogInvalid()
+    {
+        $this->tester->expectException(
+            new \Psr\Log\InvalidArgumentException(),
+            function() {
+                self::$logger->log('invalid-level', 'hello');
+            }
+        );
+    }
+
     public function testInterpolate()
     {
         self::$logger->error('test {a}', array('a' => 'apple'));
@@ -114,13 +124,12 @@ class SuiteLoggerTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertNotEmpty($matches);
     }
 
-    private function getLastLogMessage()
-    {
+    private function getLastLogMessage() {
         $paths = new \SuiteCRM\Utility\Paths();
         $loggerPath = $paths->getProjectPath().'/suitecrm.log';
         $data = file($loggerPath);
 
-        if (empty($data)) {
+        if(empty($data)) {
             $line = '';
         } else {
             $line = $data[count($data)-1];

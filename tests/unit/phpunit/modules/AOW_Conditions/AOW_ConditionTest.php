@@ -42,6 +42,8 @@ class AOW_ConditionTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertEquals(false, $aowCondition->bean_implements('ACL')); //test with valid value
         
         // clean up
+        
+        
     }
 
     public function testsave_lines()

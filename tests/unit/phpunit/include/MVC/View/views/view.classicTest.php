@@ -31,7 +31,8 @@ class ViewClassicTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
     public function testdisplay()
     {
-        if (isset($_SESSION)) {
+        
+        if(isset($_SESSION)) {
             $session = $_SESSION;
         }
         
@@ -80,7 +81,7 @@ class ViewClassicTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         
         
         
-        if (isset($session)) {
+        if(isset($session)) {
             $_SESSION = $session;
         } else {
             unset($_SESSION);

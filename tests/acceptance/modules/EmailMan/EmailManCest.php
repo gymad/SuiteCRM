@@ -26,14 +26,14 @@ class EmailManCest
     /**
      * @param \AcceptanceTester $I
      * @param \Step\Acceptance\ListView $listView
-     * @param \Step\Acceptance\EmailMan $emailMan
+     * @param \Step\Acceptance\EmailManTester $emailMan
      * @param \Helper\WebDriverHelper $webDriverHelper
      *
      * As an administrator I want to test outgoing mail configuration.
      */
     public function testScenarioAdminEmailSettings(
         \AcceptanceTester $I,
-        \Step\Acceptance\EmailMan $emailMan,
+        \Step\Acceptance\EmailManTester $emailMan,
         \Helper\WebDriverHelper $webDriverHelper
     ) {
         $I->wantTo('Save an outgoing email configuration');
@@ -45,6 +45,6 @@ class EmailManCest
         $I->loginAsAdmin();
         $emailMan->createEmailSettings();
 
-        $I->see('Note: To send record assignment notifications, an SMTP server must be configured in Email Settings.');
+        $I->dontSee('Note: To send record assignment notifications, an SMTP server must be configured in Email Settings.');
     }
 }

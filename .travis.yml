@@ -30,8 +30,9 @@ before_install:
   - wget https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
   - unzip -o chromedriver_linux64.zip
   - ./chromedriver --url-base=/wd/hub &
-
+  
 install:
+  - phpenv config-add travis.php.ini
   - composer self-update && composer --version
 
 before_script:
@@ -68,7 +69,10 @@ script:
   - ./build/push_output.sh
   
   # Run the unit tests
-  - ./vendor/bin/codecept run unit --steps -f -vvv -d
+  # - ./vendor/bin/codecept run unit --steps -f -vvv -d
+  - cd tests
+  - ../vendor/bin/phpunit --stop-on-failure --stop-on-error "--colors" ./tests/unit/phpunit
+  - cd ..
   # Install OAuth2 demo data
   - mysql -u root -D automated_tests -v -e "source tests/_data/api_data.sql"
   # Install demo user data
@@ -89,6 +93,8 @@ script:
 
 after_script:
   - ./build/push_output.sh
+  # - cat suitecrm.log TODO: Upload the suitecrm.log to an external file host.
+  - sudo cat /var/log/apache2/error.log
   - echo $TRAVIS_COMMIT_RANGE
 
 branches:

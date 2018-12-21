@@ -4554,11 +4554,13 @@ class SugarBean
         $GLOBALS['log']->debug("Retrieve $this->object_name : " . $query);
         $result = $this->db->limitQuery($query, 0, 1, true, "Retrieving record by id $this->table_name:$id found ");
         if (empty($result)) {
+            LoggerManager::getLogger()->error('Error retrieving bean from database at bean id: ' . $this->db->quoted($id));
             return null;
         }
 
         $row = $this->db->fetchByAssoc($result, $encode);
         if (empty($row)) {
+            LoggerManager::getLogger()->error('Error fetching bean from database query result at bean id: ' . $this->db->quoted($id));
             return null;
         }
 

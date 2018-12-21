@@ -95,6 +95,7 @@ class BeanFactory
         $beanClass = self::getBeanName($module);
 
         if (empty($beanClass) || !class_exists($beanClass)) {
+            LoggerManager::getLogger()->error('Error retrieving bean by class name: ' . $beanClass);
             return false;
         }
 
@@ -103,6 +104,7 @@ class BeanFactory
                 $bean = new $beanClass();
                 $result = $bean->retrieve($id, $encode, $deleted);
                 if ($result == null) {
+                    LoggerManager::getLogger()->error('Error retrieving bean by id: ' . $id);
                     return false;
                 } else {
                     self::registerBean($module, $bean, $id);
@@ -111,6 +113,9 @@ class BeanFactory
                 ++self::$hits;
                 ++self::$touched[$module][$id];
                 $bean = self::$loadedBeans[$module][$id];
+                if (!$bean) {
+                    LoggerManager::getLogger()->error("Error retrieving bean from loaded bean. Bean module and id was: $module::$id");
+                }
             }
         } else {
             $bean = new $beanClass();

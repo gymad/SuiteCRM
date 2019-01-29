@@ -619,6 +619,10 @@ class GridLayoutMetaDataParser extends AbstractMetaDataParser implements MetaDat
                             continue;
                         }
                     }
+                    if (!isset($fieldDefinitions[$fieldname]) && $fieldname != $this->FILLER['name']) {
+                        continue;
+                    }
+                    
 
                     //Replace (filler) with the empty string
                     if ($fieldname == $this->FILLER['name']) {

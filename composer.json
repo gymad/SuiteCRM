@@ -34,8 +34,9 @@
     "filp/whoops": "^2.2",
     "symfony/options-resolver": "^3.4",
     "symfony/validator": "^3.4",
-    "symfony/yaml": "^3.4",
-    "phpmailer/phpmailer": "^6.0"
+    "ezyang/htmlpurifier": "^4.10",
+    "leafo/scssphp": "^0.7.7",
+    "soundasleep/html2text": "~0.5"
   },
   "require-dev": {
     "leafo/scssphp": "dev-master",

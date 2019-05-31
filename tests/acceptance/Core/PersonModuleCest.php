@@ -409,64 +409,96 @@ class PersonModuleCest
         \Step\Acceptance\DetailView $detailView,
         \Helper\WebDriverHelper $webDriverHelper
     ) {
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->wantTo('Create a Person Record using a vcard');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->amOnUrl(
             $webDriverHelper->getInstanceURL()
         );
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
 
 
         // Create VCard for test
         $vcard = new VCard();
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
 
         // define variables
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $lastname = $this->fakeData->lastName;
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $firstname = $this->fakeData->lastName;
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $additional = '';
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $prefix = '';
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $suffix = '';
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         // add personal data
         $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         // add work data
         $vcard->addCompany($this->fakeData->company);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addJobtitle($this->fakeData->jobTitle);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addRole($this->fakeData->colorName);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addEmail($this->fakeData->email);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addPhoneNumber($this->fakeData->phoneNumber, 'PREF;WORK');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addPhoneNumber($this->fakeData->phoneNumber, 'WORK');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addAddress(null, null, 'street', $this->fakeData->city, null, 'workpostcode', $this->fakeData->country);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $vcard->addURL($this->fakeData->url);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
 
         // Write to file
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $fileContent = $vcard->getOutput();
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $fileDir = 'tests/_data/';
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $fileName = $lastname.'.test.vcf';
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->writeToFile($fileDir.$fileName, $fileContent);
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         // Go to Person Test Module
         $I->loginAsAdmin();
         $navigationBar->clickAllMenuItem(\Page\PersonModule::$NAME);
         $listView->waitForListViewVisible();
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $navigationBar->clickCurrentMenuItem('Create From vCard');
         $I->waitForElementVisible('.import-vcard');
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->attachFile('#vcard_file', $fileName);
         $I->wait(1);
         $I->click('#import_vcard_button', '.import-vcard');
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $detailView->waitForDetailViewVisible();
         $this->lastView = ' DetailView';
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $detailView->see($firstname.' '.$lastname, '.module-title-text');
 
         // Delete Record
         $detailView->clickActionMenuItem('Delete');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $detailView->acceptPopup();
 
         $listView->waitForListViewVisible();
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $this->lastView = 'ListView';
 
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->deleteFile($fileDir.$fileName);
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
     }
 }

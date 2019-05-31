@@ -108,32 +108,53 @@ class ElasticsearchCest
     {
         
         // login..
-        
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->amOnUrl($helper->getInstanceURL());
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->loginAsAdmin();
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         
         // lets try out elasticsearch..
         
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->amOnUrl($helper->getInstanceURL());
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         
         // TODO [Selenium browser Logs] 12:47:10.930 SEVERE - http://localhost/SuiteCRM/index.php?action=Login&module=Users - [DOM] Found 2 elements with non-unique id #form: (More info: https://goo.gl/9p2vKq)
+        
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->fillField('div.desktop-bar ul#toolbar li #searchform .input-group #query_string', 'I_bet_there_is_nothing_to_contains_this');
+        
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         
         // click on search icon: TODO: search icon ID is not unique:
         $I->click('.desktop-bar #searchform > div > span > button');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         
         $I->see('SEARCH');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('Results');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('No results matching your search criteria. Try broadening your search.');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('Search performed in');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->fillField('div.desktop-bar ul#toolbar li #searchform .input-group #query_string', 'acc');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->click('#search-wrapper-form > table > tbody > tr:nth-child(1) > td > input.button.primary');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('SEARCH');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('Results');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('No results matching your search criteria. Try broadening your search.');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
         $I->see('Search performed in');
+        echo "dbg at:" . __FILE__ . ":" . __LINE__ . "\n";
     }
     
     /**

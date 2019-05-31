@@ -124,7 +124,7 @@ class SearchThrowableHandler
             case SearchException::class:
                 return $mod_strings['LBL_ELASTIC_SEARCH_SEARCH'];
             default:
-                return $mod_strings['LBL_ELASTIC_SEARCH_DEFAULT'];
+                return isset($mod_strings['LBL_ELASTIC_SEARCH_DEFAULT']) ? $mod_strings['LBL_ELASTIC_SEARCH_DEFAULT'] : null;
         }
     }
 

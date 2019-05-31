@@ -32,35 +32,22 @@ class Design extends Module
      */
     public function getBreakpointString()
     {
-        echo('+ dbg line at: ' . __LINE__);
         $browserWidth = $this->getBrowserWidth();
-        echo('+ dbg line at: ' . __LINE__);
         $breakpoint = null;
-        echo('+ dbg line at: ' . __LINE__);
         if ($browserWidth >= 1201) {
-            echo('+ dbg line at: ' . __LINE__);
             $breakpoint = DesignBreakPoint::lg;
-            echo('+ dbg line at: ' . __LINE__);
         } elseif ($browserWidth >= 1024 && $browserWidth <= 1200) {
-            echo('+ dbg line at: ' . __LINE__);
             $breakpoint = DesignBreakPoint::md;
-            echo('+ dbg line at: ' . __LINE__);
         } elseif ($browserWidth >= 750 && $browserWidth < 1024) {
-            echo('+ dbg line at: ' . __LINE__);
             $breakpoint = DesignBreakPoint::sm;
-            echo('+ dbg line at: ' . __LINE__);
         } elseif ($browserWidth < 750) {
-            echo('+ dbg line at: ' . __LINE__);
             $breakpoint = DesignBreakPoint::xs;
-            echo('+ dbg line at: ' . __LINE__);
         }
-        echo('+ dbg line at: ' . __LINE__);
         return $breakpoint;
     }
 
     protected function getBrowserWidth()
     {
-        echo('+ dbg line at: ' . __LINE__);
         return $this->tester->executeJS('return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);');
     }
 

@@ -140,55 +140,93 @@ class AccountsCest
         \Step\Acceptance\AccountsTester $accounts,
         \Helper\WebDriverHelper $webDriverHelper
     ) {
+        echo('+ dbg line at: ' . __LINE__);
         $I->wantTo('Create an Account');
 
+        echo('+ dbg line at: ' . __LINE__);
         $I->amOnUrl(
             $webDriverHelper->getInstanceURL()
         );
 
+        echo('+ dbg line at: ' . __LINE__);
         // Navigate to accounts list-view
         $I->loginAsAdmin();
+        echo('+ dbg line at: ' . __LINE__);
         $accounts->gotoAccounts();
+        echo('+ dbg line at: ' . __LINE__);
         $listView->waitForListViewVisible();
 
+        echo('+ dbg line at: ' . __LINE__);
         // Create account
         $this->fakeData->seed($this->fakeDataSeed);
+        echo('+ dbg line at: ' . __LINE__);
         $parentAccountName = 'Test_' . $this->fakeData->company();
+        echo('+ dbg line at: ' . __LINE__);
         $accounts->createAccount($parentAccountName);
+        echo('+ dbg line at: ' . __LINE__);
 
         // Click on Member Organizations subpanel
+        echo('+ dbg line at: ' . __LINE__);
         $I->click(['id' => 'subpanel_title_accounts']);
+        echo('+ dbg line at: ' . __LINE__);
         $I->waitForElementVisible('#member_accounts_create_button', 60);
+        echo('+ dbg line at: ' . __LINE__);
 
         // Add child account
+        echo('+ dbg line at: ' . __LINE__);
         $accountName = 'Test_' . $this->fakeData->company();
+        echo('+ dbg line at: ' . __LINE__);
         $I->click('#member_accounts_create_button');
+        echo('+ dbg line at: ' . __LINE__);
         $I->click('#Accounts_subpanel_full_form_button');
+        echo('+ dbg line at: ' . __LINE__);
         $editView->waitForEditViewVisible();
+        echo('+ dbg line at: ' . __LINE__);
         $I->fillfield('#name', $accountName);
+        echo('+ dbg line at: ' . __LINE__);
         $editView->clickSaveButton();
+        echo('+ dbg line at: ' . __LINE__);
 
         // View child account in parent account subpanel
+        echo('+ dbg line at: ' . __LINE__);
         $detailView->waitForDetailViewVisible();
+        echo('+ dbg line at: ' . __LINE__);
         $I->see($accountName, '//*[@id="list_subpanel_accounts"]/table/tbody/tr/td[2]/a');
+        echo('+ dbg line at: ' . __LINE__);
 
         // Delete account
+        echo('+ dbg line at: ' . __LINE__);
         $detailView->clickActionMenuItem('Delete');
+        echo('+ dbg line at: ' . __LINE__);
         $detailView->acceptPopup();
+        echo('+ dbg line at: ' . __LINE__);
         $listView->waitForListViewVisible();
+        echo('+ dbg line at: ' . __LINE__);
 
         // Select record from list view
+        echo('+ dbg line at: ' . __LINE__);
         $listView->clickFilterButton();
+        echo('+ dbg line at: ' . __LINE__);
         $listView->click('Quick Filter');
+        echo('+ dbg line at: ' . __LINE__);
         $listView->fillField('#name_basic', $accountName);
+        echo('+ dbg line at: ' . __LINE__);
         $listView->click('Search', '.submitButtons');
+        echo('+ dbg line at: ' . __LINE__);
         $listView->waitForListViewVisible();
+        echo('+ dbg line at: ' . __LINE__);
         $listView->clickNameLink($accountName);
+        echo('+ dbg line at: ' . __LINE__);
         $detailView->waitForDetailViewVisible();
+        echo('+ dbg line at: ' . __LINE__);
 
+        echo('+ dbg line at: ' . __LINE__);
         // Delete account
         $detailView->clickActionMenuItem('Delete');
+        echo('+ dbg line at: ' . __LINE__);
         $detailView->acceptPopup();
+        echo('+ dbg line at: ' . __LINE__);
         $listView->waitForListViewVisible();
+        echo('+ dbg line at: ' . __LINE__);
     }
 }
